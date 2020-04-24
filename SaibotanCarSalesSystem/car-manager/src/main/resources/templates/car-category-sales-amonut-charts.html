@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--各种汽车销量图-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/echarts.min.js"></script>
+</head>
+<body style="text-align: center">
+<h2 style="text-align: center">汽车销量前6统计图</h2>
+<br/><br/><br/>
+<!-- 准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;text-align: center;margin: 0px auto"></div>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var data1 = [];
+    var data2 = [];
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: '汽车销量前6柱形图'
+        },
+        tooltip: {},
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            //横轴
+            // data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            data : data1
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            //竖轴
+            // data: [5, 20, 36, 10, 10, 20]
+            data: data2
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    // myChart.setOption(option);
+
+
+    $.ajax({
+        url: "/charts/salesnum",
+        dataType: 'json',
+        type: 'get',
+        success: function (res) {
+            var data = res.data;
+            console.log(data);
+            for (var i=0;i<data.carName.length;i++){
+                //data1数据为横轴数据
+                data1.push(data.carName[i])
+            }
+            for (var i=0;i<data.carSalesNum.length;i++){
+
+                //data2数据为纵轴数据
+                data2.push(data.carSalesNum[i]);
+            }
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

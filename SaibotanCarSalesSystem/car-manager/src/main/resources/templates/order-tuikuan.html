@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>汽车列表</title>
+    <link rel="stylesheet" href="lib/zTree/v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+
+    <script src="js/jquery-3.4.1.js"></script>
+
+    <style type="text/css">
+        #cartype{
+            width: 180px;
+            height: 20px;
+            background-color: lightblue;
+        }
+        #cartype:hover{
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body class="pos-r" ng-app="ordertuikuan" ng-controller="orderTuiKunCon">
+<div style="">
+    <nav class="breadcrumb">
+        <i class="Hui-iconfont">&#xe67f;</i>
+        首页
+        <span class="c-gray en">&gt;</span>
+        产品管理
+        <span class="c-gray en">&gt;</span>
+        产品列表
+        <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" ng-click="navrefresh1()" title="刷新" >
+            <i class="Hui-iconfont">&#xe68f;</i>
+        </a>
+    </nav>
+    <div class="page-container">
+        <div class="text-c">
+            <input type="text"  placeholder=" 开始时间" style="width:250px" class="input-text" ng-model="begintime">
+            <input type="text"  placeholder=" 结束时间" style="width:250px" class="input-text" ng-model="endtime">
+
+            <button name="" id="" class="btn btn-success" type="button" data-ng-click="selectByTime()"><i class="Hui-iconfont">&#xe665;</i> 搜订单</button>
+        </div>
+        <div class="cl pd-5 bg-1 bk-gray mt-20">
+            <span class="l">
+                <a href="javascript:;" data-ng-click="tuokuanall()" class="btn btn-info radius">
+                    <i class="Hui-iconfont">&#xe6e2;</i>
+                    一键退款
+                </a>
+            </span>
+            <span class="r">共有数据：<strong>{{orderitems.length}}</strong> 条</span>
+        </div>
+
+        <div class="mt-20">
+            <table class="table table-border table-bordered table-bg table-hover table-sort">
+                <thead>
+                <tr class="text-c">
+                    <th width="40"><input name="" type="checkbox" value=""></th>
+                    <th width="40">ID</th>
+                    <th width="60">汽车名</th>
+                    <th width="100">缩略图</th>
+                    <th width="60">汽车类型</th>
+                    <th width="60">价格</th>
+                    <th width="60">售出数量</th>
+                    <th width="60">小计</th>
+                    <th width="60">用户名</th>
+                    <th width="60">留言</th>
+                    <th width="60">状态</th>
+                    <th width="60">下单时间</th>
+                    <th width="100">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-c va-m" ng-repeat="orderitem in suborders track by $index">
+                    <td><input name="orderids"  type="checkbox" value="{{orderitem.id}}"></td>
+                    <td>{{orderitem.orderuuid}}</td>
+                    <td class="text-l">{{orderitem.car.name}}</td>
+                    <td><img width="60" class="product-thumb" ng-src="{{orderitem.car.imgurl}}" alt=""></a></td>
+                    <td><span class="price">{{orderitem.car.cartype}}</span></td>
+                    <td><span class="price">{{orderitem.car.price}}</span></td>
+                    <td class="td-status">{{orderitem.carnum}}</td>
+                    <td class="td-price">{{orderitem.totalprice}}</td>
+                    <td class="td-price">{{orderitem.user.name}}</td>
+                    <td class="td-price">{{orderitem.message}}</td>
+                    <td class="td-price">{{orderitem.status}}</td>
+                    <td class="td-price">{{orderitem.ordertime}}</td>
+                    <td class="td-manage">
+
+
+                        <a style="text-decoration:none" class="ml-5" data-ng-click="tuihuoone($index,this,orderitem.id)" href="javascript:;" title="退款">
+                            <i class="Hui-iconfont">&#xe6e2;</i>
+                        </a>
+                        <!--<a style="text-decoration:none" class="ml-5" data-ng-click="order_del($index,this,orderitem.id)" href="javascript:;" title="删除">-->
+                        <!---->
+                        <!--</a>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+
+            <!--分页部分-->
+            <nav>
+                <a data-ng-click="go(1)">Home</a>
+                <a ng-class="{disabled:currentPage<=1}" data-ng-click="go(currentPage - 1)">Previous</a>
+                <a ng-class="{disabled:currentPage>=totalPages}" data-ng-click="go(currentPage + 1)">Next</a>
+            </nav>
+
+            <nav aria-label="Page navigation" style="float: right">
+                <ul class="pagination" style="float: right">
+                    <li ng-class="{disabled:currentPage>=totalPages}" data-ng-click="go(currentPage + 1)" style="float: right">
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true" >下一页</span>
+                        </a>
+                    </li>
+                    <li style="float: right"><a href="#">第{{currentPage}}页</a>&nbsp;</li>
+                    <li ng-class="{disabled:currentPage<=1}" data-ng-click="go(currentPage - 1)" style="float: right">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true" >上一页</span>&nbsp;
+                        </a>
+                    </li>
+                    <li data-ng-click="go(1)" style="float: right">
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true" >首页</span>&nbsp;
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+</div>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/zTree/v3/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+
+<script src="js/angular.js"></script>
+<script src="js/order-tuikuan.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>

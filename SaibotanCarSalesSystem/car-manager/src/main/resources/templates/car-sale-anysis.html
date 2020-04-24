@@ -1,0 +1,544 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>折线图</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 统计管理 <span class="c-gray en">&gt;</span> 汽车销量分析 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+
+    <!--汽车月份销量分析-->
+    <div id="container1" style="min-width:700px;height:500px"></div>
+    <br>
+
+    <!--汽车颜色销量分析-->
+    <div id="container2" style="min-width:700px;height:500px"></div>
+    <br>
+
+    <!--汽车性别销量分析-->
+    <div id="container3" style="min-width:700px;height:500px"></div>
+    <br>
+
+    <!--汽车地区销量分析-->
+    <div id="container4" style="min-width:700px;height:500px"></div>
+
+    <!--留白区域-->
+    <div id="tobank" style="min-width:700px;height:100px"></div>
+</div>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/highcharts.js"></script>
+<script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/highcharts-3d.js"></script>
+<script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/highcharts-more.js"></script>
+<script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
+<script type="text/javascript" src="js/fenbushi.js"></script>
+<script type="text/javascript">
+    $(document).ready(
+        //初始化汽车月份销量分析
+        monthAnysis(),
+
+        //初始化汽车颜色销量分析
+        colorAnysis(),
+
+        //初始化汽车性别销量分析
+        sexAnysis(),
+
+        //初始化汽车地区销量分析
+        areaAnysis()
+
+    );
+
+    //汽车月份销量分析
+    function monthAnysis(){
+
+        //图表初始化
+       var option = {
+           chart: {
+               renderTo: 'container1',  //设置显示的页面块
+               type:'line',              //设置显示的方式
+               height:500
+               //type: 'column'
+           },
+           title: {
+               text: '2018 年每月汽车销量分析与下个月预测',
+               x: -20 //center
+           },
+           subtitle: {
+               text: '数据来源: 个人项目echartsdemo',
+               x: -20
+           },
+           credits:{
+               enabled:false // 禁用版权信息
+           },
+           xAxis: {
+               categories: ['一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月','下个月预测']
+           },
+           yAxis: {
+               title: {
+                   text: '汽车销量 (辆)'
+               },
+               plotLines: [{
+                   value: 0,
+                   width: 1,
+                   color: '#808080'
+               }]
+           },
+           // plotOptions: {//用于显示数据
+           //     line: {
+           //         dataLabels: {
+           //             enabled: true
+           //         },
+           //     }
+           // },
+           tooltip: {
+               valueSuffix: '辆'
+           },
+           legend: {
+               layout: 'vertical',
+               align: 'right',
+               verticalAlign: 'middle',
+               borderWidth: 0
+           }
+           // ,
+           // series: [
+               // {
+               // name: 'Tokyo',
+               // data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+               //  }
+               // ]
+       }
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+        oChart.showLoading();
+
+       var monthdata = []
+
+        //异步请求获取数据
+        //分布式项目汽车销量分析预测的服务器地址：carsaleanysis
+        $.get(carsaleanysis+"/carSaleAnysis/predictAllCarNextMonthSale.do",function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                //修改图表数据
+
+                monthdata = dataResult.data;
+
+                for (var i=0;i<monthdata.length;i++){
+
+                    var series = {
+                        name: monthdata[i].carName,
+                        data: monthdata[i].monthsales
+                    };
+
+                    oChart.addSeries(series);
+                }
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+
+        oChart.hideLoading();
+    }
+
+
+    //汽车颜色销量分析
+    function colorAnysis() {
+        console.log("汽车颜色销量分析")
+        //图表初始化
+        var option = {
+            chart: {
+                renderTo: 'container2',  //设置显示的页面块
+                height:500,
+                type: 'pie', //设置显示的方式
+                    options3d: {
+                    enabled: true,
+                        alpha: 58,//45
+                        beta: 0
+                }
+                //backgroundColor: 'rgba(1,1,1,1)'
+            },
+            title: {
+                text: '2018 年汽车颜色销量分析'
+            },
+            subtitle: {
+                text: '数据来源: 个人项目echartsdemo',
+            },
+            credits:{
+                enabled:false // 禁用版权信息
+            },
+            tooltip: {
+                valueSuffix: '%',
+                //pointFormat: '{series.name}: <b>{point.y}%</b>'
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                        cursor: 'pointer',
+                        depth: 50,//35
+                        dataLabels: {
+                        enabled: true,
+                           // format: '{point.name}: <b>{point.y}</b>'
+                            format: '{point.name}: <b>{point.percentage:.1f}</b>'
+                    }
+                }
+            }
+            ,
+            series: [
+                //{
+                //type: 'pie',
+                //name: 'Browser share',
+                // data: [
+                //     ['Firefox',   45.0],
+                //     ['IE',       26.8],
+                //     {
+                //         name: 'Chrome',
+                //         y: 12.8,
+                //         sliced: true,
+                //         selected: true
+                //     },
+                //     ['Safari',    8.5],
+                //     ['Opera',     6.2],
+                //     ['Others',   0.7]
+                // ]
+                //}
+            ]
+        }
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+
+        var colorData = []
+        var ajaxData = []
+        //异步请求获取数据
+        //分布式项目汽车销量分析预测的服务器地址：carsaleanysis
+
+        $.get(carsaleanysis+"/carSaleAnysis/anysisColorSale.do",function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                colorData = dataResult.data;
+
+                //计算总销量
+                var salesum = 0
+                colorData.forEach(function (elem,index) { salesum += elem.amount })
+                console.log("salesum="+salesum)
+
+                for(var i=0;i<colorData.length;i++){
+                    var amoun = parseInt(colorData[i].amount/salesum * 100);
+
+                    if(i==0){
+                        var data = {
+                            name: colorData[i].carColor,
+                            y: amoun,
+                            sliced: true,
+                            selected: true
+                        }
+                        ajaxData.push(data)
+                    }else{
+                        var data = {
+                            name: colorData[i].carColor,
+                            y: amoun
+                        }
+                        ajaxData.push(data)
+                    }
+
+                    // $(colorData).each(function(i,n){
+                    //     id = n['NAME'];
+                    //     value = n['Y'];
+                    //     ajaxData.push({name:id,y:value});
+                    // });
+                }
+
+                oChart.addSeries({
+                    type: 'pie',
+                    name: '汽车销量分析',
+                    data: ajaxData
+                })
+
+                //option.series[0].data = ajaxData;
+                //oChart = new Highcharts.Chart(option);
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+
+    }
+
+
+
+    //汽车性别销量分析
+    function sexAnysis() {
+        console.log("汽车性别销量分析")
+        //图表初始化
+        var option = {
+            chart: {
+                renderTo: 'container3',  //设置显示的页面块
+                height:500,
+                type: 'pie', //设置显示的方式
+                options3d: {
+                    enabled: true,
+                    alpha: 58,//45
+                    beta: 0
+                }
+                //backgroundColor: 'rgba(1,1,1,1)'
+            },
+            title: {
+                text: '2018 年汽车性别销量分析'
+            },
+            subtitle: {
+                text: '数据来源: 个人项目echartsdemo',
+            },
+            credits:{
+                enabled:false // 禁用版权信息
+            },
+            tooltip: {
+                valueSuffix: '%',
+                //pointFormat: '{series.name}: <b>{point.y}%</b>'
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 50,//35
+                    dataLabels: {
+                        enabled: true,
+                        // format: '{point.name}: <b>{point.y}</b>'
+                        format: '{point.name}: <b>{point.percentage:.1f}</b>'
+                    }
+                }
+            }
+            ,
+            series: [
+                //{
+                //type: 'pie',
+                //name: 'Browser share',
+                // data: [
+                //     ['Firefox',   45.0],
+                //     ['IE',       26.8],
+                //     {
+                //         name: 'Chrome',
+                //         y: 12.8,
+                //         sliced: true,
+                //         selected: true
+                //     },
+                //     ['Safari',    8.5],
+                //     ['Opera',     6.2],
+                //     ['Others',   0.7]
+                // ]
+                //}
+            ]
+        }
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+
+        var sexData = []
+        var ajaxData = []
+        //异步请求获取数据
+        //分布式项目汽车销量分析预测的服务器地址：carsaleanysis
+        $.get(carsaleanysis+"/carSaleAnysis/anysisSexSale.do",function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                sexData = dataResult.data;
+
+                //计算总销量
+                var salesum = 0
+                sexData.forEach(function (elem,index){ salesum += elem.totalYearAmount })
+                console.log("salesum="+salesum)
+
+                for(var i=0;i<sexData.length;i++){
+                    var amoun = parseInt(sexData[i].totalYearAmount/salesum * 100);
+
+                    if(i==0){
+                        var data = {
+                            name: sexData[i].sex,
+                            y: amoun,
+                            sliced: true,
+                            selected: true
+                        }
+                        ajaxData.push(data)
+                    }else{
+                        var data = {
+                            name: sexData[i].sex,
+                            y: amoun
+                        }
+                        ajaxData.push(data)
+                    }
+
+                    // $(colorData).each(function(i,n){
+                    //     id = n['NAME'];
+                    //     value = n['Y'];
+                    //     ajaxData.push({name:id,y:value});
+                    // });
+                }
+
+                oChart.addSeries({
+                    type: 'pie',
+                    name: '汽车销量分析',
+                    data: ajaxData
+                })
+
+                //option.series[0].data = ajaxData;
+                //oChart = new Highcharts.Chart(option);
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+
+    }
+
+
+
+
+    //汽车地区销量分析
+   function areaAnysis() {
+       var option = {
+           chart: {
+               renderTo: 'container4',  //设置显示的页面块
+               height:500,
+               type: 'bar'
+           },
+           title: {
+               text: '2018 年汽车地区销量分析'
+           },
+           subtitle: {
+               text: '数据来源: 个人项目echartsdemo'
+           },
+           credits:{
+               enabled:false // 禁用版权信息
+           },
+           // xAxis: {
+           //     categories: ['非洲', '美洲', '亚洲', '欧洲', '大洋洲'],
+           //     title: {
+           //         text: null
+           //     }
+           // },
+           yAxis: {
+               min: 0,
+               title: {
+                   text: '汽车销量 (k)',
+                   align: 'high'
+               },
+               labels: {
+                   overflow: 'justify'
+               }
+           },
+           tooltip: {
+               valueSuffix: ' 百万'
+           },
+           plotOptions: {
+               bar: {
+                   dataLabels: {
+                       enabled: true,
+                       allowOverlap: true // 允许数据标签重叠
+                   }
+               }
+           },
+           legend: {
+               layout: 'vertical',
+               align: 'right',
+               verticalAlign: 'top',
+               x: -40,
+               y: 100,
+               floating: true,
+               borderWidth: 1,
+               backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+               shadow: true
+           },
+           // series: [{
+           //     name: '1800 年',
+           //     data: [107, 31, 635, 203, 2]
+           // }, {
+           //     name: '1900 年',
+           //     data: [133, 156, 947, 408, 6]
+           // }, {
+           //     name: '2008 年',
+           //     data: [973, 914, 4054, 732, 34]
+           // }]
+       }
+
+       //定义一个Highcharts的变量，初始值为null
+       var oChart = null;
+       oChart = new Highcharts.Chart(option);
+
+       //请求数据
+       var categories = []//纵轴文字
+       var data = []//城市销量数据
+       var areaData = []
+
+
+       $.get(carsaleanysis+"/carSaleAnysis/anysisAreaSale.do",function(dataResult,status,xhr){
+           console.log(dataResult.msg);
+           if(dataResult.code==1){
+
+               areaData = dataResult.data;
+
+               for(var i=0;i<areaData.length;i++){
+                   //添加纵坐标文字
+                    categories.push(areaData[i].adress)
+                   //添加地区销量数据
+                   data.push(areaData[i].totalYearamount)
+               }
+               oChart.xAxis[0].setCategories(categories)
+               //oChart.xAxis.setCategories(categories)
+               // oChart.xAxis = {
+               //     categories: categories,
+               //     title: {
+               //         text: null
+               //     }
+               // }
+
+               oChart.addSeries({
+                   name: '2018 年汽车地区销量分析',
+                   data: data
+               })
+
+           }else{
+               alert('服务器繁忙，请稍后再试')
+           }
+       },"json")
+
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

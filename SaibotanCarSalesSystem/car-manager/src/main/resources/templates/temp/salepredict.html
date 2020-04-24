@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/echarts.min.js"></script>
+</head>
+<body>
+<h2 style="text-align: center">汽车销量预测</h2>
+<br/><br/><br/>
+<!-- 准备一个具备大小（宽高）的Dom -->
+<div id="main" style="text-align: center;margin: 0px auto"></div>
+
+<script type="text/javascript">
+
+    //初始数据
+    /*
+    List((奥迪A6，List（1月，List((属性组合1,销量1)，(属性组合2,销量2))），（2，List((属性组合1,销量1)，(属性组合2,销量2))）)，循环上一个结构)
+     */
+    var shuju = {
+        result : [//数据的结果
+            {
+                carname : "奥迪",//汽车名
+                yearsales : [//年销售
+                    {
+                        month : 1,//月份
+                        attrsales : [//属性组合销售
+                            {
+                                attr : "属性组合1",//属性组合
+                                mount : 30//销量
+                            },
+                            {
+                                attr : "属性组合2",
+                                mount : 20
+                            }
+                        ]
+
+                    },
+                    {
+                        month :2,
+                        attrsales : [
+                            {
+                                attr : "属性组合1",
+                                mount : 30
+                            },
+                            {
+                                attr : "属性组合2",
+                                mount : 20
+                            }
+                        ]
+
+
+                    }
+                ]
+
+            },
+
+
+            {
+
+
+            }
+        ]
+    }
+
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    var options = [];
+    for(var i = 0;i<shuju.result.length;i++){
+        options.push(
+            {
+                title: {
+                    text: '折线图堆叠'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一','周二','周三','周四','周五','周六','周日']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        name:'邮件营销',
+                        type:'line',
+                        stack: '总量',
+                        data:[120, 132, 101, 134, 90, 230, 210],
+                        data:sales
+                    },
+                    {
+                        name:'联盟广告',
+                        type:'line',
+                        stack: '总量',
+                        data:[220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name:'视频广告',
+                        type:'line',
+                        stack: '总量',
+                        data:[150, 232, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name:'直接访问',
+                        type:'line',
+                        stack: '总量',
+                        data:[320, 332, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name:'搜索引擎',
+                        type:'line',
+                        stack: '总量',
+                        data:[820, 932, 901, 934, 1290, 1330, 1320]
+                    }
+                ]
+            }
+
+        )
+    }
+
+
+
+
+
+
+
+
+
+    option = {
+        title: {
+            text: '折线图堆叠'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            //data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+            data: carattrs
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            //data: ['周一','周二','周三','周四','周五','周六','周日']
+            data:month
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name:'邮件营销',
+                type:'line',
+                stack: '总量',
+                data:[120, 132, 101, 134, 90, 230, 210],
+                data:sales
+            },
+            {
+                name:'联盟广告',
+                type:'line',
+                stack: '总量',
+                data:[220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name:'视频广告',
+                type:'line',
+                stack: '总量',
+                data:[150, 232, 201, 154, 190, 330, 410]
+            },
+            {
+                name:'直接访问',
+                type:'line',
+                stack: '总量',
+                data:[320, 332, 301, 334, 390, 330, 320]
+            },
+            {
+                name:'搜索引擎',
+                type:'line',
+                stack: '总量',
+                data:[820, 932, 901, 934, 1290, 1330, 1320]
+            }
+        ]
+    };
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

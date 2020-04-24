@@ -1,0 +1,1369 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <title>折线图</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 统计管理 <span class="c-gray en">&gt;</span> 折线图 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+    <!--用于显示一种车在一年的销售情况-->
+    <div id="selectCar" style="min-width:700px;height:50px">
+        <label>所有可供选择的车</label>
+        <select id="select_car">
+            <option>aa</option>
+        </select>
+    </div>
+    <div id="container5" style="min-width:700px;height:700px"></div>
+
+    <!--所有车在一年的销售情况-->
+    <div id="selectTu" style="min-width:700px;height:50px">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <!--使用单旋按钮控制图形的显示情况，1为选中-->
+        <label>显示/隐藏 所有柱状图</label>
+        <input type="checkbox" value="0" checked="checked" id="showallcolum">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <label>显示/隐藏 所有折线图</label>
+        <input type="checkbox" value="0" id="showallline">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <label>显示/隐藏 汽车销量年占比</label>
+        <input type="checkbox" value="0" id="showyearpie">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    </div>
+    <div id="container6" style="min-width:700px;height:700px"></div>
+
+    <!--每种车，4个季度在一年中的销售情况-->
+    <div id="container7" style="min-width:700px;height:700px"></div>
+
+    <!--4个季度在一年中的销售情况-->
+    <div id="container8" style="min-width:700px;height:500px"></div>
+
+    <!--每种车，上半年 和 下半年在一年中的销售情况-->
+    <div id="container10" style="min-width:700px;height:700px"></div>
+
+    <!--上半年 和 下半年在一年中的销售情况-->
+    <div id="container9" style="min-width:700px;height:500px"></div>
+</div>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/highcharts.js"></script>
+<script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
+<script type="text/javascript" src="js/fenbushi.js"></script>
+<script type="text/javascript">
+    $(document).ready(
+        //显示所有车名
+        allCarName(),
+
+        //用于显示一种车在一年的销售情况
+        //oneCarYearSale('奥迪A6L'),
+
+        //所有车在一年的销售情况
+        allCarYearSale(true,false,false),
+
+        //单选按钮注册事件
+        selectTu(),
+
+        //每种车，4个季度在一年中的销售情况
+        allCar4jiduSale(),
+
+        //4个季度在一年中的销售情况
+        alljiduSale(),
+
+        //上半年 和 下半年在一年中的销售情况
+        banYearSale(),
+
+        //每种车，上半年 和 下半年在一年中的销售情况
+        allcarbanyear()
+
+    );
+
+    //给每个单选按钮注册一个事件
+    function selectTu() {
+        //默认情况
+        //allCarYearSale(true,false,false)
+
+        $("#selectTu :checkbox").click(function(){
+            var selec = [];
+            //获取每个单选按钮的选中情况，变成一个数组Array[Boolean]
+            //第一个有一个默认值，处理稍微不同
+
+            var checkall = $("#selectTu :checkbox")
+            for(var i=0;i<checkall.length;i++){
+                // if(i==0){
+                //     if ($(checkall[i]).is(":checked")) {
+                //         $(checkall[i]).removeAttr("checked")
+                //     }else{
+                //         $(checkall[i]).attr("checked","checked")
+                //     }
+                // }
+                //循环使用is进行判断
+                if ($(checkall[i]).is(":checked")) {
+                    //do something
+                    selec.push(1)
+                }else{
+                    selec.push(0)
+                }
+            }
+
+            // $("#selectTu :checkbox").each(function () {
+            //     //循环使用is进行判断
+            //     if ($(this).is(":checked")) {
+            //         //do something
+            //         selec.push(1)
+            //     }else{
+            //         selec.push(0)
+            //     }
+            // })
+
+            //将Array[Boolean] 按顺序放进函数allCarYearSale(true,false,true)
+            var a = false
+            var b = false
+            var c = false
+            if(selec[0]==1){
+                a = true
+            }
+            if(selec[1]==1){
+                b = true
+            }
+            if(selec[2]==1){
+                c = true
+            }
+            allCarYearSale(a,b,c)
+
+            //当前点击的单选框能否找到
+            // $("#selectTu :radio").each(function () {
+            //     if ($(this).is(":checked")) {
+            //         $(this).removeAttr("checked")
+            //     }else{
+            //         $(this).attr("checked","checked")
+            //     }
+            // })
+        });
+
+    }
+
+    //获取所有的汽车名
+    function allCarName() {
+        var carName = []
+        //加载数据
+        $.get(carsaleanysis+"/carSaleAnysis/findallcarname.do",function(dataResult,status,xhr) {
+            console.log(dataResult.msg);
+            if (dataResult.code == 1) {
+                carName = dataResult.data;
+
+                //清空select里的option元素，然后在select里面增加option元素
+                $("#select_car").empty();
+                //$("p").append("Some appended text.");select_car
+                carName.forEach(function (carname,index) {
+                    //$("#select_id").append("<option value='Value'>Text</option>");
+                    $("#select_car").append("<option value='"+carname+"'>"+carname+"</option>"); //为Select追加一个Option(下拉项)
+                })
+
+                //默认显示第一个
+                oneCarYearSale(carName[0])
+
+                //给每个option设置一个点击事件 其实就是给select增加一个监控
+                $("#select_car").change(function(){
+                    var carname = $(this).children('option:selected').val()
+                    oneCarYearSale(carname)
+                })
+            }
+        },"json")
+    }
+
+    //用于显示一种车在一年的销售情况
+    function oneCarYearSale(carname) {
+        var option = {
+            chart: {
+                renderTo: 'container5',  //设置显示的页面块
+                //height:500,
+                //type: 'bar'
+            },
+            credits:{
+                enabled:false // 禁用版权信息
+            },
+            title : {
+                text: '2018 年单种汽车12个月销量分析'
+            },
+            subtitle: {
+                text: '数据来源: 个人项目echartsdemo',
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                },
+                column : {
+                    dataLabels: {
+                        enabled: true
+                    },
+                },
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    depth: 35,//35
+                    dataLabels: {
+                        enabled: true,
+                        // format: '{point.name}: <b>{point.y}</b>'
+                        format: '{point.name}: <b>{point.percentage:.1f}</b>'
+                    }
+                }
+            },
+            // xAxis : {
+            //     categories: ['1月', '2月', '3月', '4月', '5月','6月','7月','8月','9月','10月','11月','12月']
+            // },
+            labels : {
+                items: [{
+                    html: '汽车销量',
+                    style: {
+                        left: '200px',
+                        top: '18px',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                    }
+                }]
+            },
+            // series : [{
+            //     type: 'column',
+            //     name: 'Jane',
+            //     data: [3, 2, 1, 3, 4]
+            // }, {
+            //     type: 'column',
+            //     name: 'John',
+            //     data: [2, 3, 5, 7, 6]
+            // }, {
+            //     type: 'column',
+            //     name: 'Joe',
+            //     data: [4, 3, 3, 9, 0]
+            // }, {
+            //     type: 'spline',
+            //     name: 'Average',
+            //     data: [3, 2.67, 3, 6.33, 3.33],
+            //     marker: {
+            //         lineWidth: 2,
+            //         lineColor: Highcharts.getOptions().colors[3],
+            //         fillColor: 'white'
+            //     }
+            // }, {
+            //     type: 'pie',
+            //     name: '总消费',
+            //     data: [{
+            //         name: 'Jane',
+            //         y: 13,
+            //         color: Highcharts.getOptions().colors[0] // Jane 的颜色
+            //     }, {
+            //         name: 'John',
+            //         y: 23,
+            //         color: Highcharts.getOptions().colors[1] // John 的颜色
+            //     }, {
+            //         name: 'Joe',
+            //         y: 19,
+            //         color: Highcharts.getOptions().colors[2] // Joe 的颜色
+            //     }],
+            //     center: [100, 80],
+            //     size: 100,
+            //     showInLegend: false,
+            //     dataLabels: {
+            //         enabled: false
+            //     }
+            // }
+            // ]
+        }
+
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+        oChart.showLoading();
+
+        var categories = []
+        var oneCarYearData = []
+        var monthdata = []
+        var yearsale = 0
+
+        //加载数据
+        $.get(carsaleanysis+"/carSaleAnysis/oneCarYearSale.do?carName="+carname,function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                //修改图表数据
+
+                oneCarYearData = dataResult.data[0];
+                //console.log(dataResult.data[0].carName)
+                //console.log(dataResult.data[0].monthsales)
+                //柱状图
+                var series1 = {
+                    type: 'column',
+                    tooltip: {
+                        valueSuffix: ' 辆'
+                    },
+                    name: oneCarYearData.carName,
+                    data: oneCarYearData.monthsales
+                };
+
+                //折线图
+                var series2 = {
+                    //type: 'spline',//1为一个单位
+                    type:'line',//1k为一个单位
+                    name: oneCarYearData.carName+'销量',
+                    data: oneCarYearData.monthsales,
+                    tooltip: {
+                        valueSuffix: ' 辆'
+                    },
+                    marker: {
+                        lineWidth: 2,
+                        lineColor: Highcharts.getOptions().colors[0],
+                        fillColor: 'white'
+                    }
+                }
+
+                oneCarYearData.monthsales.forEach(function (elem,index) {
+                    yearsale += elem
+                })
+
+                //饼状图的数据  和 横坐标文字
+                for(var i=0;i<oneCarYearData.monthsales.length;i++){
+                   var amoun = parseInt(oneCarYearData.monthsales[i]/yearsale * 100)
+                    monthdata.push({
+                        name: i+1+'月',
+                        y: amoun,
+                        color: Highcharts.getOptions().colors[i] // Jane 的颜色
+                    })
+                    var a = i+1
+                    categories.push(a+'月')
+                }
+
+                //饼图
+                var series3 = {
+                    type: 'pie',
+                    name: '总销量',
+                    data: monthdata,
+                    center: [300, 70],
+                    size: 200,
+                    showInLegend: false,
+                    dataLabels: {
+                        enabled: true
+                    },
+                    tooltip: {
+                        valueSuffix: ' %',
+                       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                }
+
+                oChart.xAxis[0].setCategories(categories)
+                oChart.setTitle(oneCarYearData.carName+"在2018年12个月的销售分析")
+                oChart.addSeries(series1)
+                oChart.addSeries(series2)
+                oChart.addSeries(series3)
+
+                oChart.hideLoading();
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+
+    }
+
+    //所有车在一年的销售情况
+    //a,b,c分别用来显示柱状图、折线图、饼图
+    function allCarYearSale(a,b,c) {
+        var option = {
+            chart: {
+                renderTo: 'container6',  //设置显示的页面块
+                //height:500,
+                //type: 'bar'
+            },
+            credits:{
+                enabled:false // 禁用版权信息
+            },
+            title : {
+                text: '2018 年所有汽车12个月销量分析'
+            },
+            subtitle: {
+                text: '数据来源: 个人项目echartsdemo',
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                },
+                // column : {
+                //     dataLabels: {
+                //         enabled: true
+                //     },
+                // }
+            },
+             xAxis : [{
+                //crosshair: true,//多坐标混合开启
+                 // categories: ['1月', '2月', '3月', '4月', '5月','6月','7月','8月','9月','10月','11月','12月']
+             }],
+            // yAxis: [{ // Primary yAxis
+            //     labels: {
+            //         format: '{value} 辆',
+            //         style: {
+            //             color: Highcharts.getOptions().colors[1]
+            //         }
+            //     },
+            //     title: {
+            //         text: '12月汽车销量柱状图',
+            //         style: {
+            //             color: Highcharts.getOptions().colors[1]
+            //         }
+            //     }
+            // }, { // Secondary yAxis
+            //     title: {
+            //         text: '12月汽车销量折线图',
+            //         style: {
+            //             color: Highcharts.getOptions().colors[0]
+            //         }
+            //     },
+            //     labels: {
+            //         format: '{value} 辆',
+            //         style: {
+            //             color: Highcharts.getOptions().colors[0]
+            //         }
+            //     },
+            //     opposite: true
+            // }],
+            // tooltip: {
+            //     shared: true
+            // },
+            labels : {
+                items: [{
+                    html: '汽车销量',
+                    style: {
+                        left: '200px',
+                        top: '18px',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                    }
+                }]
+            },
+            // series : [{
+            //     type: 'column',
+            //     name: 'Jane',
+            //     data: [3, 2, 1, 3, 4]
+            // }, {
+            //     type: 'column',
+            //     name: 'John',
+            //     data: [2, 3, 5, 7, 6]
+            // }, {
+            //     type: 'column',
+            //     name: 'Joe',
+            //     data: [4, 3, 3, 9, 0]
+            // }, {
+            //     type: 'spline',
+            //     name: 'Average',
+            //     data: [3, 2.67, 3, 6.33, 3.33],
+            //     marker: {
+            //         lineWidth: 2,
+            //         lineColor: Highcharts.getOptions().colors[3],
+            //         fillColor: 'white'
+            //     }
+            // }, {
+            //     type: 'pie',
+            //     name: '总消费',
+            //     data: [{
+            //         name: 'Jane',
+            //         y: 13,
+            //         color: Highcharts.getOptions().colors[0] // Jane 的颜色
+            //     }, {
+            //         name: 'John',
+            //         y: 23,
+            //         color: Highcharts.getOptions().colors[1] // John 的颜色
+            //     }, {
+            //         name: 'Joe',
+            //         y: 19,
+            //         color: Highcharts.getOptions().colors[2] // Joe 的颜色
+            //     }],
+            //     center: [100, 80],
+            //     size: 100,
+            //     showInLegend: false,
+            //     dataLabels: {
+            //         enabled: false
+            //     }
+            // }
+            // ]
+        }
+
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+        oChart.showLoading();
+
+        var categories = []
+        var allCarYearData = []
+
+        var yearsales = []//每种车的年总销量，有几个车就有几个数据
+        var caryeardata = []
+
+        //加载数据
+        $.get(carsaleanysis+"/carSaleAnysis/allCarYearSale.do",function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                //修改图表数据
+
+                allCarYearData = dataResult.data;
+
+                //计算年总销量
+                //计算每月总销量,先计算月总销量
+                for(var i=0;i<allCarYearData.length;i++){
+                    var onecaryearsale = 0
+                    for(var j=0;j<allCarYearData[i].monthsales.length;j++){
+                        onecaryearsale += allCarYearData[i].monthsales[j]
+                        if(i==0){
+                            var a = j+1
+                            categories.push(a+'月')
+                        }
+                    }
+                    //console.log(onecaryearsale)
+                    yearsales.push(onecaryearsale)
+
+                    //柱状图,每个车有一个series，12个数据
+                    var series1 = {
+                        visible: a,
+                        type: 'column',
+                        //yAxis: 1,
+                        tooltip: {
+                            valueSuffix: ' 辆'
+                        },
+                        name: allCarYearData[i].carName,
+                        data: allCarYearData[i].monthsales
+                    };
+                    oChart.addSeries(series1)
+
+                    //折线图,每种车有一个折线图12个数据
+                    var series2 = {
+                        //visible: false,
+                        visible: b,
+                        //type: 'spline',//曲线
+                        type:'line',//折线
+                        //yAxis: 1,
+                        name: allCarYearData[i].carName+'销量',
+                        data: allCarYearData[i].monthsales,
+                        tooltip: {
+                            valueSuffix: ' 辆'
+                        },
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: Highcharts.getOptions().colors[0],
+                            fillColor: 'white'
+                        }
+                    }
+
+                    oChart.addSeries(series2)
+                }
+
+                var yearsalesum = 0;
+                yearsales.forEach(function (monthsale,index) {
+                    yearsalesum += monthsale
+                })
+
+                //console.log(yearsales)
+                //console.log(yearsalesum)
+
+                allCarYearData.forEach(function (elem,index) {
+                    yearsales.forEach(function (caryearsale,index) {
+                        var amoun = 0
+                        amoun = parseInt(caryearsale/yearsalesum * 100)
+                        console.log(amoun)
+                        caryeardata.push({
+                            name: elem.carName+'汽车销量占年比',
+                            y: amoun,
+                            color: Highcharts.getOptions().colors[index] // Jane 的颜色
+                        })
+                    })
+                })
+
+
+                //没有必要在这求，每个车在当月的占比，因为汽车种类多，一个车有12个图。。。
+                //求每个月总销量在年的占比，也不太合适
+
+                //饼图，所有车共有一个年度销量占比的饼图
+                var series3 = {
+                    //visible: false,
+                    visible: c,
+                    type: 'pie',
+                    name: '总销量',
+                    data: caryeardata,
+                    center: [300, 50],
+                    size: 200,
+                    showInLegend: false,
+                    dataLabels: {
+                        enabled: false
+                    },
+                    tooltip: {
+                        valueSuffix: ' %',
+                        // pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                }
+
+                oChart.addSeries(series3)
+
+                //每种车的月份都是一样的
+                oChart.xAxis[0].setCategories(categories)
+                oChart.setTitle("所有车在2018年12个月的销售分析")
+                oChart.hideLoading();
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+
+    }
+
+    //每种车，4个季度在一年中的销售情况
+    function allCar4jiduSale() {
+        var option = {
+            chart: {
+                renderTo: 'container7',  //设置显示的页面块
+                //height:500,
+                //type: 'bar'
+            },
+            credits:{
+                enabled:false // 禁用版权信息
+            },
+            title : {
+                text: '2018 年4季度汽车销量分析'
+            },
+            subtitle: {
+                text: '数据来源: 个人项目echartsdemo',
+            },
+            // xAxis : {
+            //     categories: ['1月', '2月', '3月', '4月', '5月','6月','7月','8月','9月','10月','11月','12月']
+            // },
+            labels : {
+                items: [{
+                    html: '汽车销量',
+                    style: {
+                        left: '200px',
+                        top: '18px',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                    }
+                }]
+            },
+            // series : [{
+            //     type: 'column',
+            //     name: 'Jane',
+            //     data: [3, 2, 1, 3, 4]
+            // }, {
+            //     type: 'column',
+            //     name: 'John',
+            //     data: [2, 3, 5, 7, 6]
+            // }, {
+            //     type: 'column',
+            //     name: 'Joe',
+            //     data: [4, 3, 3, 9, 0]
+            // }, {
+            //     type: 'spline',
+            //     name: 'Average',
+            //     data: [3, 2.67, 3, 6.33, 3.33],
+            //     marker: {
+            //         lineWidth: 2,
+            //         lineColor: Highcharts.getOptions().colors[3],
+            //         fillColor: 'white'
+            //     }
+            // }, {
+            //     type: 'pie',
+            //     name: '总消费',
+            //     data: [{
+            //         name: 'Jane',
+            //         y: 13,
+            //         color: Highcharts.getOptions().colors[0] // Jane 的颜色
+            //     }, {
+            //         name: 'John',
+            //         y: 23,
+            //         color: Highcharts.getOptions().colors[1] // John 的颜色
+            //     }, {
+            //         name: 'Joe',
+            //         y: 19,
+            //         color: Highcharts.getOptions().colors[2] // Joe 的颜色
+            //     }],
+            //     center: [100, 80],
+            //     size: 100,
+            //     showInLegend: false,
+            //     dataLabels: {
+            //         enabled: false
+            //     }
+            // }
+            // ]
+        }
+
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+        oChart.showLoading();
+
+
+        //每个季度汽车的总销量
+        var jidusum = []
+
+        //每种车在每个季度的总销量
+        var allcarjisum = []
+
+        //加载数据
+        $.get(carsaleanysis+"/carSaleAnysis/allCarjiduSale.do",function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                //修改图表数据
+
+                jidusum = dataResult.data.data2;
+                allcarjisum = dataResult.data.data1;
+
+                allcarjisum.forEach(function (elem,index) {
+                    //柱状图
+                    var series1 = {
+                        type: 'column',
+                        tooltip: {
+                            valueSuffix: ' 辆'
+                        },
+                        name: elem.carName+'销量',
+                        data: elem.jidusales
+                    };
+                    oChart.addSeries(series1);
+
+                    //折线图
+                    var series2 = {
+                        //type: 'spline',//曲线
+                        type:'line',//折线
+                        name: elem.carName+'销量',
+                        data: elem.jidusales,
+                        tooltip: {
+                            valueSuffix: ' 辆'
+                        },
+                        marker: {
+                            lineWidth: 2,
+                            lineColor: Highcharts.getOptions().colors[0],
+                            fillColor: 'white'
+                        }
+                    }
+                    oChart.addSeries(series2)
+                })
+
+
+                //每季度占年的百分比
+                var yearsalesum = 0;
+
+                var jidudata = []
+
+                var categories = []
+
+
+                jidusum.forEach(function (judusale,index) { yearsalesum += judusale })
+                console.log(jidusum)
+                console.log(yearsalesum)
+
+                jidusum.forEach(function (judusale,index) {
+                    var amoun = parseInt(judusale/yearsalesum * 100)
+                    jidudata.push({
+                        name: index+1+'季度',
+                        y: amoun,
+                        color: Highcharts.getOptions().colors[index] // Jane 的颜色
+                    })
+                    var a = index+1
+                    categories.push(a+'季度')
+                })
+
+                //饼图
+                var series3 = {
+                    type: 'pie',
+                    name: '总销量',
+                    data:  jidudata,
+                    center: [300, 50],
+                    size: 200,
+                    showInLegend: false,
+                    dataLabels: {
+                        enabled: true
+                    },
+                    tooltip: {
+                        valueSuffix: ' %',
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                }
+
+                oChart.xAxis[0].setCategories(categories)
+                oChart.addSeries(series3)
+
+                oChart.hideLoading();
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+
+    }
+
+
+    //4个季度在一年中的销售情况
+    function alljiduSale() {
+        var option = {
+            chart: {
+                renderTo: 'container8',  //设置显示的页面块
+                //height:500,
+                //type: 'bar'
+            },
+            credits:{
+                enabled:false // 禁用版权信息
+            },
+            title : {
+                text: '2018 年4季度汽车销量分析'
+            },
+            subtitle: {
+                text: '数据来源: 个人项目echartsdemo',
+            },
+            // xAxis : {
+            //     categories: ['1月', '2月', '3月', '4月', '5月','6月','7月','8月','9月','10月','11月','12月']
+            // },
+            labels : {
+                items: [{
+                    html: '汽车销量',
+                    style: {
+                        left: '200px',
+                        top: '18px',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                    }
+                }]
+            },
+            // series : [{
+            //     type: 'column',
+            //     name: 'Jane',
+            //     data: [3, 2, 1, 3, 4]
+            // }, {
+            //     type: 'column',
+            //     name: 'John',
+            //     data: [2, 3, 5, 7, 6]
+            // }, {
+            //     type: 'column',
+            //     name: 'Joe',
+            //     data: [4, 3, 3, 9, 0]
+            // }, {
+            //     type: 'spline',
+            //     name: 'Average',
+            //     data: [3, 2.67, 3, 6.33, 3.33],
+            //     marker: {
+            //         lineWidth: 2,
+            //         lineColor: Highcharts.getOptions().colors[3],
+            //         fillColor: 'white'
+            //     }
+            // }, {
+            //     type: 'pie',
+            //     name: '总消费',
+            //     data: [{
+            //         name: 'Jane',
+            //         y: 13,
+            //         color: Highcharts.getOptions().colors[0] // Jane 的颜色
+            //     }, {
+            //         name: 'John',
+            //         y: 23,
+            //         color: Highcharts.getOptions().colors[1] // John 的颜色
+            //     }, {
+            //         name: 'Joe',
+            //         y: 19,
+            //         color: Highcharts.getOptions().colors[2] // Joe 的颜色
+            //     }],
+            //     center: [100, 80],
+            //     size: 100,
+            //     showInLegend: false,
+            //     dataLabels: {
+            //         enabled: false
+            //     }
+            // }
+            // ]
+        }
+
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+        oChart.showLoading();
+
+
+        //每个季度汽车的总销量
+        var jidusum = []
+
+
+        //加载数据
+        $.get(carsaleanysis+"/carSaleAnysis/jidusale.do",function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                //修改图表数据
+
+                jidusum = dataResult.data;
+
+                //柱状图
+                var series1 = {
+                    type: 'column',
+                    tooltip: {
+                        valueSuffix: ' 辆'
+                    },
+                    name: '汽车季度销量',
+                    data: jidusum
+                };
+                oChart.addSeries(series1);
+
+                //折线图
+                var series2 = {
+                    //type: 'spline',//曲线
+                    type:'line',//折线
+                    name: '汽车季度销量',
+                    data: jidusum,
+                    tooltip: {
+                        valueSuffix: ' 辆'
+                    },
+                    marker: {
+                        lineWidth: 2,
+                        lineColor: Highcharts.getOptions().colors[0],
+                        fillColor: 'white'
+                    }
+                }
+                oChart.addSeries(series2)
+
+
+                //每季度占年的百分比
+                var yearsalesum = 0;
+
+                var jidudata = []
+
+                var categories = []
+
+                jidusum.forEach(function (judusale,index) { yearsalesum += judusale })
+                console.log(jidusum)
+                console.log(yearsalesum)
+
+                jidusum.forEach(function (judusale,index) {
+                    var amoun = parseInt(judusale/yearsalesum * 100)
+                    jidudata.push({
+                        name: index+1+'季度',
+                        y: amoun,
+                        color: Highcharts.getOptions().colors[index] // Jane 的颜色
+                    })
+                    var a = index+1
+                    categories.push(a+'季度')
+                })
+
+                //饼图
+                var series3 = {
+                    type: 'pie',
+                    name: '总销量',
+                    data:  jidudata,
+                    center: [300, 50],
+                    size: 200,
+                    showInLegend: false,
+                    dataLabels: {
+                        enabled: true
+                    },
+                    tooltip: {
+                        valueSuffix: ' %',
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                }
+
+                oChart.xAxis[0].setCategories(categories)
+                oChart.addSeries(series3)
+
+                oChart.hideLoading();
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+    }
+
+
+    //上半年 和 下半年在一年中的销售情况
+    function banYearSale() {
+        var option = {
+            chart: {
+                renderTo: 'container9',  //设置显示的页面块
+                //height:500,
+                //type: 'bar'
+            },
+            credits:{
+                enabled:false // 禁用版权信息
+            },
+            title : {
+                text: '2018 年上半年与下半年汽车销量分析'
+            },
+            subtitle: {
+                text: '数据来源: 个人项目echartsdemo',
+            },
+            // xAxis : {
+            //     categories: ['1月', '2月', '3月', '4月', '5月','6月','7月','8月','9月','10月','11月','12月']
+            // },
+            labels : {
+                items: [{
+                    html: '汽车销量',
+                    style: {
+                        left: '200px',
+                        top: '18px',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                    }
+                }]
+            },
+            // series : [{
+            //     type: 'column',
+            //     name: 'Jane',
+            //     data: [3, 2, 1, 3, 4]
+            // }, {
+            //     type: 'column',
+            //     name: 'John',
+            //     data: [2, 3, 5, 7, 6]
+            // }, {
+            //     type: 'column',
+            //     name: 'Joe',
+            //     data: [4, 3, 3, 9, 0]
+            // }, {
+            //     type: 'spline',
+            //     name: 'Average',
+            //     data: [3, 2.67, 3, 6.33, 3.33],
+            //     marker: {
+            //         lineWidth: 2,
+            //         lineColor: Highcharts.getOptions().colors[3],
+            //         fillColor: 'white'
+            //     }
+            // }, {
+            //     type: 'pie',
+            //     name: '总消费',
+            //     data: [{
+            //         name: 'Jane',
+            //         y: 13,
+            //         color: Highcharts.getOptions().colors[0] // Jane 的颜色
+            //     }, {
+            //         name: 'John',
+            //         y: 23,
+            //         color: Highcharts.getOptions().colors[1] // John 的颜色
+            //     }, {
+            //         name: 'Joe',
+            //         y: 19,
+            //         color: Highcharts.getOptions().colors[2] // Joe 的颜色
+            //     }],
+            //     center: [100, 80],
+            //     size: 100,
+            //     showInLegend: false,
+            //     dataLabels: {
+            //         enabled: false
+            //     }
+            // }
+            // ]
+        }
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+        oChart.showLoading();
+
+        //每个季度汽车的总销量
+        var jidusum = []
+
+        //上半年与下半年的总销量
+        var banyearsum = [0,0]
+
+        //加载数据
+        $.get(carsaleanysis+"/carSaleAnysis/jidusale.do",function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                //修改图表数据
+
+                jidusum = dataResult.data;
+
+                banyearsum[0] += jidusum[0];
+                banyearsum[0] += jidusum[1];
+                banyearsum[1] += jidusum[2];
+                banyearsum[1] += jidusum[3];
+                console.log(banyearsum)
+
+                //柱状图
+                var series1 = {
+                    type: 'column',
+                    tooltip: {
+                        valueSuffix: ' 辆'
+                    },
+                    name: '汽车半年销量',
+                    data: banyearsum
+                };
+                oChart.addSeries(series1);
+
+                //折线图
+                var series2 = {
+                    //type: 'spline',//曲线
+                    type:'line',//折线
+                    name: '汽车半年销量',
+                    data: banyearsum,
+                    tooltip: {
+                        valueSuffix: ' 辆'
+                    },
+                    marker: {
+                        lineWidth: 2,
+                        lineColor: Highcharts.getOptions().colors[0],
+                        fillColor: 'white'
+                    }
+                }
+                oChart.addSeries(series2)
+
+
+                //每季度占年的百分比
+                var yearsalesum = 0;
+
+                var banyeardata = []
+
+                var categories = []
+
+                jidusum.forEach(function (judusale,index) { yearsalesum += judusale })
+                //console.log(jidusum)
+                //console.log(yearsalesum)
+
+                banyearsum.forEach(function (banyearsale,index) {
+                    var amoun = parseInt(banyearsale/yearsalesum * 100)
+                    var name = ''
+                    if(index==0){
+                        name = '上半年'
+
+                    }else{
+                        name = '下半年'
+                    }
+                    banyeardata.push({
+                        name: name,
+                        y: amoun,
+                        color: Highcharts.getOptions().colors[index] // Jane 的颜色
+                    })
+                    categories.push(name+'销量')
+                })
+
+                //饼图
+                var series3 = {
+                    type: 'pie',
+                    name: '总销量',
+                    data:   banyeardata,
+                    center: [300, 50],
+                    size: 200,
+                    showInLegend: false,
+                    dataLabels: {
+                        enabled: true
+                    },
+                    tooltip: {
+                        valueSuffix: ' %',
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                }
+
+                oChart.xAxis[0].setCategories(categories)
+                oChart.addSeries(series3)
+
+                oChart.hideLoading();
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+
+    }
+
+    function allcarbanyear() {
+        var option = {
+            chart: {
+                renderTo: 'container10',  //设置显示的页面块
+                //height:500,
+                //type: 'bar'
+            },
+            credits:{
+                enabled:false // 禁用版权信息
+            },
+            title : {
+                text: '2018 年4季度汽车销量分析'
+            },
+            subtitle: {
+                text: '数据来源: 个人项目echartsdemo',
+            },
+            // xAxis : {
+            //     categories: ['1月', '2月', '3月', '4月', '5月','6月','7月','8月','9月','10月','11月','12月']
+            // },
+            labels : {
+                items: [{
+                    html: '汽车销量',
+                    style: {
+                        left: '200px',
+                        top: '18px',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                    }
+                }]
+            },
+            // series : [{
+            //     type: 'column',
+            //     name: 'Jane',
+            //     data: [3, 2, 1, 3, 4]
+            // }, {
+            //     type: 'column',
+            //     name: 'John',
+            //     data: [2, 3, 5, 7, 6]
+            // }, {
+            //     type: 'column',
+            //     name: 'Joe',
+            //     data: [4, 3, 3, 9, 0]
+            // }, {
+            //     type: 'spline',
+            //     name: 'Average',
+            //     data: [3, 2.67, 3, 6.33, 3.33],
+            //     marker: {
+            //         lineWidth: 2,
+            //         lineColor: Highcharts.getOptions().colors[3],
+            //         fillColor: 'white'
+            //     }
+            // }, {
+            //     type: 'pie',
+            //     name: '总消费',
+            //     data: [{
+            //         name: 'Jane',
+            //         y: 13,
+            //         color: Highcharts.getOptions().colors[0] // Jane 的颜色
+            //     }, {
+            //         name: 'John',
+            //         y: 23,
+            //         color: Highcharts.getOptions().colors[1] // John 的颜色
+            //     }, {
+            //         name: 'Joe',
+            //         y: 19,
+            //         color: Highcharts.getOptions().colors[2] // Joe 的颜色
+            //     }],
+            //     center: [100, 80],
+            //     size: 100,
+            //     showInLegend: false,
+            //     dataLabels: {
+            //         enabled: false
+            //     }
+            // }
+            // ]
+        }
+
+
+        //定义一个Highcharts的变量，初始值为null
+        var oChart = null;
+        oChart = new Highcharts.Chart(option);
+        oChart.showLoading();
+
+
+        //每种车在半年的总销量
+        var allcarbanyear = []
+
+        //上半年，下半年汽车总销量
+        var banyears = []
+
+        //加载数据
+        $.get(carsaleanysis+"/carSaleAnysis/banyearsale.do",function(dataResult,status,xhr){
+            console.log(dataResult.msg);
+            if(dataResult.code==1){
+
+                //修改图表数据
+
+                allcarbanyear = dataResult.data.data1;
+                banyears = dataResult.data.data2;
+
+                allcarbanyear.forEach(function (elem,index) {
+                    //柱状图
+                    var series1 = {
+                        type: 'column',
+                        tooltip: {
+                            valueSuffix: ' 辆'
+                        },
+                        name: elem.carName+'半年总销量',
+                        data: elem.banyearsale
+                    };
+                    oChart.addSeries(series1);
+                })
+
+
+
+                //每季度占年的百分比
+                var yearsalesum = 0;
+
+                var banyeardata = []
+
+                var categories = []
+
+                banyears.forEach(function (banyearsale,index) { yearsalesum += banyearsale })
+                //console.log(jidusum)
+                //console.log(yearsalesum)
+
+                banyears.forEach(function (judusale,index) {
+                    var amoun = parseInt(judusale/yearsalesum * 100)
+                    var name = ''
+                    if(index==0){
+                        name = '上半年汽车总销量'
+                    }else{
+                        name = '下半年汽车总销量'
+                    }
+
+                    banyeardata.push({
+                        name: name,
+                        y: amoun,
+                        color: Highcharts.getOptions().colors[index] // Jane 的颜色
+                    })
+
+                    categories.push(name)
+                })
+
+                //饼图
+                var series3 = {
+                    type: 'pie',
+                    name: '总销量',
+                    data:  banyeardata,
+                    center: [300, 50],
+                    size: 200,
+                    showInLegend: false,
+                    dataLabels: {
+                        enabled: true
+                    },
+                    tooltip: {
+                        valueSuffix: ' %',
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                }
+
+                oChart.xAxis[0].setCategories(categories)
+                oChart.addSeries(series3)
+
+                oChart.hideLoading();
+
+            }else{
+                alert('服务器繁忙，请稍后再试')
+            }
+        },"json")
+
+    }
+
+
+</script>
+</body>
+</html>

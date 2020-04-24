@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折线图案例</title>
+    <script src="lib/jquery-3.4.1.js"></script>
+    <script src="lib/echarts.min.js"></script>
+    <script src="shuju/shuju1.js"></script>
+</head>
+<body>
+
+<h2 style="text-align: center">汽车销量预测分析</h2>
+<br/><br/><br/>
+<!-- 准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 800px;height:700px;text-align: center;margin: 0px auto"></div>
+
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var data1 = [];
+    var data2 = [];
+
+    var option = {
+        title: {
+            text: '折线图堆叠'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:data1
+            //data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: data2
+            //data: ['周一','周二','周三','周四','周五','周六','周日']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: []
+            //默认值，如果有数据就替换
+            // {
+            //     name:'属性组合1',
+            //     type:'line',
+            //     stack: '总量',
+            //     data:[120, 132, 101, 134, 90, 230, 210]
+            // }
+    };
+
+
+    function myFunction(item, index) {
+        //属性组
+        data1.push(item.attr)
+
+        //横轴
+        //if(index == 0){
+        //   item.month.forEach(function (a,b) { data2.push(a)})
+        //}
+
+        //option.series放的是一个属性组，12个月的所有销量
+        option.series.push({
+            name: item.attr,
+            type:'line',
+            stack: '总量',
+            data:item.salemount
+        })
+
+    }
+
+    //第一种车的情况
+    shuju.result[0].attrzuhe.forEach(myFunction)
+    shuju.month.forEach(function (a,b) {
+        data2.push(a)
+    })
+    option. title.text = shuju.result[0].carname
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+</script>
+</body>
+</html>

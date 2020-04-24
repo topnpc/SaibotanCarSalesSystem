@@ -1,0 +1,447 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html ng-app="orderupdate">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/order-update.js"></script>
+    <link rel="Bookmark" href="/favicon.ico" >
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <!--/meta 作为公共模版分离出去-->
+
+    <title>添加新车 - 汽车管理 - H-ui.admin v3.1</title>
+    <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+    <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+
+
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+
+</head>
+<body ng-controller="orderupContro" ng-cloak>
+<article class="page-container">
+    <form class="form form-horizontal" id="form-article-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>订单编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.orderuuid}}" placeholder=""  name="" disabled="disabled" >
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>车型：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+				    <select name="" class="select" value="{{orderitem.car.cartype}}" id="cartype">
+					    <option value="{{orderitem.car.cartype}}" selected>{{orderitem.car.cartype}}</option>
+                    <!--<option value="中型车">中型车</option>-->
+                    <!--<option value="大型车">大型车</option>-->
+                    <!--<option value="豪华车">豪华车</option>-->
+				    </select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>车名：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box">
+				    <select name="" class="select" value="{{orderitem.car.name}}" id="carname" name="carname" >
+					    <option value="{{orderitem.car.name}}" selected>{{orderitem.car.name}}</option>
+                        <!--<option value="中型车">中型车</option>-->
+                        <!--<option value="大型车">大型车</option>-->
+                        <!--<option value="豪华车">豪华车</option>-->
+				    </select>
+				</span>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>汽车编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.car.id}}" id="carid" name="carid" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>车图：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <img ng-src="{{orderitem.car.imgurl}}" height="50%" width="50%" id="carimg">
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>汽车单价：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.car.price}}" placeholder="" id="price" name="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>购买数量：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.carnum}}" placeholder="" name="carnum" id="carnum">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>小计：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.totalprice}}" name="totalprice" id="totalprice">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>订单状态：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.status}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下单用户：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.user.realname}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下单用户电话：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.user.phone}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下单用户地址：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.user.address}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>收货用户：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text required" value="{{orderitem.shouhuoren}}" name="shouhuoren" id="shouhuoren">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>收货用户电话：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text required" value="{{orderitem.shouhuophone}}" name="shouhuophone" id="shouhuophone">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户收货地址：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text required" value="{{orderitem.shouhuodizi}}" name="shouhuodizi" id="shouhuodizi">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户留言：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.message}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>下单时间：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.ordertime}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>支付时间：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.paytime}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>发货时间：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.sendtime}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>收货时间：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.finaltime}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>订单结束时间：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.closetime}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>物流名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.wuliuname}}" name="wuliuname"  id="wuliuname">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>物流编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.wuliu}}" name="wuliu" id="wuliu">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>买家评价：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.evaluate}}" placeholder="" id="" name="" disabled="disabled">
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>卖家评价：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{{orderitem.evaluate2}}" name="evaluate2"  id="evaluate2" disabled="disabled">
+            </div>
+        </div>
+
+
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button ng-click="ordermodf()" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 修改</button>
+                <button ng-click="layer_close2();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer /作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="lib/webuploader/0.1.5/webuploader.min.js"></script>
+<script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.config.js"></script>
+<script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    //车型选择
+    $.ajax({
+        "url":"/selectTypeNames.do",//请求地址
+        "type":"get",//请求的方式
+        //"dataType":"JSON",服务器返回的数据类型 , 默认为TEXT
+        "success":function(data){//请求成功时的回调函数
+            cartypes = data.data;
+            var sel= document.getElementById("cartype");
+            sel.innerHTML="";
+            for (i=0;i<cartypes.length;i++){
+                sel.options.add(new Option(cartypes[i],cartypes[i]));
+            }
+
+        },
+        "error":function(){
+            console.info("因为网络或者其他原因, 登录失败了");
+        }
+    });
+
+    //给类型监听一个事件，根据类型查询，汽车
+    $("#cartype").change(function(){
+        var cartype = $('#cartype').val();
+        var cars = [];
+        console.log('cartype = '+cartype);
+        console.log('汽车类型改变了');
+        if(cartype!=null){
+            $.ajax({
+                "url":"/car/typename?typeName="+cartype,//请求地址
+                "type":"get",//请求的方式
+                //"dataType":"JSON",服务器返回的数据类型 , 默认为TEXT
+                "success":function(data){//请求成功时的回调函数
+                    cars = data.data;
+                    var sel= document.getElementById("carname");
+                    sel.innerHTML="";
+                    for (i=0;i<cars.length;i++){
+                        sel.options.add(new Option(cars[i].name,cars[i].name));
+                    }
+                },
+                "error":function(){
+                    console.info("因为网络或者其他原因, 登录失败了");
+                }
+            });
+        }
+    })
+
+    //给汽车名监听一个事件
+    $("#cartype").change(function(){
+        var carname = $('#carname').val();
+        var car = '';
+        console.log('carname = '+carname);
+        console.log('汽车名字改变了');
+        if(cartype!=null){
+            $.ajax({
+                "url":"/car/name?name="+carname,//请求地址
+                "type":"get",//请求的方式
+                //"dataType":"JSON",服务器返回的数据类型 , 默认为TEXT
+                "success":function(data){//请求成功时的回调函数
+                    car = data.data;
+                    //给汽车id赋值
+                    var carid  = document.getElementById("carid");
+                    carid.value = car.id;
+                    //给图片赋值
+                    var name= document.getElementById("carimg");
+                    name.src=car.imgurl;
+                    //给汽车单价赋值
+                    var carprice = document.getElementById("price");
+                    carprice.value=car.price;
+                    //给小计赋值
+                    var totalprice = document.getElementById("totalprice");
+                    var carnum = document.getElementById("carnum");
+                    totalprice.value=carprice.value * carnum.value;
+                },
+                "error":function(){
+                    console.info("因为网络或者其他原因, 登录失败了");
+                }
+            });
+        }
+    })
+
+
+    //给汽车数量一个监听事件
+    $("#carnum").change(function(){
+        var carprice = document.getElementById("price");
+        //给小计赋值
+        var totalprice = document.getElementById("totalprice");
+        var carnum = document.getElementById("carnum");
+        console.log('汽车数量变为了，'+carnum.value);
+        totalprice.value=carprice.value * carnum.value;
+    })
+
+
+
+
+    $(function() {
+        $('.skin-minimal input').iCheck({
+            checkboxClass: 'icheckbox-blue',
+            radioClass: 'iradio-blue',
+            increaseArea: '20%'
+        });
+
+        //表单验证
+        $("#form-article-add").validate({
+            rules: {
+                carid: {
+                    required: true,
+                },
+                carname: {
+                    required: true,
+                },
+                carnum: {
+                    required: true,
+                },
+                totalprice: {
+                    required: true,
+                },
+                shouhuoren: {
+                    required: true,
+                },
+                shouhuophone: {
+                    required: true,
+                },
+                shouhuodizi: {
+                    required: true,
+                },
+                wuliuname: {
+                    required: true,
+                },
+                wuliu: {
+                    required: true,
+                },
+                evaluate2: {
+                    required: true,
+                },
+            },
+            messages : {
+                carid : {
+                    required :  "请输入汽车id"
+                },
+                carname: {
+                    required: "请选择汽车名称",
+                },
+                carnum: {
+                    required: "请输入购买数量",
+                },
+                totalprice: {
+                    required: "请输入汽车小计",
+                },
+                shouhuoren: {
+                    required: "请输入收货人",
+                },
+                shouhuophone: {
+                    required: "请输入收货电话",
+                },
+                shouhuodizi: {
+                    required: "请输入收货地址",
+                },
+                wuliuname: {
+                    required: "请输入物流名称",
+                },
+                wuliu: {
+                    required: "请输入物流编号",
+                },
+                evaluate2: {
+                    required: "请输入评价",
+                },
+            },
+            onsubmit:true,// 是否在提交是验证
+            onfocusout:true,// 是否在获取焦点时验证
+            onkeyup :false,// 是否在敲击键盘时验证
+
+            onkeyup: false,
+            focusCleanup: true,
+            success: "valid",
+            submitHandler: function (form) {
+                //$(form).ajaxSubmit();
+                var index = parent.layer.getFrameIndex(window.name);
+                //parent.$('.btn-refresh').click();
+                parent.layer.close(index);
+            }
+        });
+    })
+
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>
