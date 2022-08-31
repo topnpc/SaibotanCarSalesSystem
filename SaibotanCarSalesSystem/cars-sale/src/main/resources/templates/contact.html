@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/nav.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="main_files/base-43ea880730.css">
+    <link rel="stylesheet" type="text/css" href="main_files/index-6e48276653.css">
+
+    <style>
+        .slider {
+            max-width: 1920px;
+            text-align: center;
+        }
+
+        .heights {
+            height: 70px;
+        }
+    </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="heads">
+    <div class="top">
+        <span class="headerRight"><img src="images/phone.png" width="273" height="19"/></span>
+    </div><!--top/-->
+</div><!--heads/-->
+
+
+<div class="heights">&nbsp;</div>
+<!--contact-->
+<div class="contact">
+    <div class="contactLeft">
+
+        <style type="text/css">
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .iw_poi_title {
+                color: #CC5522;
+                font-size: 14px;
+                font-weight: bold;
+                overflow: hidden;
+                padding-right: 13px;
+                white-space: nowrap
+            }
+
+            .iw_poi_content {
+                font: 12px arial, sans-serif;
+                overflow: visible;
+                padding-top: 4px;
+                white-space: -moz-pre-wrap;
+                word-wrap: break-word
+            }
+        </style>
+
+        <!--<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>-->
+        <div id="dituContent"><img src="images/ditu.PNG"></div>
+        <!--<script type="text/javascript">-->
+        <!--//创建和初始化地图函数：-->
+        <!--function initMap(){-->
+        <!--createMap();//创建地图-->
+        <!--setMapEvent();//设置地图事件-->
+        <!--addMapControl();//向地图添加控件-->
+        <!--addMarker();//向地图中添加marker-->
+        <!--}-->
+        <!---->
+        <!--//创建地图函数：-->
+        <!--function createMap(){-->
+        <!--var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图-->
+        <!--var point = new BMap.Point(121.385411,31.180767);//定义一个中心点坐标-->
+        <!--map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中-->
+        <!--window.map = map;//将map变量存储在全局-->
+        <!--}-->
+        <!---->
+        <!--//地图事件设置函数：-->
+        <!--function setMapEvent(){-->
+        <!--map.enableDragging();//启用地图拖拽事件，默认启用(可不写)-->
+        <!--map.enableScrollWheelZoom();//启用地图滚轮放大缩小-->
+        <!--map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)-->
+        <!--map.enableKeyboard();//启用键盘上下左右键移动地图-->
+        <!--}-->
+        <!---->
+        <!--//地图控件添加函数：-->
+        <!--function addMapControl(){-->
+        <!--//向地图中添加缩放控件-->
+        <!--var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});-->
+        <!--map.addControl(ctrl_nav);-->
+        <!--//向地图中添加缩略图控件-->
+        <!--var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});-->
+        <!--map.addControl(ctrl_ove);-->
+        <!--//向地图中添加比例尺控件-->
+        <!--var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});-->
+        <!--map.addControl(ctrl_sca);-->
+        <!--}-->
+        <!---->
+        <!--//标注点数组-->
+        <!--var markerArr = [{title:"我的标记",content:"我的备注",point:"121.384055|31.180628",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}-->
+        <!--];-->
+        <!--//创建marker-->
+        <!--function addMarker(){-->
+        <!--for(var i=0;i<markerArr.length;i++){-->
+        <!--var json = markerArr[i];-->
+        <!--var p0 = json.point.split("|")[0];-->
+        <!--var p1 = json.point.split("|")[1];-->
+        <!--var point = new BMap.Point(p0,p1);-->
+        <!--var iconImg = createIcon(json.icon);-->
+        <!--var marker = new BMap.Marker(point,{icon:iconImg});-->
+        <!--var iw = createInfoWindow(i);-->
+        <!--var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});-->
+        <!--marker.setLabel(label);-->
+        <!--map.addOverlay(marker);-->
+        <!--label.setStyle({-->
+        <!--borderColor:"#808080",-->
+        <!--color:"#333",-->
+        <!--cursor:"pointer"-->
+        <!--});-->
+        <!---->
+        <!--(function(){-->
+        <!--var index = i;-->
+        <!--var _iw = createInfoWindow(i);-->
+        <!--var _marker = marker;-->
+        <!--_marker.addEventListener("click",function(){-->
+        <!--this.openInfoWindow(_iw);-->
+        <!--});-->
+        <!--_iw.addEventListener("open",function(){-->
+        <!--_marker.getLabel().hide();-->
+        <!--})-->
+        <!--_iw.addEventListener("close",function(){-->
+        <!--_marker.getLabel().show();-->
+        <!--})-->
+        <!--label.addEventListener("click",function(){-->
+        <!--_marker.openInfoWindow(_iw);-->
+        <!--})-->
+        <!--if(!!json.isOpen){-->
+        <!--label.hide();-->
+        <!--_marker.openInfoWindow(_iw);-->
+        <!--}-->
+        <!--})()-->
+        <!--}-->
+        <!--}-->
+        <!--//创建InfoWindow-->
+        <!--function createInfoWindow(i){-->
+        <!--var json = markerArr[i];-->
+        <!--var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");-->
+        <!--return iw;-->
+        <!--}-->
+        <!--//创建一个Icon-->
+        <!--function createIcon(json){-->
+        <!--var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})-->
+        <!--return icon;-->
+        <!--}-->
+        <!---->
+        <!--initMap();//创建和初始化地图-->
+        <!--</script>-->
+    </div><!--contactLeft/-->
+
+
+    <div class="contactRight">
+        <h3>上海鑫舆汇</h3>
+        <div class="address">
+            公司地址：上海市闵行区吴中路1189号2A展示区<br/>
+            电话：021-00000000 <br/>
+            联系人：某某某<br/>
+        </div><!--address/-->
+    </div><!--contactRight/-->
+    <div class="clearfix"></div>
+</div><!--contact/-->
+<!--contact-->
+
+<div class="global__footer_wrap">
+    <div>
+        <div class="global__footer clearfix">
+            <div class="footer__logo">
+                <a class="bar__logo" href="#"><img
+                        src="main_files/logo_new-cfdc8cad21.png"></a>
+                <div class="about__us clearfix">
+                    <span>关注我们：</span>
+
+                    <a class="wechat" href="#">
+                        <i class="cbb-iconfont"></i>
+                        <div class="contact-dropdown">
+                            <div class="pic global-icon"></div>
+                        </div>
+                    </a>
+                    <a class="microblog" href="#">
+                        <i class="cbb-iconfont"></i>
+                        <div class="contact-dropdown">
+                            <div class="pic global-icon"></div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="word_wrap clearfix">
+                <dl>
+                    <dt>新手指南</dt>
+                    <dd>
+                        <a href="#" target="&quot;_blank&quot;"
+                           data-track="click:gtm|cbb_footer_link_1">法律声明</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1588?" target="&quot;_blank&quot;"
+                           data-track="click:gtm|cbb_footer_link_2">隐私保护</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1589?" target="&quot;_blank&quot;"
+                           data-track="click:gtm|cbb_footer_link_3">个人信息保护说明</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>关于我们</dt>
+
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1652" target="&quot;_blank&quot;">赛博坦简介</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1649" target="&quot;_blank&quot;">联系我们</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;" class="J-delete-info" data-track="click:gtm|cbb_footer_link_3">注销个人信息</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>新车资讯</dt>
+                    <dd>
+                        <a href="https://cms.baidu.com/list/mtsc" target="&quot;_blank&quot;">媒体说车</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/list/spjx" target="&quot;_blank&quot;">视频精选</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/list/wdjx" target="&quot;_blank&quot;">汽车问答</a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="customer_wrap">
+                <label>联系我们</label>
+                <span class="small_phone">111-111-1111</span>
+                <!--<div type="button" class="btn-service" onclick="NTKF.im_openInPageChat(&#39;kf_9255_1463036048814&#39;)"-->
+                <!--data-track="click:gtm|cbb_footer_service_service">-->
+                在线客服
+            </div>
+            <!--<span class="small_word">服务时段：8:30 ～ 22:00</span>-->
+        </div>
+    </div>
+    <div class="footer__word">
+        友情链接：
+        <a href="https://www.dongfeng-nissan.com.cn/" data-track="click:gtm|cbb_footer_link_4"
+           target="_blank">赛博坦官方网站</a>
+        |
+        <a href="https://www.venucia.com/" data-track="click:gtm|cbb_footer_link_5" target="_blank">东风启辰官方网站</a> |
+        <a href="https://dongfeng-nissan.tmall.com/" data-track="click:gtm|cbb_footer_link_6"
+           target="_blank">赛博坦天猫旗舰店</a>
+        |
+        <a href="http://www.autohome.com.cn/" data-track="click:gtm|cbb_footer_link_7" target="_blank">汽车之家</a> |
+        <br>
+        Copyright © 2008-2019 saibotan。coma，All Rights Reserved <a href="http://beian.miit.gov.cn/"
+                                                                   data-track="click:gtm|cbb_footer_link_9"
+                                                                   target="_blank" rel="noopener noreferrer">粤ICP备15053418号-1</a>
+        版权所有 赛博坦乘用车公司
+    </div>
+    <div class="J-user-info user-info-mask none"></div>
+    <div class="J-user-info user-info-content none">
+        <div class="info-close J-info-close"><i class="cbb-iconfont"></i></div>
+        <div class="info-title">注销个人信息申请</div>
+        <p class="info-tips">*当您成功申请注销个人信息和账户信息后，我们将在您提出申请的48小时内完成对您申请内容的注销审核，审核通过后，我们将对您的个人信息进行删除或匿名化处理。</p>
+        <form id="J-userinfo-form" class="layui-form user-info__delete" novalidate="novalidate">
+            <div class="clearfix">
+                <div class="info-input fl">
+                    <input type="text" placeholder="输入申请人姓名" class="info-input__user J-dynamic-info"
+                           id="infoPetName" name="infoPetName">
+                    <div class="error-tips-content"></div>
+                </div>
+                <div class="info-input fr">
+                    <input type="text" placeholder="输入手机号码" class="info-input__user J-dynamic-info" id="infoPhone"
+                           name="infoPhone" maxlength="11">
+                    <div class="error-tips-content"></div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="info-input fl">
+                    <input type="text" placeholder="输入图形验证码"
+                           class="info-input__user info-input__user-short J-dynamic-info" id="identifyInfoCode"
+                           name="identifyInfoCode" maxlength="4">
+                    <div class="user-info__btn user-info__btn-code" id="identify_info_code">
+                        <img id="J-user-info__chartcode" src="https://www.baidu.com/"
+                             data-src="https://passport.baidu.com/sso/api/sendchartcode?t=1972712177" alt="验证码"
+                             class="updateIdentifyInfoCode">
+                        <p class="none click-notify updateIdentifyInfoCode">点击刷新</p>
+                    </div>
+                    <div class="error-tips-content"></div>
+                </div>
+                <div class="info-input fr">
+                    <input type="text" placeholder="输入短信验证码"
+                           class="info-input__user info-input__user-short J-dynamic-info" id="SMSInfoCode"
+                           name="sms_info_captcha" maxlength="4">
+                    <div class="user-info__btn user-info__btn-sms">
+                        <button class="user-info__code" id="J-check-info-num">获取验证码</button>
+                        <b class="info-font-color" style="display:none">120s</b>
+                    </div>
+                    <div class="error-tips-content"></div>
+                </div>
+            </div>
+            <p class="info-tips">留资历史</p>
+            <ul class="info-type clearfix J-info__type-list">
+                <li class="info-type-list fl" data-id="1">线索留资</li>
+                <li class="info-type-list fl" data-id="2">卡券信息</li>
+                <li class="info-type-list fl" data-id="3">金融贷款</li>
+                <li class="info-type-list fl" data-id="4">厂家活动</li>
+                <li class="info-type-list fl" data-id="0">其他</li>
+            </ul>
+            <button type="submit" class="info-submit" id="infoSubmit">
+                提交申请
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<!--footer/-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/js.js"></script>
+<!--响应式导航-->
+<script>
+    var navigation = responsiveNav(".nav-collapse", {
+        animate: true,                    // Boolean: Use CSS3 transitions, true or false
+        transition: 284,                  // Integer: Speed of the transition, in milliseconds
+        label: "Menu",                    // String: Label for the navigation toggle
+        insert: "after",                  // String: Insert the toggle before or after the navigation
+        customToggle: "",                 // Selector: Specify the ID of a custom toggle
+        closeOnNavClick: false,           // Boolean: Close the navigation when one of the links are clicked
+        openPos: "relative",              // String: Position of the opened nav, relative or static
+        navClass: "nav-collapse",         // String: Default CSS class. If changed, you need to edit the CSS too!
+        navActiveClass: "js-nav-active",  // String: Class that is added to <html> element when nav is active
+        jsClass: "js",                    // String: 'JS enabled' class which is added to <html> element
+        init: function () {
+        },               // Function: Init callback
+        open: function () {
+        },               // Function: Open callback
+        close: function () {
+        }               // Function: Close callback
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)https://www.chebaba.com/car/21/235828.html?SMARTCODE=g2019-3649552-90-13539980 -->
+<html class=" " ng-app="detail">
+<head>
+    <script src="js/angular.js"></script>
+    <script src="js/detail.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        .agl-hover {
+            outline: 2px solid rgba(244, 67, 54, 0.99) !important;
+            background-color: rgba(244, 67, 54, 0.2) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .agl-highlight-current {
+            outline: 2px solid rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-highlight-similar {
+            outline: 2px dashed rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-highlight-group {
+            outline: 4px double rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-cover-current {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 2px solid rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-similar {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 2px dashed rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-group {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 4px double rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-focus {
+            outline: 3px solid rgba(255, 165, 0, 0.99) !important;
+            background-color: rgba(255, 165, 0, 0.4) !important;
+        }
+    </style>
+    <script type="text/javascript" async="" src="./car_detail_files/dndc-statistics.js.下载"></script>
+    <script type="text/javascript" async="" src="./car_detail_files/fcagl.js.下载"></script>
+    <script src="./car_detail_files/push.js.下载"></script>
+    <script type="text/javascript" async="" src="./car_detail_files/collect.js.下载"></script>
+    <script src="./car_detail_files/hm.js.下载"></script>
+    <script type="text/javascript" async="" src="./car_detail_files/js"></script>
+    <script type="text/javascript" async="" defer="" src="./car_detail_files/piwik.js.下载"></script>
+    <script type="text/javascript" async="" src="./car_detail_files/analytics.js.下载"></script>
+    <script type="text/javascript" async="" src="./car_detail_files/analytics.js.下载"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="PJfIrz6YG6GDyEA630BQRCJo8CW7tNmOEt3V33Bq">
+    <meta name="keywords" content="">
+    <meta name="description" content="等信息。">
+    <title>赛博坦电商平台</title>
+    <link rel="icon" type="image/ico" href="https://cms.chebaba.com/themes/cms/assets/images/favicon.ico">
+    <script async="" src="./car_detail_files/gdtevent.min.js.下载"></script>
+    <script async="" src="./car_detail_files/gtm.js.下载"></script>
+    <script src="./car_detail_files/global_gtm_dict.js.下载"></script>
+    <script src="./car_detail_files/hwt.js.下载" async=""></script>
+    <script src="./car_detail_files/head-statistics.js.下载" async=""></script>
+    <style>
+        @font-face {
+            font-family: 'cbb-iconfont';
+            src: url('//s.chebaba.com/font/cbb/1.2.11/iconfont.eot'); /* IE9*/
+            src: url('//s.chebaba.com/font/cbb/1.2.11/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.woff') format('woff'), /* chrome、firefox */ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+
+        @font-face {
+            font-family: 'iconfont';
+            src: url('//s.chebaba.com/font/cbb/1.2.11/iconfont.eot'); /* IE9*/
+            src: url('//s.chebaba.com/font/cbb/1.2.11/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.woff') format('woff'), /* chrome、firefox */ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="./car_detail_files/layui.css">
+
+    <link rel="stylesheet" type="text/css" href="./car_detail_files/nprogress-a2b5d56c2e.css">
+    <link rel="stylesheet" type="text/css" href="./car_detail_files/base-43ea880730.css">
+
+
+    <link rel="stylesheet" type="text/css" href="./car_detail_files/swiper_min-8a79f70d60.css">
+    <link rel="stylesheet" type="text/css" href="./car_detail_files/car_type_detail-b596031106.css">
+    <link id="layuicss-laydate" rel="stylesheet" href="./car_detail_files/laydate.css" media="all">
+    <link id="layuicss-layer" rel="stylesheet" href="./car_detail_files/layer.css" media="all">
+    <link id="layuicss-skincodecss" rel="stylesheet" href="./car_detail_files/code.css" media="all">
+    <script type="text/javascript" async="async" charset="utf-8" src="./car_detail_files/zh_cn.js.下载"
+            data-requiremodule="lang"></script>
+    <script type="text/javascript" async="async" charset="utf-8" src="./car_detail_files/chat.in.js.下载"
+            data-requiremodule="chatManage"></script>
+    <script type="text/javascript" async="async" charset="utf-8" src="./car_detail_files/mqtt31.js.下载"
+            data-requiremodule="MQTT"></script>
+    <script type="text/javascript" async="async" charset="utf-8" src="./car_detail_files/mqtt.chat.js.下载"
+            data-requiremodule="Connection"></script>
+</head>
+<body style="padding-top: 56px;" ng-controller="detail_controller">
+<noscript><img height="1" width="1" style="display:none"
+               src="https://a.gdt.qq.com/pixel?user_action_set_id=1106794325&action_type=PAGE_VIEW&noscript=1"/>
+</noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGRV92J" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+</noscript>
+<iframe height="0" width="0" style="display: none; visibility: hidden;"
+        src="./car_detail_files/activityi.html"></iframe>
+<div class="header__bar_wrap header-cookie" data-body-id="0">
+
+
+    <div class="nav-box clearfix">
+        <div class="nav-logo fl"><img src="./main_files/logo_new-cfdc8cad21.png"></div>
+        <ul class="shopcar__tab fl">
+            <li class="nav-item fl"><a href="" class="" data-track="click:gtm|cbb_header_nav_1">首页</a>
+            </li>
+            <li class="fl nav-item" ng-repeat="m in navs" ng-click="func03($index)"
+                style="color: black;font-size: 20px;font-weight: bold">
+                <a href="{{m.navUrl}}" class=""
+                   data-track="click:gtm|cbb_header_nav_2">{{m.navName}}</a>
+            </li>
+
+        </ul>
+
+        <<!--登录快-->
+        <!--<div class="user-img fr">-->
+        <div class="fr" style="line-height: 56px">
+            <a href="/tologin.do" ng-show="flag_user" style="display:inline">
+                登录
+                <!--<img id="J-header-avatar"  src="main_files/default-11f5283f6d.png" alt="">-->
+            </a>
+            <a href="register.html" ng-show="flag_user" style="display: inline">
+                注册
+                <!--<img id="J-header-avatar"  src="main_files/default-11f5283f6d.png" alt="">-->
+            </a>
+            <a href="/tologin.do" ng-show="!flag_user">你好,{{username}}</a>
+
+        </div>
+        <!--登录快-->
+
+
+    </div>
+</div>
+<script type="text/javascript" id="">var _paq = _paq || [];
+_paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+_paq.push(["setCookieDomain", "*.dongfeng-nissan.com.cn"]);
+_paq.push(["setDomains", ["*.dongfeng-nissan.com.cn", "*.chebaba.com"]]);
+_paq.push(["enableCrossDomainLinking"]);
+_paq.push(["setCustomVariable", 1, "siteName", "chebaba", "page"]);
+_paq.push(["trackPageView"]);
+_paq.push(["enableLinkTracking"]);
+(function () {
+    var c = "https://monitor.dongfeng-nissan.com.cn/piwik/";
+    _paq.push(["setTrackerUrl", c + "piwik.php"]);
+    _paq.push(["setSiteId", "7"]);
+    var a = document, b = a.createElement("script");
+    a = a.getElementsByTagName("script")[0];
+    b.type = "text/javascript";
+    b.async = !0;
+    b.defer = !0;
+    b.src = c + "piwik.js";
+    a.parentNode.insertBefore(b, a)
+})();</script>
+
+
+<div class="car-type__wrap" id="content">
+    <div class="popup">
+        <div class="health-detail">
+            <div class="health-detail-header clearfix">
+                <div class="title" id="healty-detail-title">
+                    2万公里保养明细
+                </div>
+                <div class="close" id="healty-detail-close"><i class="iconfont"></i></div>
+            </div>
+            <div class="table">
+                <div class="first clearfix">
+                    <div>项目</div>
+                    <div>配件费</div>
+                    <div>工时费</div>
+                    <div>合计</div>
+                </div>
+                <div class="first first-content clearfix">
+                    <div>保养</div>
+                    <div>223</div>
+                    <div>443</div>
+                    <div>222</div>
+                </div>
+                <div class="table-title">更换</div>
+                <div class="for_first"></div>
+                <div class="table-title">检查</div>
+                <div class="for_cheack"></div>
+            </div>
+            <div class="health-remark">
+                <p class="health-remark-title">备注：</p>
+                <p class="health-remark-text"></p>
+            </div>
+        </div>
+    </div>
+    <div class="car-type__content">
+        <div class="car-type__survey clearfix">
+            <div class="car-type__pic-box fl">
+                <!--汽车的5个大图-->
+                <div class="car-type__pic">
+                    <li class="car-type__pic-item" data-track="click:gtm|cbb_cartype_photo_big_1"
+                        style="text-align: center;vertical-align: center">
+                        <br/><br/>
+                        <img src="{{car.imgurl}}" alt="" style="width: 90%;height: 90%;margin: 0px auto">
+                    </li>
+                    <!--<li class="car-type__pic-item" data-track="click:gtm|cbb_cartype_photo_big_1"-->
+                    <!--style="display: none;"><img src="./car_detail_files/2019-09-20-16-49-17-5d84928d3224e.jpg"-->
+                    <!--alt=""></li>-->
+                    <!--<li class="car-type__pic-item" data-track="click:gtm|cbb_cartype_photo_big_2"-->
+                    <!--style="display: none;"><img src="./car_detail_files/2019-09-20-16-49-20-5d8492905a515.jpg"-->
+                    <!--alt=""></li>-->
+                    <!--<li class="car-type__pic-item" data-track="click:gtm|cbb_cartype_photo_big_3"-->
+                    <!--style="display: none;"><img src="./car_detail_files/2019-09-20-16-49-23-5d8492934e227.jpg"-->
+                    <!--alt=""></li>-->
+                    <!--<li class="car-type__pic-item" data-track="click:gtm|cbb_cartype_photo_big_4"-->
+                    <!--style="display: none;"><img src="./car_detail_files/2019-09-20-16-49-25-5d849295f0eaa.jpg"-->
+                    <!--alt=""></li>-->
+                    <!--<li class="car-type__pic-item" data-track="click:gtm|cbb_cartype_photo_big_5"-->
+                    <!--style="display: list-item;"><img src="./car_detail_files/2019-09-20-16-49-28-5d849298ac36a.jpg" alt=""></li>-->
+                </div>
+                <!--&lt;!&ndash;汽车的5个小图&ndash;&gt;-->
+                <!--<div class="small-img-box clearfix">-->
+                <!--<div class="small-img fl img-active" data-track="click:gtm|cbb_cartype_photo_thums_1">-->
+                <!--<img class="small-img-click" src="./car_detail_files/2019-09-20-16-49-17-5d84928d3224e(1).jpg">-->
+                <!--</div>-->
+                <!--<div class="small-img fl" data-track="click:gtm|cbb_cartype_photo_thums_2">-->
+                <!--<img class="small-img-click" src="./car_detail_files/2019-09-20-16-49-20-5d8492905a515(1).jpg">-->
+                <!--</div>-->
+                <!--<div class="small-img fl" data-track="click:gtm|cbb_cartype_photo_thums_3">-->
+                <!--<img class="small-img-click" src="./car_detail_files/2019-09-20-16-49-23-5d8492934e227(1).jpg">-->
+                <!--</div>-->
+                <!--<div class="small-img fl" data-track="click:gtm|cbb_cartype_photo_thums_4">-->
+                <!--<img class="small-img-click" src="./car_detail_files/2019-09-20-16-49-25-5d849295f0eaa(1).jpg">-->
+                <!--</div>-->
+                <!--<div class="small-img fl active" data-track="click:gtm|cbb_cartype_photo_thums_5">-->
+                <!--<img class="small-img-click" src="./car_detail_files/2019-09-20-16-49-28-5d849298ac36a(1).jpg">-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+
+            <div class="car-type__info fl">
+                <div class="info-title">
+                    <span class="car-type__name">{{car.name}}</span>
+                    <span class="car-type__name">{{car.describe}}</span>
+                    <!--<span class="car-type__select-car more-icon" data-track="click:gtm|cbb_cartype_selectcar_switch">切换车型<i-->
+                    <!--class="select-car-icon xuzu"></i></span>-->
+                    <div class="car-type__level">{{car.cartype}}</div>
+                    <div class="car-type__select-list" style="">
+                        <ul>
+                            <li class="car-type__year">2020</li>
+                            <li class="car-type__select-name">
+                                <a data-track="click:gtm|cbb_cartype_selectcar_typename"
+                                   class="car-type__select-active"
+                                   href="#">{{car.describe}}
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="price_discount-box">
+                    <span class="price_discount-tip">本地优惠价：</span>
+                    <span class="price_discount"><i class="J-discount-price">{{car.price}}</i></span>
+                    <span class="price_discount-save">
+            （预计节省 <span class="car-type__price" id="J-car-discount">3.80万</span>）
+          </span>
+                    <i id="question" class="iconfont icon-question"></i>
+                    <div class="car-type__confuse-wrap" style="display: none;">
+                        预计节省费用是基于当地经销商报价跟零售价之间差额计算得出，您的实际节省可能会因多种因素而有所不同，包括您选择的车辆，地区，经销商以及可能发生变化的适用车辆或特定经销商激励措施。
+                        <div class="triangle_border_down"><span></span><i></i></div>
+                    </div>
+                </div>
+
+                <div class="price_proposal-box">
+                    <span class="price_proposal-tip">官方指导价：</span>
+                    <span class="price_proposal">{{car.price}}万</span>
+                </div>
+
+                <div class="store_info more-icon" data-track="click:gtm|cbb_cartype_top_dlrinfo">
+                    <span class="store_info-tip">经销商信息：</span>
+                    <span class="store_info-tip store_info-tip-cur" id="store_num">该区域共有21家经销商参与报价</span>
+                    <i class="store_info-icon xuzu"></i>
+                </div>
+                <!--经销商信息-->
+                <ul class="store_info-list" id="store_info-list" style="">
+                    <li class="store_info-item">
+                        <div class="store_info-item-tip first clearfix">
+                            <span class="fl store_info-item-tip-black">北京汇京鸿运</span>
+                            <span class="fr store_info-item-tip-red">16.08万</span>
+                        </div>
+                        <div class="store_info-item-tip clearfix">
+                            <span class="fl store_info-item-address">丰管路16号院11号楼</span>
+                            <span class="fr store_info-item-green"><i class="cbb-iconfont"></i>2.8万</span>
+                        </div>
+                        <div class="store_info-item-tip store_info-item-tel">010-63855871</div>
+                    </li>
+
+                    <li class="store_info-item">
+                        <div class="store_info-item-tip first clearfix">
+                            <span class="fl store_info-item-tip-black">北京海润嘉</span>
+                            <span class="fr store_info-item-tip-red">16.38万</span>
+                        </div>
+                        <div class="store_info-item-tip clearfix">
+                            <span class="fl store_info-item-address">北三环西路62号1、4-6、8-17号平房</span>
+                            <span class="fr store_info-item-green"><i class="cbb-iconfont"></i>2.5万</span>
+                        </div>
+                        <div class="store_info-item-tip store_info-item-tel">010-68428199/010-68427199</div>
+                    </li>
+                </ul>
+
+                <div class="new-policy" data-track="click:gtm|cbb_cartype_top_ad1" style="display: block;">
+                    <div class="new-policy-title">最新政策</div>
+                    <div class="new-policy-ad J-ad-system" data-ad-id="132" style="display: block;"><p
+                            style="white-space: normal;"><a
+                            href="#"
+                            target="_blank"><span style="color: rgb(0, 0, 0);">【金融】享3年0息</span>&nbsp;&nbsp;
+                        <!-- <span
+                          style="color: rgb(0, 112, 192);">立即申请</span></a></p>-->
+                        <p style="white-space: normal;">【置换】享至高8000元置换补贴</p>
+                        <p style="white-space: normal;">【售后】享5年或15万公里超长整车保修及5年10次基础保养</p></div>
+                </div>
+
+
+                <div class="car-type__advantage none">
+                    <div class="car-type__advantage-tip">车型亮点</div>
+                    <div class="car-type__advantage-list">
+                        <p>10项配置升级，全新搭载L2级自动驾驶辅助&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                    </div>
+                </div>
+
+                <div class="financial-empty__height" style="display: none;">
+                    <div class="price_stages-tip">分期购车</div>
+                    <div class="no-financial-text none">暂无金融贷款产品</div>
+                    <div class="stages-detail-box clearfix">
+                        <div class="price_stages-detail fl">
+                            <span id="J-monthly-text">月供</span>
+                            <span id="J-monthly-payment" class="left">245</span>*
+                            <span id="J-financial-periods" class="left">24</span>个月*
+                            <span id="J-financial-periods-rate" class="left">2.99</span>％
+                            年利率（预估贷款利率）
+                            <span class="partition-line left">|</span>首付
+                            <span id="J-financial-fisrt-pay" class="left">9.44万</span>
+                        </div>
+                        <a class="installment-apply fr"
+                           href="#"
+                           id="J-clue-loan-btn">立即申请</a>
+                    </div>
+                </div>
+
+                <div class="info-btn">
+                    <a class="floor-price" data-ng-click="goumai()">立即下单</a>
+                    <a class="dealer-none_try" data-ng-click="jiagou()">加入购物车</a>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>window.GLOBAL_VARS = window.GLOBAL_VARS || {};
+GLOBAL_VARS.image_oss_host = '//upload.chebaba.com/';
+GLOBAL_VARS.passport_host = 'https://passport.chebaba.com';
+GLOBAL_VARS.home_url = 'https://www.chebaba.com';
+GLOBAL_VARS.enable_location = true;
+GLOBAL_VARS.clue_success_url = 'https://www.chebaba.com/leads/success.html';</script>
+<script>window.BASE_API_URL = window.BASE_API_URL || {};
+BASE_API_URL.get_user_info = 'https://www.chebaba.com/api/auth/user';
+BASE_API_URL.get_city_info = 'https://www.chebaba.com/api/auth/city';
+BASE_API_URL.get_adv_space = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/adv-spaces/%5BspaceId%5D';
+BASE_API_URL.get_all_cities = 'https://www.chebaba.com/rapi/cities';
+BASE_API_URL.get_all_areas = 'https://www.chebaba.com/rapi/areas';
+BASE_API_URL.get_open_api_domain = 'https://open-api.chebaba.com';
+BASE_API_URL.clue_create_order = 'https://www.chebaba.com/api/clue/create';
+BASE_API_URL.provinces = 'https://www.chebaba.com/rapi/provinces';
+BASE_API_URL.province_cities = 'https://www.chebaba.com/rapi/provinces/%5Bprovince_id%5D/cities';
+BASE_API_URL.districts = 'https://www.chebaba.com/rapi/cities/%5Bcity_id%5D/districts';
+BASE_API_URL.passport_domain = 'https://passport.chebaba.com';</script>
+<script>window.PAGE_API_URL = window.PAGE_API_URL || {};
+PAGE_API_URL.clue_addition_options = 'https://www.chebaba.com/api/clue/addition';
+PAGE_API_URL.maintain_url = 'https://www.chebaba.com/rapi/car-type-maintain/%5BcarTypeId%5D';
+PAGE_API_URL.car_series_gallery = 'https://www.chebaba.com/rapi/car-series/%5BcarSeriesId%5D/gallery-image';
+PAGE_API_URL.car_type_gallery = 'https://www.chebaba.com/rapi/car-types/%5BcarTypeId%5D/gallery-image';
+PAGE_API_URL.upkeep_search = 'https://www.chebaba.com/api/maintenance/upkeep';
+PAGE_API_URL.car_type_dealer_offer_prices = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/car-types/%5BcarTypeId%5D/dealers?desc=0,0&sort=offer_price,id';
+PAGE_API_URL.car_series_offer_prices = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/car-series/%5BcarSeriesId%5D/offer-prices';
+PAGE_API_URL.car_type_info_api = 'https://www.chebaba.com/rapi/car-types/%5BcarTypeId%5D';
+PAGE_API_URL.car_type_offer = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/car-types/%5BcarTypeId%5D/min-financial-plan';
+PAGE_API_URL.dealer_list = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/dealers';
+PAGE_API_URL.car_type_recmd_financial_product = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/car-types/%5BcarTypeId%5D/recmd-financial-product';
+PAGE_API_URL.health_detail = 'https://www.chebaba.com/rapi/car-type-maintain/%5BcarTypeId%5D';
+PAGE_API_URL.car_comType_url = 'https://www.chebaba.com/rapi/car-type-maintain/mater/%5BcarTypeId%5D';
+PAGE_API_URL.gallery_sub_classes = 'https://www.chebaba.com/rapi/gallery-image-class';</script>
+
+<script src="./car_detail_files/nprogress.min.js.下载"></script>
+<script src="./car_detail_files/jquery.min.js.下载"></script>
+<script src="./car_detail_files/lazyload.js.下载"></script>
+<script src="./car_detail_files/jquery-flexslider.js.下载"></script>
+
+<script src="./car_detail_files/es5-shim.js.下载"></script>
+<script src="./car_detail_files/layui.js.下载"></script>
+<script src="./car_detail_files/jquery-validate.js.下载"></script>
+<script src="./car_detail_files/dndc.js.下载"></script>
+<script src="./car_detail_files/base-e1a90538fa.js.下载"></script>
+<script>
+    // 开始进度
+    NProgress.start();
+
+    $(function () {
+        // 结束加载
+        setTimeout(function () {
+            NProgress.done();
+        }, 500);
+    });
+</script>
+<script src="./car_detail_files/api"></script>
+<script type="text/javascript" src="./car_detail_files/getscript"></script>
+<script src="./car_detail_files/common-189314eea7.js.下载"></script>
+
+
+<script>window.PAGE_API_URL = window.PAGE_API_URL || {};
+PAGE_API_URL.clue_addition_options = 'https://www.chebaba.com/api/clue/addition';
+PAGE_API_URL.maintain_url = 'https://www.chebaba.com/rapi/car-type-maintain/%5BcarTypeId%5D';
+PAGE_API_URL.car_series_gallery = 'https://www.chebaba.com/rapi/car-series/%5BcarSeriesId%5D/gallery-image';
+PAGE_API_URL.car_type_gallery = 'https://www.chebaba.com/rapi/car-types/%5BcarTypeId%5D/gallery-image';
+PAGE_API_URL.upkeep_search = 'https://www.chebaba.com/api/maintenance/upkeep';
+PAGE_API_URL.car_type_dealer_offer_prices = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/car-types/%5BcarTypeId%5D/dealers?desc=0,0&sort=offer_price,id';
+PAGE_API_URL.car_series_offer_prices = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/car-series/%5BcarSeriesId%5D/offer-prices';
+PAGE_API_URL.car_type_info_api = 'https://www.chebaba.com/rapi/car-types/%5BcarTypeId%5D';
+PAGE_API_URL.car_type_offer = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/car-types/%5BcarTypeId%5D/min-financial-plan';
+PAGE_API_URL.dealer_list = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/dealers';
+PAGE_API_URL.car_type_recmd_financial_product = 'https://www.chebaba.com/rapi/cities/%5BcityId%5D/car-types/%5BcarTypeId%5D/recmd-financial-product';
+PAGE_API_URL.health_detail = 'https://www.chebaba.com/rapi/car-type-maintain/%5BcarTypeId%5D';
+PAGE_API_URL.car_comType_url = 'https://www.chebaba.com/rapi/car-type-maintain/mater/%5BcarTypeId%5D';
+PAGE_API_URL.gallery_sub_classes = 'https://www.chebaba.com/rapi/gallery-image-class';</script>
+<script>window.phpData = window.phpData || {};
+phpData.car_series_id = 21;
+phpData.car_guide_price = 18880000;
+phpData.car_type_id = 235828;
+phpData.car_type_name = '2020款 2.0L CVT 2WD XE时尚版';
+phpData.car_type_name_EN = 'x-trail';
+phpData.car_type_gallery_index_route = 'https://www.chebaba.com/car/photo/21/%5BclassId%5D-0.html';
+phpData.car_type_list = {
+    "2020": [{
+        "highlight": null,
+        "name_en": "x-trail",
+        "name": "2020\u6b3e 2.0L CVT 2WD XE\u65f6\u5c1a\u7248",
+        "is_show": 1,
+        "e4s_car_type_id": null,
+        "created_date": 1541471612000,
+        "modified_date": 1569314208000,
+        "introduction": "<p>\u65b0\u4e00\u4ee3XTRONIC CVT\u667a\u80fd\u65e0\u7ea7\u53d8\u901f\u5668(7\u901f\u624b\u81ea\u4e00\u4f53)|\u94bb\u77f3\u5207\u5272\u5f0fLED\u65e5\u884c\u706f|HSA\u4e0a\u5761\u8d77\u6b65\u8f85\u52a9\u7cfb\u7edf<\/p>",
+        "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-36-39-5d89d59712c74.jpg\" title=\"admin\/images\/2019-09-24-16-36-39-5d89d59712c74.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "offer_price_min": 15080000,
+        "displacement": "2.0L",
+        "offer_price_max": 18880000,
+        "car_series_id": 21,
+        "state": 1,
+        "dfl_full_code": "DFL6460VANM4-XB3",
+        "sort_order": 0,
+        "id": 235828,
+        "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-36-45-5d89d59d643c4.jpg\" title=\"admin\/images\/2019-09-24-16-36-45-5d89d59d643c4.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "presale": null,
+        "guide_price": 18880000,
+        "delivery_year": 2020,
+        "image_list": ["shop\/car_type\/2019-09-20-16-49-17-5d84928d3224e.jpg", "shop\/car_type\/2019-09-20-16-49-20-5d8492905a515.jpg", "shop\/car_type\/2019-09-20-16-49-23-5d8492934e227.jpg", "shop\/car_type\/2019-09-20-16-49-25-5d849295f0eaa.jpg", "shop\/car_type\/2019-09-20-16-49-28-5d849298ac36a.jpg"]
+    }, {
+        "offer_price_max": 19930000,
+        "sort_order": 1,
+        "car_series_id": 21,
+        "highlight": null,
+        "modified_date": 1569314181000,
+        "created_date": 1541471612000,
+        "e4s_car_type_id": null,
+        "guide_price": 19930000,
+        "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-36-13-5d89d57d58baf.jpg\" title=\"admin\/images\/2019-09-24-16-36-13-5d89d57d58baf.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "name_en": "x-trail",
+        "name": "2020\u6b3e 2.0L CVT 2WD XL ITS \u667a\u8054\u8212\u9002\u7248",
+        "delivery_year": 2020,
+        "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-36-07-5d89d577c4db2.jpg\" title=\"admin\/images\/2019-09-24-16-36-07-5d89d577c4db2.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<\/p>",
+        "dfl_full_code": "DFL6460VANM5-XCC3",
+        "is_show": 1,
+        "id": 241208,
+        "presale": null,
+        "displacement": "2.0L",
+        "offer_price_min": 15030000,
+        "state": 1,
+        "introduction": "<p>EYE-MAX\u901a\u89c8\u5f0f\u5168\u666f\u5929\u7a97|Nissan Connect\u65e5\u4ea7\u667a\u8054|AVM\u5168\u666f\u667a\u80fd\u76d1\u63a7<\/p>",
+        "image_list": ["shop\/car_type\/2019-09-20-16-49-47-5d8492ab769a6.jpg", "shop\/car_type\/2019-09-20-16-49-50-5d8492ae6c676.jpg", "shop\/car_type\/2019-09-20-16-49-53-5d8492b153196.jpg", "shop\/car_type\/2019-09-20-16-49-56-5d8492b41b82f.jpg", "shop\/car_type\/2019-09-20-16-49-58-5d8492b6e6559.jpg"]
+    }, {
+        "delivery_year": 2020,
+        "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-33-33-5d89d4dda34b9.jpg\" title=\"admin\/images\/2019-09-24-16-33-33-5d89d4dda34b9.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "e4s_car_type_id": null,
+        "created_date": 1541471612000,
+        "modified_date": 1569314025000,
+        "car_series_id": 21,
+        "highlight": null,
+        "name": "2020\u6b3e 2.0L CVT 2WD ITS 3rows\u667a\u8054\u4e03\u5ea7\u8212\u9002\u7248",
+        "dfl_full_code": "DFL6460VANM6-XWAC3",
+        "offer_price_max": 20730000,
+        "displacement": "2.0L",
+        "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-33-38-5d89d4e27fe62.jpg\" title=\"admin\/images\/2019-09-24-16-33-38-5d89d4e27fe62.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/>\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;&quot;\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<\/p>",
+        "id": 241209,
+        "state": 1,
+        "sort_order": 2,
+        "presale": null,
+        "name_en": "x-trail",
+        "guide_price": 20730000,
+        "is_show": 1,
+        "offer_price_min": 16030000,
+        "introduction": "<p>7\u5ea7\u5347\u7ea7\u4f53\u9a8c|\u7b2c\u4e8c\u6392\u5ea7\u6905\u53ef\u8c03\u8282|Nissan Connect\u65e5\u4ea7\u667a\u8054<\/p>",
+        "image_list": ["shop\/car_type\/2019-09-20-16-50-19-5d8492cb097fe.jpg", "shop\/car_type\/2019-09-20-16-50-22-5d8492ce06cd6.jpg", "shop\/car_type\/2019-09-20-16-50-24-5d8492d0bc4a3.jpg", "shop\/car_type\/2019-09-20-16-50-27-5d8492d38627e.jpg", "shop\/car_type\/2019-09-20-16-50-32-5d8492d89cdd7.jpg"]
+    }, {
+        "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-42-5d89d55eb0c7e.jpg\" title=\"admin\/images\/2019-09-24-16-35-42-5d89d55eb0c7e.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "sort_order": 3,
+        "presale": null,
+        "offer_price_max": 20280000,
+        "e4s_car_type_id": null,
+        "delivery_year": 2020,
+        "guide_price": 20280000,
+        "id": 278947,
+        "name": "2020\u6b3e 2.0L CVT 2WD XL Premium\u667a\u8054\u5c0a\u4eab\u7248",
+        "displacement": "2.0L",
+        "name_en": "x-trail",
+        "car_series_id": 21,
+        "modified_date": 1569314155000,
+        "offer_price_min": 18280000,
+        "introduction": "<p>\u94bb\u77f3\u5207\u5272\u5f0f\u9510\u773cLED\u524d\u5927\u706f|\u526f\u9a7e\u7535\u52a8\u5ea7\u6905|Nissan Connect\u65e5\u4ea7\u667a\u8054<\/p>",
+        "dfl_full_code": "DFL6460VANM5-XDC3",
+        "created_date": 1568603325000,
+        "is_show": 1,
+        "state": 1,
+        "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-47-5d89d5637d0ea.jpg\" title=\"admin\/images\/2019-09-24-16-35-47-5d89d5637d0ea.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "highlight": null,
+        "image_list": ["shop\/car_type\/2019-09-20-16-51-21-5d8493098a137.jpg", "shop\/car_type\/2019-09-20-16-51-24-5d84930c4055c.jpg", "shop\/car_type\/2019-09-20-16-51-37-5d8493194a625.jpg", "shop\/car_type\/2019-09-20-16-51-39-5d84931be3c6e.jpg", "shop\/car_type\/2019-09-20-16-51-43-5d84931f9055c.jpg"]
+    }, {
+        "modified_date": 1569314131000,
+        "delivery_year": 2020,
+        "name": "2020\u6b3e 2.5L CVT 4WD XL\u667a\u8054\u9886\u5148\u7248",
+        "e4s_car_type_id": null,
+        "dfl_full_code": "DFL6460VENM4-XKC3",
+        "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-26-5d89d54e769a4.jpg\" title=\"admin\/images\/2019-09-24-16-35-26-5d89d54e769a4.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "offer_price_min": 18030000,
+        "presale": null,
+        "offer_price_max": 23130000,
+        "car_series_id": 21,
+        "sort_order": 4,
+        "guide_price": 23130000,
+        "created_date": 1541471612000,
+        "id": 235837,
+        "displacement": "2.5L",
+        "highlight": null,
+        "name_en": "x-trail",
+        "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-18-5d89d54698a3d.jpg\" title=\"admin\/images\/2019-09-24-16-35-18-5d89d54698a3d.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/>\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;&quot;\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<\/p>",
+        "introduction": "<p>BOSE\u5168\u5b9a\u5236\u9ad8\u4fdd\u771f\u8c6a\u534e\u97f3\u54cd\u7cfb\u7edf|4x4-i\u667a\u80fd\u5168\u6a21\u5f0f\u56db\u9a71|HDC\u9661\u5761\u7f13\u964d\u63a7\u5236\u7cfb\u7edf<\/p>",
+        "is_show": 1,
+        "state": 1,
+        "image_list": ["shop\/car_type\/2019-09-20-16-52-02-5d84933247b8c.jpg", "shop\/car_type\/2019-09-20-16-52-05-5d8493351cdff.jpg", "shop\/car_type\/2019-09-20-16-52-08-5d84933836ee0.jpg", "shop\/car_type\/2019-09-20-16-52-11-5d84933b1353f.jpg", "shop\/car_type\/2019-09-20-16-52-14-5d84933e1046d.jpg"]
+    }, {
+        "presale": null,
+        "car_series_id": 21,
+        "guide_price": 24430000,
+        "delivery_year": 2020,
+        "modified_date": 1569314107000,
+        "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-53-5d89d52d0fdd2.jpg\" title=\"admin\/images\/2019-09-24-16-34-53-5d89d52d0fdd2.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "name": "2020\u6b3e 2.5L CVT 4WD XL ITS\u8c6a\u534e\u9886\u822a\u7248",
+        "offer_price_max": 24430000,
+        "id": 278948,
+        "offer_price_min": 23430000,
+        "displacement": "2.5L",
+        "introduction": "<p>ProPILOT\u8d85\u667a\u9a7e|4X4-i\u667a\u80fd\u5168\u6a21\u5f0f\u56db\u9a71|NISSAN i-SAFETY\u667a\u80fd\u4e3b\u52a8\u5b89\u5168\u7cfb\u7edf<\/p>",
+        "state": 1,
+        "is_show": 1,
+        "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-01-5d89d53580b66.jpg\" title=\"admin\/images\/2019-09-24-16-35-01-5d89d53580b66.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "e4s_car_type_id": null,
+        "created_date": 1568612967000,
+        "highlight": null,
+        "name_en": "x-trail",
+        "dfl_full_code": "DFL6460VENM4-XNC3",
+        "sort_order": 5,
+        "image_list": ["shop\/car_type\/2019-09-20-16-52-31-5d84934f2fd98.jpg", "shop\/car_type\/2019-09-20-16-52-34-5d8493521eb1b.jpg", "shop\/car_type\/2019-09-20-16-52-37-5d849355309df.jpg", "shop\/car_type\/2019-09-20-16-52-40-5d84935861c01.jpg", "shop\/car_type\/2019-09-20-16-52-43-5d84935b570e0.jpg"]
+    }, {
+        "sort_order": 6,
+        "displacement": "2.5L",
+        "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-00-5d89d4f8aff17.jpg\" title=\"admin\/images\/2019-09-24-16-34-00-5d89d4f8aff17.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "created_date": 1568613803000,
+        "offer_price_max": 24730000,
+        "is_show": 1,
+        "delivery_year": 2020,
+        "state": 1,
+        "highlight": null,
+        "car_series_id": 21,
+        "id": 278949,
+        "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-06-5d89d4fec50f8.jpg\" title=\"admin\/images\/2019-09-24-16-34-06-5d89d4fec50f8.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "dfl_full_code": "DFL6460VENM6-XWBC3",
+        "presale": null,
+        "offer_price_min": 22730000,
+        "introduction": "<p>ProPILOT\u8d85\u667a\u9a7e|7\u5ea7\u5347\u7ea7\u4f53\u9a8c|NISSAN i-SAFETY\u667a\u80fd\u4e3b\u52a8\u5b89\u5168\u7cfb\u7edf<\/p>",
+        "e4s_car_type_id": null,
+        "modified_date": 1569314052000,
+        "name_en": "x-trail",
+        "name": "2020\u6b3e 2.5L CVT 4WD ITS 3rows\u4e03\u5ea7\u8c6a\u534e\u9886\u822a\u7248",
+        "guide_price": 24730000,
+        "image_list": ["shop\/car_type\/2019-09-20-16-53-03-5d84936f6054c.jpg", "shop\/car_type\/2019-09-20-16-53-06-5d8493729d7bf.jpg", "shop\/car_type\/2019-09-20-16-53-09-5d849375ab873.jpg", "shop\/car_type\/2019-09-20-16-53-12-5d8493786fefe.jpg", "shop\/car_type\/2019-09-20-16-53-17-5d84937d7a4ce.jpg"]
+    }, {
+        "offer_price_max": 27330000,
+        "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-33-5d89d519c7840.jpg\" title=\"admin\/images\/2019-09-24-16-34-33-5d89d519c7840.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-26-5d89d5124e425.jpg\" title=\"admin\/images\/2019-09-24-16-34-26-5d89d5124e425.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+        "offer_price_min": 25330000,
+        "id": 278950,
+        "name_en": "x-trail",
+        "state": 1,
+        "modified_date": 1569314077000,
+        "car_series_id": 21,
+        "is_show": 1,
+        "introduction": "<p>ProPILOT\u8d85\u667a\u9a7e|4X4-i\u667a\u80fd\u5168\u6a21\u5f0f\u56db\u9a71|NISSAN i-SAFETY\u667a\u80fd\u4e3b\u52a8\u5b89\u5168\u7cfb\u7edf<\/p>",
+        "e4s_car_type_id": null,
+        "created_date": 1568614164000,
+        "guide_price": 27330000,
+        "presale": null,
+        "displacement": "2.5L",
+        "highlight": null,
+        "dfl_full_code": "DFL6460VENM5-XVC3",
+        "name": "2020\u6b3e 2.5L CVT 4WD XV Premium\u81f3\u5c0a\u9886\u822a\u7248",
+        "delivery_year": 2020,
+        "sort_order": 7,
+        "image_list": ["shop\/car_type\/2019-09-20-16-53-32-5d84938ce06b5.jpg", "shop\/car_type\/2019-09-20-16-53-35-5d84938fb29da.jpg", "shop\/car_type\/2019-09-20-16-53-38-5d8493925ab71.jpg", "shop\/car_type\/2019-09-20-16-53-41-5d84939580f8a.jpg", "shop\/car_type\/2019-09-20-16-53-44-5d84939845f20.jpg"]
+    }]
+};
+phpData.car_type_lists = [{
+    "highlight": null,
+    "name_en": "x-trail",
+    "name": "2020\u6b3e 2.0L CVT 2WD XE\u65f6\u5c1a\u7248",
+    "is_show": 1,
+    "e4s_car_type_id": null,
+    "created_date": 1541471612000,
+    "modified_date": 1569314208000,
+    "introduction": "<p>\u65b0\u4e00\u4ee3XTRONIC CVT\u667a\u80fd\u65e0\u7ea7\u53d8\u901f\u5668(7\u901f\u624b\u81ea\u4e00\u4f53)|\u94bb\u77f3\u5207\u5272\u5f0fLED\u65e5\u884c\u706f|HSA\u4e0a\u5761\u8d77\u6b65\u8f85\u52a9\u7cfb\u7edf<\/p>",
+    "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-36-39-5d89d59712c74.jpg\" title=\"admin\/images\/2019-09-24-16-36-39-5d89d59712c74.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "offer_price_min": 15080000,
+    "displacement": "2.0L",
+    "offer_price_max": 18880000,
+    "car_series_id": 21,
+    "state": 1,
+    "dfl_full_code": "DFL6460VANM4-XB3",
+    "sort_order": 0,
+    "id": 235828,
+    "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-36-45-5d89d59d643c4.jpg\" title=\"admin\/images\/2019-09-24-16-36-45-5d89d59d643c4.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "presale": null,
+    "guide_price": 18880000,
+    "delivery_year": 2020,
+    "image_list": ["shop\/car_type\/2019-09-20-16-49-17-5d84928d3224e.jpg", "shop\/car_type\/2019-09-20-16-49-20-5d8492905a515.jpg", "shop\/car_type\/2019-09-20-16-49-23-5d8492934e227.jpg", "shop\/car_type\/2019-09-20-16-49-25-5d849295f0eaa.jpg", "shop\/car_type\/2019-09-20-16-49-28-5d849298ac36a.jpg"]
+}, {
+    "offer_price_max": 19930000,
+    "sort_order": 1,
+    "car_series_id": 21,
+    "highlight": null,
+    "modified_date": 1569314181000,
+    "created_date": 1541471612000,
+    "e4s_car_type_id": null,
+    "guide_price": 19930000,
+    "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-36-13-5d89d57d58baf.jpg\" title=\"admin\/images\/2019-09-24-16-36-13-5d89d57d58baf.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "name_en": "x-trail",
+    "name": "2020\u6b3e 2.0L CVT 2WD XL ITS \u667a\u8054\u8212\u9002\u7248",
+    "delivery_year": 2020,
+    "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-36-07-5d89d577c4db2.jpg\" title=\"admin\/images\/2019-09-24-16-36-07-5d89d577c4db2.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<\/p>",
+    "dfl_full_code": "DFL6460VANM5-XCC3",
+    "is_show": 1,
+    "id": 241208,
+    "presale": null,
+    "displacement": "2.0L",
+    "offer_price_min": 15030000,
+    "state": 1,
+    "introduction": "<p>EYE-MAX\u901a\u89c8\u5f0f\u5168\u666f\u5929\u7a97|Nissan Connect\u65e5\u4ea7\u667a\u8054|AVM\u5168\u666f\u667a\u80fd\u76d1\u63a7<\/p>",
+    "image_list": ["shop\/car_type\/2019-09-20-16-49-47-5d8492ab769a6.jpg", "shop\/car_type\/2019-09-20-16-49-50-5d8492ae6c676.jpg", "shop\/car_type\/2019-09-20-16-49-53-5d8492b153196.jpg", "shop\/car_type\/2019-09-20-16-49-56-5d8492b41b82f.jpg", "shop\/car_type\/2019-09-20-16-49-58-5d8492b6e6559.jpg"]
+}, {
+    "delivery_year": 2020,
+    "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-33-33-5d89d4dda34b9.jpg\" title=\"admin\/images\/2019-09-24-16-33-33-5d89d4dda34b9.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "e4s_car_type_id": null,
+    "created_date": 1541471612000,
+    "modified_date": 1569314025000,
+    "car_series_id": 21,
+    "highlight": null,
+    "name": "2020\u6b3e 2.0L CVT 2WD ITS 3rows\u667a\u8054\u4e03\u5ea7\u8212\u9002\u7248",
+    "dfl_full_code": "DFL6460VANM6-XWAC3",
+    "offer_price_max": 20730000,
+    "displacement": "2.0L",
+    "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-33-38-5d89d4e27fe62.jpg\" title=\"admin\/images\/2019-09-24-16-33-38-5d89d4e27fe62.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/>\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;&quot;\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<\/p>",
+    "id": 241209,
+    "state": 1,
+    "sort_order": 2,
+    "presale": null,
+    "name_en": "x-trail",
+    "guide_price": 20730000,
+    "is_show": 1,
+    "offer_price_min": 16030000,
+    "introduction": "<p>7\u5ea7\u5347\u7ea7\u4f53\u9a8c|\u7b2c\u4e8c\u6392\u5ea7\u6905\u53ef\u8c03\u8282|Nissan Connect\u65e5\u4ea7\u667a\u8054<\/p>",
+    "image_list": ["shop\/car_type\/2019-09-20-16-50-19-5d8492cb097fe.jpg", "shop\/car_type\/2019-09-20-16-50-22-5d8492ce06cd6.jpg", "shop\/car_type\/2019-09-20-16-50-24-5d8492d0bc4a3.jpg", "shop\/car_type\/2019-09-20-16-50-27-5d8492d38627e.jpg", "shop\/car_type\/2019-09-20-16-50-32-5d8492d89cdd7.jpg"]
+}, {
+    "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-42-5d89d55eb0c7e.jpg\" title=\"admin\/images\/2019-09-24-16-35-42-5d89d55eb0c7e.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "sort_order": 3,
+    "presale": null,
+    "offer_price_max": 20280000,
+    "e4s_car_type_id": null,
+    "delivery_year": 2020,
+    "guide_price": 20280000,
+    "id": 278947,
+    "name": "2020\u6b3e 2.0L CVT 2WD XL Premium\u667a\u8054\u5c0a\u4eab\u7248",
+    "displacement": "2.0L",
+    "name_en": "x-trail",
+    "car_series_id": 21,
+    "modified_date": 1569314155000,
+    "offer_price_min": 18280000,
+    "introduction": "<p>\u94bb\u77f3\u5207\u5272\u5f0f\u9510\u773cLED\u524d\u5927\u706f|\u526f\u9a7e\u7535\u52a8\u5ea7\u6905|Nissan Connect\u65e5\u4ea7\u667a\u8054<\/p>",
+    "dfl_full_code": "DFL6460VANM5-XDC3",
+    "created_date": 1568603325000,
+    "is_show": 1,
+    "state": 1,
+    "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-47-5d89d5637d0ea.jpg\" title=\"admin\/images\/2019-09-24-16-35-47-5d89d5637d0ea.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "highlight": null,
+    "image_list": ["shop\/car_type\/2019-09-20-16-51-21-5d8493098a137.jpg", "shop\/car_type\/2019-09-20-16-51-24-5d84930c4055c.jpg", "shop\/car_type\/2019-09-20-16-51-37-5d8493194a625.jpg", "shop\/car_type\/2019-09-20-16-51-39-5d84931be3c6e.jpg", "shop\/car_type\/2019-09-20-16-51-43-5d84931f9055c.jpg"]
+}, {
+    "modified_date": 1569314131000,
+    "delivery_year": 2020,
+    "name": "2020\u6b3e 2.5L CVT 4WD XL\u667a\u8054\u9886\u5148\u7248",
+    "e4s_car_type_id": null,
+    "dfl_full_code": "DFL6460VENM4-XKC3",
+    "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-26-5d89d54e769a4.jpg\" title=\"admin\/images\/2019-09-24-16-35-26-5d89d54e769a4.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "offer_price_min": 18030000,
+    "presale": null,
+    "offer_price_max": 23130000,
+    "car_series_id": 21,
+    "sort_order": 4,
+    "guide_price": 23130000,
+    "created_date": 1541471612000,
+    "id": 235837,
+    "displacement": "2.5L",
+    "highlight": null,
+    "name_en": "x-trail",
+    "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-18-5d89d54698a3d.jpg\" title=\"admin\/images\/2019-09-24-16-35-18-5d89d54698a3d.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/>\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;&quot;\r\n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<\/p>",
+    "introduction": "<p>BOSE\u5168\u5b9a\u5236\u9ad8\u4fdd\u771f\u8c6a\u534e\u97f3\u54cd\u7cfb\u7edf|4x4-i\u667a\u80fd\u5168\u6a21\u5f0f\u56db\u9a71|HDC\u9661\u5761\u7f13\u964d\u63a7\u5236\u7cfb\u7edf<\/p>",
+    "is_show": 1,
+    "state": 1,
+    "image_list": ["shop\/car_type\/2019-09-20-16-52-02-5d84933247b8c.jpg", "shop\/car_type\/2019-09-20-16-52-05-5d8493351cdff.jpg", "shop\/car_type\/2019-09-20-16-52-08-5d84933836ee0.jpg", "shop\/car_type\/2019-09-20-16-52-11-5d84933b1353f.jpg", "shop\/car_type\/2019-09-20-16-52-14-5d84933e1046d.jpg"]
+}, {
+    "presale": null,
+    "car_series_id": 21,
+    "guide_price": 24430000,
+    "delivery_year": 2020,
+    "modified_date": 1569314107000,
+    "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-53-5d89d52d0fdd2.jpg\" title=\"admin\/images\/2019-09-24-16-34-53-5d89d52d0fdd2.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "name": "2020\u6b3e 2.5L CVT 4WD XL ITS\u8c6a\u534e\u9886\u822a\u7248",
+    "offer_price_max": 24430000,
+    "id": 278948,
+    "offer_price_min": 23430000,
+    "displacement": "2.5L",
+    "introduction": "<p>ProPILOT\u8d85\u667a\u9a7e|4X4-i\u667a\u80fd\u5168\u6a21\u5f0f\u56db\u9a71|NISSAN i-SAFETY\u667a\u80fd\u4e3b\u52a8\u5b89\u5168\u7cfb\u7edf<\/p>",
+    "state": 1,
+    "is_show": 1,
+    "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-35-01-5d89d53580b66.jpg\" title=\"admin\/images\/2019-09-24-16-35-01-5d89d53580b66.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "e4s_car_type_id": null,
+    "created_date": 1568612967000,
+    "highlight": null,
+    "name_en": "x-trail",
+    "dfl_full_code": "DFL6460VENM4-XNC3",
+    "sort_order": 5,
+    "image_list": ["shop\/car_type\/2019-09-20-16-52-31-5d84934f2fd98.jpg", "shop\/car_type\/2019-09-20-16-52-34-5d8493521eb1b.jpg", "shop\/car_type\/2019-09-20-16-52-37-5d849355309df.jpg", "shop\/car_type\/2019-09-20-16-52-40-5d84935861c01.jpg", "shop\/car_type\/2019-09-20-16-52-43-5d84935b570e0.jpg"]
+}, {
+    "sort_order": 6,
+    "displacement": "2.5L",
+    "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-00-5d89d4f8aff17.jpg\" title=\"admin\/images\/2019-09-24-16-34-00-5d89d4f8aff17.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "created_date": 1568613803000,
+    "offer_price_max": 24730000,
+    "is_show": 1,
+    "delivery_year": 2020,
+    "state": 1,
+    "highlight": null,
+    "car_series_id": 21,
+    "id": 278949,
+    "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-06-5d89d4fec50f8.jpg\" title=\"admin\/images\/2019-09-24-16-34-06-5d89d4fec50f8.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "dfl_full_code": "DFL6460VENM6-XWBC3",
+    "presale": null,
+    "offer_price_min": 22730000,
+    "introduction": "<p>ProPILOT\u8d85\u667a\u9a7e|7\u5ea7\u5347\u7ea7\u4f53\u9a8c|NISSAN i-SAFETY\u667a\u80fd\u4e3b\u52a8\u5b89\u5168\u7cfb\u7edf<\/p>",
+    "e4s_car_type_id": null,
+    "modified_date": 1569314052000,
+    "name_en": "x-trail",
+    "name": "2020\u6b3e 2.5L CVT 4WD ITS 3rows\u4e03\u5ea7\u8c6a\u534e\u9886\u822a\u7248",
+    "guide_price": 24730000,
+    "image_list": ["shop\/car_type\/2019-09-20-16-53-03-5d84936f6054c.jpg", "shop\/car_type\/2019-09-20-16-53-06-5d8493729d7bf.jpg", "shop\/car_type\/2019-09-20-16-53-09-5d849375ab873.jpg", "shop\/car_type\/2019-09-20-16-53-12-5d8493786fefe.jpg", "shop\/car_type\/2019-09-20-16-53-17-5d84937d7a4ce.jpg"]
+}, {
+    "offer_price_max": 27330000,
+    "mb_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-33-5d89d519c7840.jpg\" title=\"admin\/images\/2019-09-24-16-34-33-5d89d519c7840.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "pc_body": "<p><img src=\"https:\/\/upload.chebaba.com\/admin\/images\/2019-09-24-16-34-26-5d89d5124e425.jpg\" title=\"admin\/images\/2019-09-24-16-34-26-5d89d5124e425.jpg\" alt=\"\u5947\u9a8f\u56fe\u6587-20190924.jpg\"\/><\/p>",
+    "offer_price_min": 25330000,
+    "id": 278950,
+    "name_en": "x-trail",
+    "state": 1,
+    "modified_date": 1569314077000,
+    "car_series_id": 21,
+    "is_show": 1,
+    "introduction": "<p>ProPILOT\u8d85\u667a\u9a7e|4X4-i\u667a\u80fd\u5168\u6a21\u5f0f\u56db\u9a71|NISSAN i-SAFETY\u667a\u80fd\u4e3b\u52a8\u5b89\u5168\u7cfb\u7edf<\/p>",
+    "e4s_car_type_id": null,
+    "created_date": 1568614164000,
+    "guide_price": 27330000,
+    "presale": null,
+    "displacement": "2.5L",
+    "highlight": null,
+    "dfl_full_code": "DFL6460VENM5-XVC3",
+    "name": "2020\u6b3e 2.5L CVT 4WD XV Premium\u81f3\u5c0a\u9886\u822a\u7248",
+    "delivery_year": 2020,
+    "sort_order": 7,
+    "image_list": ["shop\/car_type\/2019-09-20-16-53-32-5d84938ce06b5.jpg", "shop\/car_type\/2019-09-20-16-53-35-5d84938fb29da.jpg", "shop\/car_type\/2019-09-20-16-53-38-5d8493925ab71.jpg", "shop\/car_type\/2019-09-20-16-53-41-5d84939580f8a.jpg", "shop\/car_type\/2019-09-20-16-53-44-5d84939845f20.jpg"]
+}];
+phpData.addition_options = {
+    "purchase_plan": {
+        "1": "\u4e03\u5929",
+        "2": "\u4e00\u4e2a\u6708",
+        "3": "\u4e09\u4e2a\u6708",
+        "4": "\u516d\u4e2a\u6708"
+    },
+    "purchase_method": {
+        "1": "\u65b0\u8f66\u5168\u6b3e",
+        "2": "\u65b0\u8f66\u8d37\u6b3e",
+        "3": "\u7f6e\u6362\u5168\u6b3e",
+        "4": "\u7f6e\u6362\u8d37\u6b3e",
+        "5": "\u5176\u4ed6"
+    },
+    "car_use": {
+        "2": "\u5bb6\u5ead\u7528\u8f66",
+        "3": "\u5546\u52a1\u7528\u8f66",
+        "4": "\u8fd0\u8f93\u7528\u8f66",
+        "5": "\u5176\u4ed6",
+        "1": "\u4e0a\u4e0b\u73ed\u4ee3\u6b65"
+    }
+};
+phpData.clue_route = 'https://www.chebaba.com/leads/clue_common?car_type_id=235828&car_series_id=21&clue_type=8&channel_type=2&periods_item=%5BperiodsItem%5D&first_pay_percent=%5BfirstPayPercent%5D&financial_product_id=%5BfinancialProductId%5D&finance_flag=1';
+phpData.gallery_classes = [{
+    "parent_id": 0,
+    "name": "\u5916\u89c2",
+    "created_date": 1559208844000,
+    "id": 2,
+    "modified_date": 1559208844000,
+    "sort_order": 10
+}, {
+    "parent_id": 0,
+    "name": "\u5185\u9970",
+    "id": 7,
+    "created_date": 1559208844000,
+    "modified_date": 1559208844000,
+    "sort_order": 13
+}, {
+    "parent_id": 0,
+    "name": "\u7a7a\u95f4",
+    "created_date": 1559208844000,
+    "id": 9,
+    "modified_date": 1559208844000,
+    "sort_order": 17
+}, {
+    "parent_id": 0,
+    "name": "\u5176\u4ed6",
+    "created_date": 1559208844000,
+    "id": 6,
+    "modified_date": 1559208844000,
+    "sort_order": 21
+}];</script>
+<script src="./car_detail_files/jquery-validate.js.下载" crossorigin="anonymous"></script>
+<script src="./car_detail_files/echarts.min.js.下载"></script>
+<script src="./car_detail_files/jquery.scrollbar.js.下载"></script>
+<script src="./car_detail_files/jquery-5f4a25990d.switchable.js.下载"></script>
+<script src="./car_detail_files/swiper-ffb220dca4.min.js.下载"></script>
+<script src="./car_detail_files/car_type_detail-b4da6f2571.js.下载"></script>
+
+<script src="./car_detail_files/statistics.js.下载"></script>
+<script language="javascript" type="text/javascript">
+    NTKF_PARAM = {
+        siteid: "kf_9255",                   //企业ID，为固定值，必填
+        settingid: "kf_9255_1463036048814",  //接待组ID，为固定值，必填
+        uid: "",                     //用户ID，未登录可以为空，但不能给null，uid赋予的值显示到小能客户端上
+        uname: "",           //用户名，未登录可以为空，但不能给null，uname赋予的值显示到小能客户端上
+        isvip: "0",                          //是否为vip用户，0代表非会员，1代表会员，取值显示到小能客户端上
+        userlevel: "1",                      //网站自定义会员级别，0-N，可根据选择判断，取值显示到小能客户端上
+        erpparam: ""                      //erpparam为erp功能的扩展字段，可选，购买erp功能后用于erp功能集成
+    }
+</script>
+<script type="text/javascript" src="./car_detail_files/ntkfstat.js.下载" charset="utf-8"></script>
+</div>
+<script type="text/javascript" id="">_ha("send", "action", google_tag_manager["GTM-KGRV92J"].macro(10));</script>
+<div class="layui-layer-move"></div>
+<script type="text/javascript" id="">_ha("send", "action", google_tag_manager["GTM-KGRV92J"].macro(23));</script>
+<script type="text/javascript" id="">_ha("send", "action", google_tag_manager["GTM-KGRV92J"].macro(27));</script>
+<script type="text/javascript" id="">_ha("send", "action", google_tag_manager["GTM-KGRV92J"].macro(31));</script>
+<script type="text/javascript" id="">_ha("send", "action", google_tag_manager["GTM-KGRV92J"].macro(35));</script>
+</body>
+</html>

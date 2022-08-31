@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <avalon ms-skip="1" class="avalonHide">X
+        <style id="avalonStyle">.avalonHide {
+            display: none !important
+        }</style>
+    </avalon>
+    <style type="text/css">
+        .agl-hover {
+            outline: 2px solid rgba(244, 67, 54, 0.99) !important;
+            background-color: rgba(244, 67, 54, 0.2) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .agl-highlight-current {
+            outline: 2px solid rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-highlight-similar {
+            outline: 2px dashed rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-highlight-group {
+            outline: 4px double rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-cover-current {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 2px solid rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-similar {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 2px dashed rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-group {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 4px double rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-focus {
+            outline: 3px solid rgba(255, 165, 0, 0.99) !important;
+            background-color: rgba(255, 165, 0, 0.4) !important;
+        }
+    </style>
+
+    <title>预约试驾</title>
+    <link rel="icon" type="image/ico" href="#">
+    <style>
+        @font-face {
+            font-family: 'cbb-iconfont';
+            src: url('//s.chebaba.com/font/cbb/1.2.11/iconfont.eot'); /* IE9*/
+            src: url('//s.chebaba.com/font/cbb/1.2.11/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.woff') format('woff'), /* chrome、firefox */ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+
+        @font-face {
+            font-family: 'iconfont';
+            src: url('//s.chebaba.com/font/cbb/1.2.11/iconfont.eot'); /* IE9*/
+            src: url('//s.chebaba.com/font/cbb/1.2.11/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.woff') format('woff'), /* chrome、firefox */ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//s.chebaba.com/font/cbb/1.2.11/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="./yuyue_files/layui.css">
+    <link rel="stylesheet" type="text/css" href="./yuyue_files/nprogress-a2b5d56c2e.css">
+    <link rel="stylesheet" type="text/css" href="./yuyue_files/base-aaa252dbfc.css">
+    <link rel="stylesheet" type="text/css" href="./yuyue_files/common_clue-bf08c9060a.css">
+    <link rel="stylesheet" type="text/css" href="./yuyue_files/common-clue-step2-963289d4d3.css">
+    <link id="layuicss-laydate" rel="stylesheet" href="./yuyue_files/laydate.css" media="all">
+    <link id="layuicss-layer" rel="stylesheet" href="./yuyue_files/layer.css" media="all">
+    <link id="layuicss-skincodecss" rel="stylesheet" href="./yuyue_files/code.css" media="all">
+
+</head>
+<body style="padding-top: 0px;">
+
+<div class="header-top__clue header-cookie" data-body-id="2">
+    <!--<div class="set-cookie">-->
+    <!--<div class="cookie-content">-->
+    <!--<p>您好！我们使用 Cookie 来创建尽可能安全、有效的网站。如果您使用此站点，即表示您同意使用 Cookie。新版《赛博坦隐私政策》已上线<span-->
+    <!--class="cookie-btn J-agree" data-track="click:gtm|cbb_header_privacy_agree">我同意</span></p>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="header-top__logo">
+        <a href="#/">
+            <img src="./登录_files/logo_new.png" alt="">
+        </a>
+    </div>
+</div>
+<div class="m-main-body clue-wrap clearfix J-clue-step1">
+    <div class="J-ad-clue mod-1200" data-ad-id="109" data-ad-loading="true"></div>
+    <div class="m-hd">
+        <div class="area-l J-clue-type" data-clue-type="7" data-track="click:gtm|cbb_clue_cluetype_1">
+            咨询底价
+        </div>
+        <div class="area-l  J-clue-type active" data-clue-type="2" data-track="click:gtm|cbb_clue_cluetype_2">
+            预约试驾
+        </div>
+    </div>
+
+    <form id="J-clue-form" class="layui-form common-clue-form" novalidate="novalidate">
+        <div class="m-bd top clearfix" avalonctrl="c-series">
+            <div class="pic fl">
+                <a href="javascript:;">
+                    <img ms-src="seriesPic" src="./yuyue_files/2019-07-16-13-41-34-5d2d638e8737b.jpg">
+                </a>
+            </div>
+            <div class="car-select fl">
+                <ul>
+                    <li class="car-item">
+                        <div class="m-clue-select">
+                            <div class="hd" data-toggle="dropdown" id="clueSeries"
+                                 data-track="click:gtm|cbb_clue_carseries_switch">
+                                第14代轩逸
+                                <i class="iconfont icon-angle-down"></i>
+                            </div>
+
+                            <div class="bd common-clue__series-select">
+                                <ul>
+                                    <!--repeat199583889389:start-->
+                                    <li class="common-clue__series-item" data-id="52" data-name="第七代天籁">
+                                        <a href="javascript:;" class="common-clue__series-name text">第七代天籁</a>
+                                    </li><!--repeat199583889389-->
+
+
+                                    <li class="common-clue__series-item" data-id="39" data-name="启辰M50V">
+                                        <a href="javascript:;" class="common-clue__series-name text">启辰M50V</a>
+                                    </li><!--repeat199583889389--><!--repeat199583889389:end-->
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="car-item" style="display: none;">
+                        <div class="m-clue-select common-clue__finance-series">
+                            <div class="hd ">
+                                第14代轩逸
+                            </div>
+                        </div>
+                    </li>
+                    <li class="select-type common-clue-loading" avalonctrl="c-type">
+                        <div class="m-clue-select J-clue-validation" data-track="click:gtm|cbb_clue_cartype_switch">
+                            <div class="hd" data-toggle="dropdown" id="clueType">
+                                <div class="txt">1.6XE 舒享版 MT</div>
+                                <i class="iconfont icon-angle-down car-type-icon"></i>
+                            </div>
+                            <div class="bd common-clue__series-select">
+                                <ul>
+                                    <li class="common-clue__series-item" data-id="242151">
+                                        <a href="javascript:;" class="common-clue__series-name text">1.6XL 智享版 CVT</a>
+                                    </li><!--repeat304583532333-->
+                                    <li class="common-clue__series-item" data-id="242152">
+                                        <a href="javascript:;" class="common-clue__series-name text">1.6TOP 奢享版 CVT</a>
+                                    </li><!--repeat304583532333-->
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="select-type common-clue-loading" avalonctrl="c-type" style="display: none;">
+                        <div class="m-clue-select common-clue__finance-series">
+                            <div class="hd">
+                                <div class="txt">1.6XE 舒享版 MT</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="fl" avalonctrl="c-type">
+                <div class="common-clue__finance fl" style="display: none;">
+                    <div class="global-loading__wrap">
+                        <i class="layui-icon layui-icon-loading layui-icon layui-anim layui-anim-rotate layui-anim-loop"></i>
+                    </div>
+                    <div class="g-no-data__wrap" style="display: none;">
+                        <i class="iconfont"></i>
+                        <div class="g-no-data__tips">
+                            <h1>很遗憾，暂无相关数据！</h1>
+                        </div>
+                    </div>
+                    <div style="display: none;">
+                        <div class="common-clue__finance-wrap clearfix">
+                            <div class="common-clue__finance-tip fl">[% financeArray['financial_corp']['name'] %]</div>
+                            <div class="common-clue__finance-message fl">
+                                <span><strong class="financial_product_name"> [% financeArray['financial_product']['name'] %]</strong></span><span>分期：<strong>期</strong></span>
+                            </div>
+                        </div>
+                        <div class="common-clue__finance-detail final_dl">
+                            <dl>
+                                <dt>首付金额</dt>
+                                <dd></dd>
+                            </dl>
+                            <dl>
+                                <dt>贷款金额</dt>
+                                <dd></dd>
+                            </dl>
+                            <dl>
+                                <dt>月供金额</dt>
+                                <dd></dd>
+                            </dl>
+                            <dl class="last">
+                                <dt>尾款</dt>
+                                <dd></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="car-param clearfix">
+                    <dl>
+                        <dt class="brand-logo">
+                            <img ms-src="brandLogo" src="./main_files/logo_new-cfdc8cad21.png">
+                        </dt>
+                        <dd class="clue_brand-name" avalonctrl="c-series">东风日产</dd>
+                    </dl>
+                    <dl>
+                        <dt>车型级别</dt>
+                        <dd class="clue_brand-name" avalonctrl="c-series">三厢车</dd>
+                    </dl>
+                    <dl class="last">
+                        <dt>官方指导价</dt>
+                        <dd>10.90万起</dd>
+                        <dd style="display: none;">暂无售价</dd>
+                    </dl>
+                </div>
+            </div>
+
+        </div>
+        <div class="m-bd clue-bd">
+            <ul class="clue-ul">
+                <li class="J-clue-validation common-clue__error-list clue-item clearfix">
+                    <div class="tag"><i>*</i>您的姓名：</div>
+                    <div class="frame">
+                        <input type="text" id="clueName" name="userName" class="clue_input-box clue_input_active"
+                               autocomplete="off" placeholder="您贵姓" data-track="click:gtm|cbb_clue_custinfo_name">
+                    </div>
+                </li>
+                <li class="J-clue-validation common-clue__error-list clue-item clearfix">
+                    <div class="tag"><i>*</i>手机号码：</div>
+                    <div class="frame">
+                        <input id="J-phone-input" type="text" class="m-clue-input clue_input-box" autocomplete="off"
+                               name="phone" placeholder="请确保号码正确哦" maxlength="11"
+                               data-track="click:gtm|cbb_clue_custinfo_phone">
+                    </div>
+                </li>
+                <li class="clue-item clearfix">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label form-tip__flag"><i>*</i>所在城市：</label>
+                        <div class="layui-input-inline common-city-box" id="clueProvince"
+                             data-track="click:gtm|cbb_clue_area_province" avalonctrl="c-province">
+                            <select name="province" lay-filter="province">
+                                <option data-repeat-rendered="rendered" ms-value="el.id" value="1">北京
+                                </option>
+                                <option data-repeat-rendered="rendered" ms-value="el.id" value="2">天津
+                                </option>
+                                <option data-repeat-rendered="rendered" ms-value="el.id" value="3">河北
+                                </option>
+                            </select>
+                            <div class="layui-unselect layui-form-select">
+                                <div class="layui-select-title">
+                                    <input type="text" placeholder="请选择" value="天津
+                    " readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div>
+                                <dl class="layui-anim layui-anim-upbit">
+                                    <dd lay-value="1" class="">北京
+                                    </dd>
+                                    <dd lay-value="2" class="layui-this">天津
+                                    </dd>
+                                    <dd lay-value="30" class="">宁夏
+                                    </dd>
+                                    <dd lay-value="31" class="">新疆
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="layui-input-inline common-city-box" id="clueCity"
+                             data-track="click:gtm|cbb_clue_area_city" avalonctrl="c-city">
+                            <select name="city" lay-filter="city">
+                                <!--repeat333247364203:start-->
+                                <option data-repeat-rendered="rendered" ms-value="el.id" value="40">天津
+                                </option><!--repeat333247364203--><!--repeat333247364203:end-->
+                            </select>
+                            <div class="layui-unselect layui-form-select">
+                                <div class="layui-select-title"><input type="text" placeholder="请选择" value="天津
+                    " readonly="" class="layui-input layui-unselect"><i class="layui-edge"></i></div>
+                                <dl class="layui-anim layui-anim-upbit">
+                                    <dd lay-value="40" class="layui-this">天津
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="layui-input-inline common-city-box" id="clueCounty"
+                             data-track="click:gtm|cbb_clue_area_dist" avalonctrl="c-county">
+                            <select name="county" lay-filter="county">
+                                <option value=" ">全部</option>
+                                <!--repeat116716787654:start-->
+                                <option data-repeat-rendered="rendered" ms-value="el.id" value="55">和平区</option>
+                                <!--repeat116716787654-->
+                                <option data-repeat-rendered="rendered" ms-value="el.id" value="72">蓟州区</option>
+                                <!--repeat116716787654--><!--repeat116716787654:end-->
+                            </select>
+                            <div class="layui-unselect layui-form-select">
+                                <div class="layui-select-title"><input type="text" placeholder="请选择" value="全部"
+                                                                       readonly="" class="layui-input layui-unselect"><i
+                                        class="layui-edge"></i></div>
+                                <dl class="layui-anim layui-anim-upbit">
+                                    <dd lay-value=" " class="layui-this">全部</dd>
+                                    <dd lay-value="55" class="">和平区</dd>
+                                    <dd lay-value="56" class="">河东区</dd>
+                                    <dd lay-value="72" class="">蓟州区</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="common-clue__dealer-wrap" avalonctrl="c-dealer">
+                    <div class="common-clue__dealer_right">
+                        <h2 class="common-clue__select-dealer-tip" style="">请至少选择一家为您服务的经销商</h2>
+                        <div style="">
+                            <div class="scroll-wrapper common-clue__dealer-list-box scrollbar-inner"
+                                 style="position: relative;">
+                                <div id="clueDealers"
+                                     class="common-clue__dealer-list-box scrollbar-inner scroll-content scroll-scrolly_visible"
+                                     style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 256px;">
+                                    <ul>
+                                        <!--repeat932378843643:start-->
+                                        <li class="common-clue__dealer-item clearfix active">
+                                            <span class="common-clue__dealer-select-icon"><i
+                                                    class="iconfont"></i></span>
+                                            <div class="fl">
+                                                <div class="common-clue__dealer-name">天津名濠</div>
+                                                <div class="common-clue__dealer-address"><i class="iconfont"></i>普济河东道一号
+                                                </div>
+                                            </div>
+                                            <div class="common-clue__dealer-city fr">北辰区</div>
+                                        </li><!--repeat932378843643-->
+                                        <li class="common-clue__dealer-item clearfix active">
+                                            <span class="common-clue__dealer-select-icon"><i
+                                                    class="iconfont"></i></span>
+                                            <div class="fl">
+                                                <div class="common-clue__dealer-name">天津名宣</div>
+                                                <div class="common-clue__dealer-address"><i class="iconfont"></i>汽车园南路25号
+                                                </div>
+                                            </div>
+                                            <div class="common-clue__dealer-city fr">东丽区</div>
+                                        </li><!--repeat932378843643-->
+                                        <li class="common-clue__dealer-item clearfix">
+                                            <span class="common-clue__dealer-select-icon"><i
+                                                    class="iconfont"></i></span>
+                                            <div class="fl">
+                                                <div class="common-clue__dealer-name">天津新濠</div>
+                                                <div class="common-clue__dealer-address"><i class="iconfont"></i>天津市东丽开发区一纬路四号
+                                                </div>
+                                            </div>
+                                            <div class="common-clue__dealer-city fr">东丽区</div>
+                                        </li><!--repeat932378843643-->
+
+                                    </ul>
+                                </div>
+                                <div class="scroll-element scroll-x scroll-scrolly_visible">
+                                    <div class="scroll-element_outer">
+                                        <div class="scroll-element_size"></div>
+                                        <div class="scroll-element_track"></div>
+                                        <div class="scroll-bar" style="width: 61px;"></div>
+                                    </div>
+                                </div>
+                                <div class="scroll-element scroll-y scroll-scrolly_visible">
+                                    <div class="scroll-element_outer">
+                                        <div class="scroll-element_size"></div>
+                                        <div class="scroll-element_track"></div>
+                                        <div class="scroll-bar" style="height: 90px; top: 0px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="global-loading__wrap" style="display: none;">
+                            <i class="layui-icon layui-icon-loading layui-icon layui-anim layui-anim-rotate layui-anim-loop"></i>
+                        </div>
+                        <div class="g-no-data__wrap" style="display: none;">
+                            <i class="iconfont"></i>
+                            <div class="g-no-data__tips">
+                                <h1>很遗憾，暂无相关数据！</h1>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="common-clue__bottom-box">
+            <button id="J-submit-clue" type="submit" class="common-clue_submit-btn"
+                    data-track="click:gtm|cbb_clue_clue_submit">预约试驾
+            </button>
+            <div class="layui-form-item J-clue-validation clearfix" pane="">
+                <div class="layui-input-block" data-track="click:gtm|cbb_clue_pip_agree">
+                    <input type="checkbox" name="agree" id="agree-checkbox" lay-skin="primary" title="我已阅读并同意">
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>我已阅读并同意</span><i
+                            class="layui-icon layui-icon-ok"></i></div>
+                    <a id="J-agreement-btn" class="common-clue__doc" href="https://cms.chebaba.com/show/1589"
+                       target="_blank" rel="noopener noreferrer"
+                       data-track="click:gtm|cbb_clue_pip_reed">《赛博坦个人信息保护声明》</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="clue-step2__wrap J-clue-step2 none">
+    <div class="success-wrap">
+        <div class="success-img">
+            <img src="./yuyue_files/clue_success_tip-3733527a76.png" alt="">
+        </div>
+        <h1 class="success-text">提交成功</h1>
+        <p class="success-tip">客服人员将在24小时内与您联系，为您讲解最新的优惠政策</p>
+    </div>
+    <form id="J-common-step2" autocomplete="off">
+        <div class="clue-step2__form-tip">完善购车需求，获得更精准的服务</div>
+        <div class="clue-step2__top-content" avalonctrl="clue-step2">
+            <div class="clue-step2__content">
+                <div class="clue-step2__form">
+                    <ul class="clue-step2__form-box">
+                        <li class="clue-step2__message-item clearfix">
+                            <span class="clue-step2__message-item-tip fl">购车方式</span>
+                            <div class="clue-step2__select-list fl">
+                                <label class="J-switch-check clue-step2__select-item J-method-switch  none"
+                                       data-method-id="5">其他<input type="radio" name="purchaseMethod" value="5"></label>
+                                <label class="J-switch-check clue-step2__select-item J-method-switch active "
+                                       data-method-id="1">新车全款<input checked="" type="radio" name="purchaseMethod"
+                                                                     value="1"></label>
+                                <label class="J-switch-check clue-step2__select-item J-method-switch  "
+                                       data-method-id="2">新车贷款<input type="radio" name="purchaseMethod"
+                                                                     value="2"></label>
+                                <label class="J-switch-check clue-step2__select-item J-method-switch  "
+                                       data-method-id="3">置换全款<input type="radio" name="purchaseMethod"
+                                                                     value="3"></label>
+                                <label class="J-switch-check clue-step2__select-item J-method-switch  "
+                                       data-method-id="4">置换贷款<input type="radio" name="purchaseMethod"
+                                                                     value="4"></label>
+                            </div>
+                        </li>
+                        <li class="J-clue-validation clue-step2__message-item clearfix" style="display: none;">
+                            <span class="clue-step2__message-item-tip fl">期望额度</span>
+                            <div class="clue-step2__select-list fl">
+                                <input type="number" placeholder="请填写" name="loanPrice"
+                                       class="clue-step2__input ignore">万元<span class="clue-step2__good-price">（指导价：10.90万起）</span>
+                            </div>
+                        </li>
+                        <li class="J-clue-validation clue-step2__message-item clearfix" style="display: none;">
+                            <span class="clue-step2__message-item-tip fl">置换车型</span>
+                            <div class="clue-step2__select-list fl">
+                                <input type="text" placeholder="请填写置换的车型" name="replaceCarType"
+                                       class="clue-step2__input ignore">
+                            </div>
+                        </li>
+                        <li class="J-clue-validation clue-step2__message-item clearfix" style="display: none;">
+                            <span class="clue-step2__message-item-tip fl">行驶公里</span>
+                            <div class="clue-step2__select-list fl">
+                                <input type="number" placeholder="请填写" name="userCarMileage"
+                                       class="clue-step2__input ignore">万公里
+                            </div>
+                        </li>
+                        <li class="J-clue-validation clue-step2__message-item clearfix">
+                            <span class="clue-step2__message-item-tip fl">提车计划</span>
+                            <div class="clue-step2__select-list fl">
+                                <label class="J-switch-check clue-step2__select-item">七天<input type="radio"
+                                                                                               name="purchasePlan"
+                                                                                               value="1"></label>
+                                <label class="J-switch-check clue-step2__select-item">一个月<input type="radio"
+                                                                                                name="purchasePlan"
+                                                                                                value="2"></label>
+                                <label class="J-switch-check clue-step2__select-item">三个月<input type="radio"
+                                                                                                name="purchasePlan"
+                                                                                                value="3"></label>
+                                <label class="J-switch-check clue-step2__select-item">六个月<input type="radio"
+                                                                                                name="purchasePlan"
+                                                                                                value="4"></label>
+                            </div>
+                        </li>
+                        <li class="J-clue-validation clue-step2__message-item clearfix">
+                            <span class="clue-step2__message-item-tip fl">购车用途</span>
+                            <div class="clue-step2__select-list fl">
+                                <ul class="clearfix">
+                                    <li class="clue-step2__checkbox-list fl">
+                                        <label for="carUser1" class="J-more-check clue-step2__select-item">上下班代步</label>
+                                        <input id="carUser1" type="checkbox" name="carUser" value="1">
+                                    </li>
+                                    <li class="clue-step2__checkbox-list fl">
+                                        <label for="carUser2" class="J-more-check clue-step2__select-item">家庭用车</label>
+                                        <input id="carUser2" type="checkbox" name="carUser" value="2">
+                                    </li>
+                                    <li class="clue-step2__checkbox-list fl">
+                                        <label for="carUser3" class="J-more-check clue-step2__select-item">商务用车</label>
+                                        <input id="carUser3" type="checkbox" name="carUser" value="3">
+                                    </li>
+                                    <li class="clue-step2__checkbox-list fl">
+                                        <label for="carUser4" class="J-more-check clue-step2__select-item">运输用车</label>
+                                        <input id="carUser4" type="checkbox" name="carUser" value="4">
+                                    </li>
+                                    <li class="clue-step2__checkbox-list fl">
+                                        <label for="carUser5" class="J-more-check clue-step2__select-item">其他</label>
+                                        <input id="carUser5" type="checkbox" name="carUser" value="5">
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="J-clue-validation clue-step2__message-item clearfix">
+                            <span class="clue-step2__message-item-tip fl">有无试驾</span>
+                            <div class="clue-step2__select-list fl">
+                                <label class="J-switch-check clue-step2__select-item">有<input type="radio"
+                                                                                              name="testedCar"
+                                                                                              value="1"></label>
+                                <label class="J-switch-check clue-step2__select-item">无<input type="radio"
+                                                                                              name="testedCar"
+                                                                                              value="0"></label>
+                            </div>
+                        </li>
+                        <li class="J-clue-validation clue-step2__message-item clearfix">
+                            <span class="clue-step2__message-item-tip fl">有无车牌</span>
+                            <div class="clue-step2__select-list fl">
+                                <label class="J-switch-check clue-step2__select-item">有<input type="radio"
+                                                                                              name="havePlate"
+                                                                                              value="1"></label>
+                                <label class="J-switch-check clue-step2__select-item">无<input type="radio"
+                                                                                              name="havePlate"
+                                                                                              value="0"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clue-step2__btn-box">
+            <p class="common-clue__form-error">请检查信息完整性</p>
+            <button id="J-submit-clue-step2" type="submit" class="clue-step2__submit-btn">提交</button>
+        </div>
+    </form>
+    <div class="clue-step2__adv_top">
+        <div class="J-ad-clue-step2" data-ad-id="110" data-ad-loading="true"></div>
+    </div>
+</div>
+
+<div class="footer__word">
+    Copyright © 2008-2019 saibotan。coma，All Rights Reserved <a href="http://beian.miit.gov.cn/" target="_blank"
+                                                               rel="noopener noreferrer">粤ICP备15053418号-1</a> 版权所有
+    赛博坦乘用车公司
+</div>
+
+
+<div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+    <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+</div>
+
+</body>
+</html>

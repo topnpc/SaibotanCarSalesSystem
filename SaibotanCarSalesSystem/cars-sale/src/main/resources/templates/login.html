@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html ng-app="login">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="赛博坦汽车销售公司">
+    <meta name="description" content="赛博坦是汽车代理电商平台,为您提供官方最新的汽车代理报价优惠,4S店信息,团购活动,贷款方案及特价车.买汽车,上赛博坦？就上赛博坦汽车电商平台！">
+    <title>登录</title>
+    <script src="js/angular.js"></script>
+    <script src="js/login.js"></script>
+
+
+    <style>
+        @font-face {
+            font-family: 'cbb-iconfont';
+            src: url('//s.chebaba.com/font/cbb/1.2.4/iconfont.eot'); /* IE9*/
+            src: url('//s.chebaba.com/font/cbb/1.2.4/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//s.chebaba.com/font/cbb/1.2.4/iconfont.woff') format('woff'), /* chrome、firefox */ url('//s.chebaba.com/font/cbb/1.2.4/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//s.chebaba.com/font/cbb/1.2.4/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="./登录_files/base.css">
+    <link rel="stylesheet" type="text/css" href="./登录_files/sso-2ec478799e.css">
+
+    <style type="text/css">
+        .agl-hover {
+            outline: 2px solid rgba(244, 67, 54, 0.99) !important;
+            background-color: rgba(244, 67, 54, 0.2) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .agl-highlight-current {
+            outline: 2px solid rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-highlight-similar {
+            outline: 2px dashed rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-highlight-group {
+            outline: 4px double rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-cover-current {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 2px solid rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-similar {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 2px dashed rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-group {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 4px double rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-focus {
+            outline: 3px solid rgba(255, 165, 0, 0.99) !important;
+            background-color: rgba(255, 165, 0, 0.4) !important;
+        }
+    </style>
+
+<body ng-controller="userlogin">
+<div class="sso-1200">
+    <div class="sso_logo">
+        <!--logo car -->
+        <a href="https://passport.chebaba.com/"><img src="./登录_files/logo_new.png"></a>
+    </div>
+</div>
+<div class="sso-login">
+    <div class="J-ad-system banner sso-banner" data-ad-id="68">
+        <ul class="slides clearfix">
+            <li>
+                <a href="" target="_blank"><img src="./登录_files/05561933062059043.jpg"></a>
+            </li>
+        </ul>
+    </div>
+    <!--<div class="">
+            <a href="javascript:;"><img src="https://passport.chebaba.com/build/default/pc/images/sso/sso_banner-6c1902c980.jpg" /></a>
+        </div>-->
+    <div class="sso-content sso-1200">
+        <div class="sso-form">
+            <div class="title-tab" style="text-align: center">
+                <span style="text-align: center;font-size: 30px;font-weight: bold">用户登录</span>
+
+            </div>
+
+            <!--用户登陆-->
+            <div id="tabs_container" class="form-tab tabs-container">
+                <div class="form-tab-login J-tabs-content" style="display: block;">
+                    <form id="login_form" novalidate="novalidate">
+                        <div class="J-span-IE mt-15">
+                            <input type="text" placeholder="请输入用户名" ng-model="username"
+                                   class="sso-login-input J-general-login" id="isPhone" name="username" maxlength="11">
+                            <i class="error-empty none"></i>
+                        </div>
+                        <div class="J-span-IE mt-15">
+                            <input type="password" placeholder="请输入密码" ng-model="userpass"
+                                   class="sso-login-input J-general-login" id="isPassword" name="userpass"
+                                   maxlength="20">
+                            <i class="error-empty none"></i>
+                        </div>
+
+                        <div class="error-tips-content">{{msg}}</div>
+
+                        <input type="button" class="submit sso-login-btn" id="submit" value="登   录" ng-click="login()">
+                        <!--到注册页面-->
+                        <div class="remember-register clearfix">
+                            <div class="sso-register-login fr">
+                                <a href="register.html">注册账号</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="other-login">
+                <div class="other-hd">
+                    <span class="other-title">其他登录方式</span>
+                </div>
+                <div class="weixin-weibo">
+                    <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxd489cbab7813f1a9&amp;redirect_uri=https%3A%2F%2Fpassport.chebaba.com%2Fsso%2Fwx%2Fcallback%3FreturnUrl%3Dhttps%253A%252F%252Fuser.chebaba.com%252Fuser%252Fapi%252Fmember%252Flogin%253Flogincode%253D60723d62d0a69d4b%2526ref_url%253Dhttps%25253A%25252F%25252Fuser.chebaba.com%25252Fuser%25252Findex.html%25253FSMARTCODE%25253Dg2019-3223625-90-12938160%252526pk_vid%25253D9e568afc99ed7cd21569632811887ad2%26type%3Dopen&amp;response_type=code&amp;scope=snsapi_login&amp;state=70ca897349b9fa32c00a862af06c69f6"
+                       class="ww-link login-weixin"></a>
+                    <a href="javascript:;" class="ww-link login-weibo fr hide"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var return_url = 'https://user.chebaba.com/user/api/member/login?logincode=60723d62d0a69d4b&ref_url=https%3A%2F%2Fuser.chebaba.com%2Fuser%2Findex.html%3FSMARTCODE%3Dg2019-3223625-90-12938160%26pk_vid%3D9e568afc99ed7cd21569632811887ad2';
+    //var return_url = 'https://user.chebaba.com/user/api/member/login?logincode=60723d62d0a69d4b&ref_url=https://user.chebaba.com/user/index.html?SMARTCODE=g2019-3223625-90-12938160&pk_vid=9e568afc99ed7cd21569632811887ad2';
+    var disabledOpj = {
+        btnOpj: '',
+        btnText: '',
+        btnFlag: '',
+        btnClass: '',
+        disClass: '',
+    }
+
+    var client_id = '';
+    //广告
+    var slideShowOps = {
+        url: 'https://passport.chebaba.com/rest/index',
+        param: {
+            act: 'rest',
+            op: 'single_filter',
+            data: {
+                "callClass": "adv",
+                "callName": "findAdByAdPositionIdList",
+                "callParam": {
+                    "positionIds": [68],
+                    "cityId": ""
+                }
+            }
+        }
+    }
+
+</script>
+
+
+<div class="clear"></div>
+<div class="global-footer">
+    <div class="top">
+        <div class="mod-1200">
+            <ul class="advantage clearfix">
+                <li>
+                    <i class="global-icon contrast-icon"></i>
+                    多家对比 轻松买车
+                </li>
+                <li>
+                    <i class="global-icon promise-icon"></i>
+                    底价承诺 价格保证
+                </li>
+                <li>
+                    <i class="global-icon approve-icon"></i>
+                    认证商家 服务保障
+                </li>
+                <li class="last">
+                    <i class="global-icon any-time-icon"></i>
+                    订金随时可退
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="mod-1120">
+            <div class="copyright">
+                Copyright © 2008-2019 saibotan。coma，All Rights Reserved 粤ICP备15053418号-1 版权所有 <strong>赛博坦乘用车公司</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

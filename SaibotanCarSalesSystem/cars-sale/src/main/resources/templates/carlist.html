@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html class=" " ng-app="carlistmodule">
+<head>
+    <script src="js/angular.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charsetcharset=UTF-8">
+    <style type="text/css">
+        .agl-hover {
+            outline: 2px solid rgba(244, 67, 54, 0.99) !important;
+            background-color: rgba(244, 67, 54, 0.2) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .agl-highlight-current {
+            outline: 2px solid rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-highlight-similar {
+            outline: 2px dashed rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-highlight-group {
+            outline: 4px double rgba(255, 87, 34, 0.99) !important;
+            background-color: rgba(255, 87, 34, 0.4) !important;
+        }
+
+        .agl-cover-current {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 2px solid rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-similar {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 2px dashed rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-group {
+
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            z-index: 9 !important;
+
+            outline: 4px double rgba(33, 33, 33, 0.99) !important;
+            background-color: rgba(33, 33, 33, 0.6) !important;
+        }
+
+        .agl-cover-focus {
+            outline: 3px solid rgba(255, 165, 0, 0.99) !important;
+            background-color: rgba(255, 165, 0, 0.4) !important;
+        }
+    </style>
+    <script type="text/javascript" async="" src="main_files/dndc-statistics.js"></script>
+    <script type="text/javascript" async="" src="main_files/fcagl.js"></script>
+    <script src="main_files/push.js"></script>
+    <script type="text/javascript" async="" src="main_files/collect.js"></script>
+    <script src="main_files/hm.js"></script>
+    <script type="text/javascript" async="" src="main_files/js"></script>
+    <script type="text/javascript" async="" defer="" src="main_files/piwik.js"></script>
+    <script type="text/javascript" async="" src="main_files/analytics.js"></script>
+    <script type="text/javascript" async="" src="main_files/analytics.js"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="zhqmdLdXc2Dr7Jx1L30Z0dmkt0PP3t2e48F1Da0m">
+    <meta name="keywords" content="">
+    <meta name="description"
+          content="">
+    <title>赛博坦汽车销售平台</title>
+    <link rel="icon" type="image/ico" href="https://cms.baidu.com/themes/cms/assets/images/favicon.ico">
+    <script async="" src="main_files/gdtevent.min.js"></script>
+    <script async="" src="main_files/gtm.js"></script>
+    <script src="main_files/global_gtm_dict.js"></script>
+    <script src="main_files/hwt.js" async=""></script>
+    <script src="main_files/head-statistics.js" async=""></script>
+    <script src="bootstrap/css/bootstrap.css"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <style>
+        @font-face {
+            font-family: 'cbb-iconfont';
+            src: url('//s.baidu.com/font/cbb/1.2.11/iconfont.eot'); /* IE9*/
+            src: url('//s.baidu.com/font/cbb/1.2.11/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//s.baidu.com/font/cbb/1.2.11/iconfont.woff') format('woff'), /* chrome、firefox */ url('//s.baidu.com/font/cbb/1.2.11/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//s.baidu.com/font/cbb/1.2.11/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+
+        @font-face {
+            font-family: 'iconfont';
+            src: url('//s.baidu.com/font/cbb/1.2.11/iconfont.eot'); /* IE9*/
+            src: url('//s.baidu.com/font/cbb/1.2.11/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//s.baidu.com/font/cbb/1.2.11/iconfont.woff') format('woff'), /* chrome、firefox */ url('//s.baidu.com/font/cbb/1.2.11/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//s.baidu.com/font/cbb/1.2.11/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="main_files/layui.css">
+
+    <link rel="stylesheet" type="text/css" href="main_files/nprogress-a2b5d56c2e.css">
+    <link rel="stylesheet" type="text/css" href="main_files/base-43ea880730.css">
+
+
+    <link rel="stylesheet" type="text/css" href="main_files/index-6e48276653.css">
+    <link id="layuicss-laydate" rel="stylesheet" href="main_files/laydate.css" media="all">
+    <link id="layuicss-layer" rel="stylesheet" href="main_files/layer.css" media="all">
+    <link id="layuicss-skincodecss" rel="stylesheet" href="main_files/code.css" media="all">
+    <script type="text/javascript" async="async" charset="utf-8" src="main_files/zh_cn.js"
+            data-requiremodule="lang"></script>
+    <script type="text/javascript" async="async" charset="utf-8" src="main_files/chat.in.js."
+            data-requiremodule="chatManage"></script>
+    <script type="text/javascript" async="async" charset="utf-8" src="main_files/mqtt31.js"
+            data-requiremodule="MQTT"></script>
+    <script type="text/javascript" async="async" charset="utf-8" src="main_files/mqtt.chat.js."
+            data-requiremodule="Connection"></script>
+    <script src="js/carlistbytype.js"></script>
+</head>
+<body style="padding-top: 104px;" ng-controller="carlistcontroller">
+<noscript>
+
+    <img height="1" width="1" style="display:none"
+         src="https://a.gdt.qq.com/pixel?user_action_set_id=1106794325&action_type=PAGE_VIEW&noscript=1"/></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGRV92J" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!--<iframe height="0" width="0" style="display: none; visibility: hidden;" src="#"></iframe>-->
+<div class="header__bar_wrap header-cookie" data-body-id="0">
+
+
+    <div class="nav-box clearfix">
+        <div class="nav-logo fl"><img src="main_files/logo_new-cfdc8cad21.png"></div>
+        <ul class="shopcar__tab fl">
+            <li class="nav-item fl">
+                <a href="http://localhost:8081/main.html" class="fl nav-item"
+                   style="color: green;font-size: 20px;font-weight: bold"
+                   data-track="click:gtm|cbb_header_nav_1">首页</a>
+            </li>
+            <!--            <li class="nav-item fl">-->
+            <!--                <a href="http://localhost:8081/listcar.html" class="fl nav-item" style="color: green;font-size: 20px;font-weight: bold"-->
+            <!--                   data-track="click:gtm|cbb_header_nav_1">挑车</a>-->
+            <!--            </li>-->
+            <li class="fl nav-item" ng-repeat="m in navs" style="color: black;font-size: 20px;font-weight: bold">
+                <a class=""
+                   data-ng-click="typecarlist(m.navName)" data-track="click:gtm|cbb_header_nav_2">{{m.navName}}</a>
+            </li>
+
+        </ul>
+
+        <!--登录快-->
+        <!--<div class="user-img fr">-->
+        <div class="fr" style="line-height: 56px">
+            <a href="/tologin.do" ng-show="flag_user" style="display:inline">
+                登录
+            </a>
+            <a href="register.html" ng-show="flag_user" style="display: inline">
+                注册
+            </a>
+
+            <a href="/tologin.do" ng-show="!flag_user">你好,{{username}}</a>
+
+            <a href="#" ng-click="update()" ng-show="!flag_user" style="display:inline">
+                修改
+            </a>
+            <a href="#" ng-click="logout()" ng-show="!flag_user" style="display:inline">
+                退出
+            </a>
+
+        </div>
+        <!--登录快-->
+
+
+    </div>
+</div>
+<script type="text/javascript" id="">var _paq = _paq || [];
+_paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+_paq.push(["setCookieDomain", "*.dongfeng-nissan.com.cn"]);
+_paq.push(["setDomains", ["*.dongfeng-nissan.com.cn", "*.baidu.com"]]);
+_paq.push(["enableCrossDomainLinking"]);
+_paq.push(["setCustomVariable", 1, "siteName", "chebaba", "page"]);
+_paq.push(["trackPageView"]);
+_paq.push(["enableLinkTracking"]);
+(function () {
+    var c = "https://monitor.dongfeng-nissan.com.cn/piwik/";
+    _paq.push(["setTrackerUrl", c + "piwik.php"]);
+    _paq.push(["setSiteId", "7"]);
+    var a = document, b = a.createElement("script");
+    a = a.getElementsByTagName("script")[0];
+    b.type = "text/javascript";
+    b.async = !0;
+    b.defer = !0;
+    b.src = c + "piwik.js";
+    a.parentNode.insertBefore(b, a)
+})();</script>
+
+
+<br/><br/><br/>
+
+
+<div class="car-index_wrap">
+    <div class="car-index__content">
+        <ul class="clearfix J-car-screen m-car__screen">
+            <li class="m-car-series__type-item m-car-series__hover-active" ng-repeat="car in carbytypes"
+                data-brand-id="1" data-extra-level="13" data-series-id="14" data-track="click:gtm|cbb_car_carlist_14"
+                style="display: list-item;">
+                <a href="{{car.url}}?id={{car.id}}" target="_blank">
+                    <div class="new-car-presell">新车预售</div>
+                    <div class="car-index__pic-box">
+                        <img class="lazyload" src="{{car.imgurl}}" alt="#" style="display: inline-block;">
+                    </div>
+                    <div class="car-index__text-box">
+                        <h4 class="car-type__name">{{car.name}}</h4>
+                        <p class="car-type__price-box">
+                            <span class="car-type__price">{{car.price}}</span>
+                            <span class="price_reduce">
+										<i class="price_reduce-sign cbb-iconfont" style=""></i>
+																				<span class="reductionPrice">正在优惠</span>
+									</span>
+                        </p>
+                        <div class="car_content__label">
+                            <span class="car_content__label__class"
+                                  data-ng-click="buy(car.url+'?id='+car.id)">全款购车</span>
+                            <span class="car_content__label__num">在售车型</span>
+                        </div>
+
+                    </div>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<div class="online-service">
+    <div class="right-service" type="button" data-track="click:gtm|cbb_index_tips_service">
+        <!--onclick="NTKF.im_openInPageChat(&#39;kf_9255_1463036048814&#39;)">-->
+        <i class="iconfont"></i>
+        <span class="online-service__tip">咨询</span>
+    </div>
+    <div class="scroll-top" data-track="click:gtm|cbb_index_tips_top" id="J-scroll-top">
+        <i class="iconfont"></i>
+        <span class="online-service__tip1">回顶部</span>
+    </div>
+</div>
+
+
+<div class="global__footer_wrap">
+    <div>
+        <div class="global__footer clearfix">
+            <div class="footer__logo">
+                <a class="bar__logo" href="#"><img
+                        src="main_files/logo_new-cfdc8cad21.png"></a>
+                <div class="about__us clearfix">
+                    <span>关注我们：</span>
+
+                    <a class="wechat" href="#">
+                        <i class="cbb-iconfont"></i>
+                        <div class="contact-dropdown">
+                            <div class="pic global-icon"></div>
+                        </div>
+                    </a>
+                    <a class="microblog" href="#">
+                        <i class="cbb-iconfont"></i>
+                        <div class="contact-dropdown">
+                            <div class="pic global-icon"></div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="word_wrap clearfix">
+                <dl>
+                    <dt>新手指南</dt>
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1587?" target="&quot;_blank&quot;"
+                           data-track="click:gtm|cbb_footer_link_1">法律声明</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1588?" target="&quot;_blank&quot;"
+                           data-track="click:gtm|cbb_footer_link_2">隐私保护</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1589?" target="&quot;_blank&quot;"
+                           data-track="click:gtm|cbb_footer_link_3">个人信息保护说明</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>关于我们</dt>
+
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1652" target="&quot;_blank&quot;">赛博坦简介</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/show/1649" target="&quot;_blank&quot;">联系我们</a>
+                    </dd>
+                    <dd>
+                        <a href="javascript:;" class="J-delete-info" data-track="click:gtm|cbb_footer_link_3">注销个人信息</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>新车资讯</dt>
+                    <dd>
+                        <a href="https://cms.baidu.com/list/mtsc" target="&quot;_blank&quot;">媒体说车</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/list/spjx" target="&quot;_blank&quot;">视频精选</a>
+                    </dd>
+                    <dd>
+                        <a href="https://cms.baidu.com/list/wdjx" target="&quot;_blank&quot;">汽车问答</a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="customer_wrap">
+                <label>联系我们</label>
+                <span class="small_phone">111-111-1111</span>
+                <!--<div type="button" class="btn-service" onclick="NTKF.im_openInPageChat(&#39;kf_9255_1463036048814&#39;)"-->
+                data-track="click:gtm|cbb_footer_service_service">在线客服
+            </div>
+            <!--<span class="small_word">服务时段：8:30 ～ 22:00</span>-->
+        </div>
+    </div>
+    <div class="footer__word">
+        友情链接：
+        <a href="https://www.dongfeng-nissan.com.cn/" data-track="click:gtm|cbb_footer_link_4"
+           target="_blank">赛博坦官方网站</a>
+        |
+        <a href="https://www.venucia.com/" data-track="click:gtm|cbb_footer_link_5" target="_blank">东风启辰官方网站</a> |
+        <a href="https://dongfeng-nissan.tmall.com/" data-track="click:gtm|cbb_footer_link_6"
+           target="_blank">赛博坦天猫旗舰店</a>
+        |
+        <a href="http://www.autohome.com.cn/" data-track="click:gtm|cbb_footer_link_7" target="_blank">汽车之家</a> |
+        <br>
+        Copyright © 2008-2019 saibotan.coma，All Rights Reserved <a href="http://beian.miit.gov.cn/"
+                                                                   data-track="click:gtm|cbb_footer_link_9"
+                                                                   target="_blank" rel="noopener noreferrer">粤ICP备15053418号-1</a>
+        版权所有 赛博坦乘用车公司
+    </div>
+    <div class="J-user-info user-info-mask none"></div>
+    <div class="J-user-info user-info-content none">
+        <div class="info-close J-info-close"><i class="cbb-iconfont"></i></div>
+        <div class="info-title">注销个人信息申请</div>
+        <p class="info-tips">*当您成功申请注销个人信息和账户信息后，我们将在您提出申请的48小时内完成对您申请内容的注销审核，审核通过后，我们将对您的个人信息进行删除或匿名化处理。</p>
+        <form id="J-userinfo-form" class="layui-form user-info__delete" novalidate="novalidate">
+            <div class="clearfix">
+                <div class="info-input fl">
+                    <input type="text" placeholder="输入申请人姓名" class="info-input__user J-dynamic-info"
+                           id="infoPetName" name="infoPetName">
+                    <div class="error-tips-content"></div>
+                </div>
+                <div class="info-input fr">
+                    <input type="text" placeholder="输入手机号码" class="info-input__user J-dynamic-info" id="infoPhone"
+                           name="infoPhone" maxlength="11">
+                    <div class="error-tips-content"></div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="info-input fl">
+                    <input type="text" placeholder="输入图形验证码"
+                           class="info-input__user info-input__user-short J-dynamic-info" id="identifyInfoCode"
+                           name="identifyInfoCode" maxlength="4">
+                    <div class="user-info__btn user-info__btn-code" id="identify_info_code">
+                        <img id="J-user-info__chartcode" src="#"
+                             data-src="#" alt="验证码"
+                             class="updateIdentifyInfoCode">
+                        <p class="none click-notify updateIdentifyInfoCode">点击刷新</p>
+                    </div>
+                    <div class="error-tips-content"></div>
+                </div>
+                <div class="info-input fr">
+                    <input type="text" placeholder="输入短信验证码"
+                           class="info-input__user info-input__user-short J-dynamic-info" id="SMSInfoCode"
+                           name="sms_info_captcha" maxlength="4">
+                    <div class="user-info__btn user-info__btn-sms">
+                        <button class="user-info__code" id="J-check-info-num">获取验证码</button>
+                        <b class="info-font-color" style="display:none">120s</b>
+                    </div>
+                    <div class="error-tips-content"></div>
+                </div>
+            </div>
+            <p class="info-tips">留资历史</p>
+            <ul class="info-type clearfix J-info__type-list">
+                <li class="info-type-list fl" data-id="1">线索留资</li>
+                <li class="info-type-list fl" data-id="2">卡券信息</li>
+                <li class="info-type-list fl" data-id="3">金融贷款</li>
+                <li class="info-type-list fl" data-id="4">厂家活动</li>
+                <li class="info-type-list fl" data-id="0">其他</li>
+            </ul>
+            <button type="submit" class="info-submit" id="infoSubmit">
+                提交申请
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>window.GLOBAL_VARS = window.GLOBAL_VARS || {};
+GLOBAL_VARS.image_oss_host = '//upload.baidu.com/';
+GLOBAL_VARS.passport_host = 'https://passport.baidu.com';
+GLOBAL_VARS.home_url = 'https://www.baidu.com';
+GLOBAL_VARS.enable_location = true;
+GLOBAL_VARS.clue_success_url = 'https://www.baidu.com/leads/success.html';</script>
+<script>window.BASE_API_URL = window.BASE_API_URL || {};
+BASE_API_URL.get_user_info = 'https://www.baidu.com/api/auth/user';
+BASE_API_URL.get_city_info = 'https://www.baidu.com/api/auth/city';
+BASE_API_URL.get_adv_space = 'https://www.baidu.com/rapi/cities/%5BcityId%5D/adv-spaces/%5BspaceId%5D';
+BASE_API_URL.get_all_cities = 'https://www.baidu.com/rapi/cities';
+BASE_API_URL.get_all_areas = 'https://www.baidu.com/rapi/areas';
+BASE_API_URL.get_open_api_domain = 'https://open-api.baidu.com';
+BASE_API_URL.clue_create_order = 'https://www.baidu.com/api/clue/create';
+BASE_API_URL.provinces = 'https://www.baidu.com/rapi/provinces';
+BASE_API_URL.province_cities = 'https://www.baidu.com/rapi/provinces/%5Bprovince_id%5D/cities';
+BASE_API_URL.districts = 'https://www.baidu.com/rapi/cities/%5Bcity_id%5D/districts';
+BASE_API_URL.passport_domain = 'https://passport.baidu.com';</script>
+<script>window.PAGE_API_URL = window.PAGE_API_URL || {};</script>
+
+<script src="main_files/nprogress.min.js"></script>
+<script src="main_files/jquery.min.js"></script>
+<script src="main_files/lazyload.js"></script>
+<script src="main_files/jquery-flexslider.js"></script>
+
+<script src="main_files/es5-shim.js"></script>
+<script src="main_files/layui.js"></script>
+<script src="main_files/jquery-validate.js"></script>
+<script src="main_files/dndc.js"></script>
+<script src="main_files/base-e1a90538fa.js"></script>
+<script>
+    // 开始进度
+    NProgress.start();
+
+    $(function () {
+        // 结束加载
+        setTimeout(function () {
+            NProgress.done();
+        }, 500);
+    });
+</script>
+<script src="main_files/api"></script>
+<script type="text/javascript" src="main_files/getscript"></script>
+<script src="main_files/common-189314eea7.js"></script>
+
+<script src="main_files/jquery-5f4a25990d.switchable.js"></script>
+<script src="main_files/ckplayer-a45181d274.js"></script>
+<script>window.phpData = window.phpData || {};
+phpData.videoImg = '//jt.baidu.com/build/v2/desktop/images/home_index/layer5_01-dd543c03a5.jpg';
+phpData.car_index_url = '#';</script>
+<script src="main_files/index-464b766c7f.js"></script>
+
+<script src="main_files/statistics.js"></script>
+<script language="javascript" type="text/javascript">
+    NTKF_PARAM = {
+        siteid: "kf_9255",                   //企业ID，为固定值，必填
+        settingid: "kf_9255_1463036048814",  //接待组ID，为固定值，必填
+        uid: "",                     //用户ID，未登录可以为空，但不能给null，uid赋予的值显示到小能客户端上
+        uname: "",           //用户名，未登录可以为空，但不能给null，uname赋予的值显示到小能客户端上
+        isvip: "0",                          //是否为vip用户，0代表非会员，1代表会员，取值显示到小能客户端上
+        userlevel: "1",                      //网站自定义会员级别，0-N，可根据选择判断，取值显示到小能客户端上
+        erpparam: ""                      //erpparam为erp功能的扩展字段，可选，购买erp功能后用于erp功能集成
+    }
+</script>
+<script type="text/javascript" src="main_files/ntkfstat.js" charset="utf-8"></script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html ng-app="userupdmodule">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="js/angular.js"></script>
+    <script src="js/register.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="赛博坦汽车销售公司">
+    <meta name="description" content="赛博坦是汽车代理电商平台,为您提供官方最新的汽车代理报价优惠,4S店信息,团购活动,贷款方案及特价车.买汽车,上赛博坦？就上赛博坦汽车电商平台！">
+    <title>用户账户信息修改</title>
+
+    <style>
+        @font-face {
+            font-family: 'cbb-iconfont';
+            src: url('//s.chebaba.com/font/cbb/1.2.4/iconfont.eot'); /* IE9*/
+            src: url('//s.chebaba.com/font/cbb/1.2.4/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('//s.chebaba.com/font/cbb/1.2.4/iconfont.woff') format('woff'), /* chrome、firefox */ url('//s.chebaba.com/font/cbb/1.2.4/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('//s.chebaba.com/font/cbb/1.2.4/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="./注册_files/base.css">
+    <link rel="stylesheet" type="text/css" href="./注册_files/sso-2ec478799e.css">
+
+<body ng-controller="updcontroller">
+<div class="sso-1200">
+    <div class="sso-700">
+        <div class="sso_logo">
+            <a href="https://passport.chebaba.com/"><img src="./登录_files/logo_new.png"></a>
+        </div>
+        <div class="register-form">
+            <div class="sso-register-title">
+                <h1>账户信息修改</h1>
+                <!--                    <a href="/tologin.do">已有帐号登陆</a>-->
+                <span>当前{{uid}}号用户{{uname}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="main.html">返回主页</a></span>
+            </div>
+            <div class="sso-form">
+                <form id="post_form" novalidate="novalidate">
+                    <div class="J-span-IE mt-15">
+                        性别：
+                        <input type="radio" ng-model="sex" value="man" id="man" name="sex">男</input>
+                        <input type="radio" ng-model="sex" value="woman" id="woman" name="sex">女</input>
+                        <i class="error-empty none"></i>
+                    </div>
+                    <div class="J-span-IE mt-15">
+                        <input type="text" placeholder="用户地址修改" ng-model="address" class="sso-login-input" id="address"
+                               name="address">
+                        <i class="error-empty none"></i>
+                    </div>
+                    <div class="J-span-IE mt-15">
+                        <input type="password" placeholder="请输入修改密码" ng-model="upd" class="sso-login-input"
+                               id="sms_password" name="password" maxlength="20">
+                        <i class="error-empty none"></i>
+                    </div>
+
+                    <!--                        <div class="J-span-IE mt-15">-->
+                    <!--                            <input type="password" placeholder="请再次输入密码"  ng-model="upd2" class="sso-login-input" id="con_password" name="password_confirmation" maxlength="20">-->
+                    <!--                            <i class="error-empty none"></i>-->
+                    <!--                        </div>-->
+
+                    <div class="J-span-IE mt-15">
+                        <input type="password" placeholder="请输入修改支付密码" ng-model="paypd" class="sso-login-input"
+                               id="sms_paypassword" name="password" maxlength="20">
+                        <i class="error-empty none"></i>
+                    </div>
+
+                    <!--                        <div class="J-span-IE mt-15">-->
+                    <!--                            <input type="password" placeholder="请再次输入支付密码"  ng-model="paypd2" class="sso-login-input" id="con_paypassword" name="password_confirmation" maxlength="20">-->
+                    <!--                            <i class="error-empty none"></i>-->
+                    <!--                        </div>-->
+
+                    <div class="error-tips-content">{{msg}}</div>
+
+                    <input type="button" ng-click="update()" class="sso-login-btn " id="registerBtn" value="确认修改">
+
+                </form>
+            </div>
+            <div class="other-login">
+                <!--<div class="other-hd">-->
+                <!--<span class="other-title">其他注册方式</span>-->
+                <!--</div>-->
+                <!--<div class="weixin-weibo">-->
+                <!--<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxd489cbab7813f1a9&amp;redirect_uri=https%3A%2F%2Fpassport.chebaba.com%2Fsso%2Fwx%2Fcallback%3FreturnUrl%3Dhttps%253A%252F%252Fuser.chebaba.com%252Fuser%252Fapi%252Fmember%252Flogin%253Flogincode%253D60723d62d0a69d4b%2526ref_url%253Dhttps%25253A%25252F%25252Fuser.chebaba.com%25252Fuser%25252Findex.html%25253FSMARTCODE%25253Dg2019-3223625-90-12938160%252526pk_vid%25253D9e568afc99ed7cd21569632811887ad2%26type%3Dopen&amp;response_type=code&amp;scope=snsapi_login&amp;state=64e54dfebce92ea8a50055c3d23a8e83" class="ww-link login-weixin"></a>-->
+                <!--<a href="javascript:;" class="ww-link login-weibo fr hide"></a>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/userupdate.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var disabledOpj = {
+        btnOpj: '',
+        btnText: '',
+        btnFlag: '',
+        btnClass: '',
+        disClass: '',
+    }
+
+    var return_url = 'https://user.chebaba.com/user/api/member/login?logincode=60723d62d0a69d4b&ref_url=https%3A%2F%2Fuser.chebaba.com%2Fuser%2Findex.html%3FSMARTCODE%3Dg2019-3223625-90-12938160%26pk_vid%3D9e568afc99ed7cd21569632811887ad2';
+</script>
+<!--<script src="./注册_files/register-32532a10e8.js.下载"></script>-->
+<div class="clear"></div>
+<div class="global-footer">
+    <div class="top">
+        <div class="mod-1200">
+            <ul class="advantage clearfix">
+                <li>
+                    <i class="global-icon contrast-icon"></i>
+                    多家对比 轻松买车
+                </li>
+                <li>
+                    <i class="global-icon promise-icon"></i>
+                    底价承诺 价格保证
+                </li>
+                <li>
+                    <i class="global-icon approve-icon"></i>
+                    认证商家 服务保障
+                </li>
+                <li class="last">
+                    <i class="global-icon any-time-icon"></i>
+                    订金随时可退
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="mod-1120">
+            <div class="copyright">
+                Copyright © 2008-2019 saibotan。coma，All Rights Reserved 粤ICP备15053418号-1 版权所有 <strong>东风日产乘用车公司</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

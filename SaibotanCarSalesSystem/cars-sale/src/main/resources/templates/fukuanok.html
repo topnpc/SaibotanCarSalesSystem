@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>付款成功</title>
+    <style>
+        .ok {
+            color: red;
+        }
+    </style>
+</head>
+
+<body ng-app="fukuanok" ng-controller="fukuanok_Controller">
+<div style="margin:0 auto;">
+    <p>1.确认订单信息</p>
+    <p class="ok">2.付款到支付宝</p>
+    <p>3.确认收货</p>
+    <p>4.双方互评</p>
+    <p class="ok">您已成功付款{{money}}元</p>
+    <p class="ok">货物寄送至：{{user.address}}&nbsp;{{user.realname}} 收 {{user.phone}}</p>
+</div>
+
+<script src="js/angular.js"></script>
+<script src="js/fukuanok.js"></script>
+
+</body>
+</html>
